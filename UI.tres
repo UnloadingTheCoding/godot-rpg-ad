@@ -1,0 +1,120 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bj3ryenfgg5p6"]
+
+[ext_resource type="FontFile" uid="uid://brcbsc72sd8oq" path="res://Assets/NbPixelFontBundle_v1_0(1)/Habbo.ttf" id="1_lqiki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5bvo"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 0.533333)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ni11a"]
+content_margin_bottom = 10.0
+bg_color = Color(0.113725, 0.262745, 0.654902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8mp5"]
+bg_color = Color(0.027451, 0.101961, 0.298039, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g0yx"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.952941, 0.952941, 0.952941, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r0t7"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 0.537255)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.952941, 0.952941, 0.952941, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Gradient" id="Gradient_q6un2"]
+offsets = PackedFloat32Array(0, 0.803738)
+colors = PackedColorArray(0.631375, 0.0749176, 0, 1, 1, 0.50304, 0.216703, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tk4gv"]
+gradient = SubResource("Gradient_q6un2")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fja41"]
+texture = SubResource("GradientTexture2D_tk4gv")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t681"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytbel"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yqch"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkfls"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+expand_margin_left = 3.0
+
+[resource]
+default_font_size = 32
+Button/colors/font_outline_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_lqiki")
+Button/styles/hover = SubResource("StyleBoxFlat_l5bvo")
+Button/styles/normal = SubResource("StyleBoxFlat_ni11a")
+Button/styles/pressed = SubResource("StyleBoxFlat_t8mp5")
+Panel/styles/panel = SubResource("StyleBoxFlat_3g0yx")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_0r0t7")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_fja41")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_6t681")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_ytbel")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_0yqch")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_kkfls")

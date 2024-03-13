@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckqo01jmemk8a"]
+
+[ext_resource type="Texture2D" uid="uid://dkmwkhju0gxv7" path="res://Assets/Characters/Character Sprites 3 - Fantasy Dreamland/Character Sprites 16x16/Character_081.png" id="1_pyhot"]
+[ext_resource type="PackedScene" uid="uid://b8v0m6cgexmt5" path="res://Scenes/DialogLines/dialog_lines.tscn" id="2_ysllq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j5td"]
+size = Vector2(10, 13)
+
+[node name="NPC" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pyhot")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_5j5td")
+
+[node name="DialogLines" parent="." instance=ExtResource("2_ysllq")]

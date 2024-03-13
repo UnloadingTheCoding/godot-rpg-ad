@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://3p7ohfxt2awi"]
+
+[ext_resource type="FontFile" uid="uid://brcbsc72sd8oq" path="res://Assets/NbPixelFontBundle_v1_0(1)/Habbo.ttf" id="1_1pija"]
+
+[resource]
+line_spacing = 5.0
+font = ExtResource("1_1pija")
+font_size = 48
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(1, 3)

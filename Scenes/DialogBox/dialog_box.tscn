@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctkd61rn23pa8"]
+
+[ext_resource type="Script" path="res://Scenes/DialogBox/dialog_box.gd" id="1_awlni"]
+[ext_resource type="Texture2D" uid="uid://4yjgpcqn6kag" path="res://Assets/UIassets/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Panels_And_Slots/TintedVariations/Minifantasy_GuiPanelsAndSlotsBlue.png" id="2_4lh2j"]
+[ext_resource type="LabelSettings" uid="uid://3p7ohfxt2awi" path="res://common_text.tres" id="3_vn2cj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmqh3"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.952941, 0.952941, 0.952941, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_2ss3o"]
+Panel/styles/panel = SubResource("StyleBoxFlat_cmqh3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lup8r"]
+
+[node name="DialogBox" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_awlni")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 428.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 170
+theme_override_constants/margin_right = 170
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2ss3o")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="dialog_box" type="Label" parent="MarginContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "Well this is just weird isn't it?"
+label_settings = ExtResource("3_vn2cj")
+autowrap_mode = 2
+max_lines_visible = 3
+
+[node name="NameBox" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(100, 30)
+offset_left = 192.0
+offset_top = 411.0
+offset_right = 392.0
+offset_bottom = 461.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_4lh2j")
+region_rect = Rect2(43.4485, 13.6338, 56.405, 19.5085)
+patch_margin_left = 12
+patch_margin_top = 11
+patch_margin_right = 12
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="NameBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+
+[node name="name_label" type="Label" parent="NameBox/MarginContainer"]
+layout_mode = 2
+text = "name"
+label_settings = ExtResource("3_vn2cj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lup8r")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,204 @@
+[gd_scene load_steps=12 format=3 uid="uid://onbu10xaarsw"]
+
+[ext_resource type="Texture2D" uid="uid://c0ysw6p3ue53i" path="res://TitleScreen2.png" id="1_tfy8i"]
+[ext_resource type="Texture2D" uid="uid://4yjgpcqn6kag" path="res://Assets/UIassets/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Panels_And_Slots/TintedVariations/Minifantasy_GuiPanelsAndSlotsBlue.png" id="2_hdpg6"]
+[ext_resource type="FontFile" uid="uid://chti06fhegtm3" path="res://Assets/NbPixelFontBundle_v1_0(1)/Bitfantasy.ttf" id="3_151cd"]
+[ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="4_h1pmg"]
+[ext_resource type="Texture2D" uid="uid://c3lc7h23chcvg" path="res://Assets/BattleFX/Staff Item Icons/Staff Normal/Staff_Normal_64.png" id="5_jekuu"]
+[ext_resource type="AudioStream" uid="uid://cxwke8h0ysj8x" path="res://Assets/MusicAndSFX/Call of the Forgotten Lands Retro RPG Music Pack 1.3/Call of the Forgotten Lands Retro RPG Music Pack 1.3/OGG/12 The World As it Was (Orchestral Ver.) BONUS.ogg" id="6_crtlk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wq6dr"]
+font = ExtResource("3_151cd")
+font_size = 84
+font_color = Color(1, 1, 0.741176, 1)
+outline_size = 8
+outline_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.545098)
+shadow_offset = Vector2(1, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_elwpw"]
+line_spacing = 10.0
+font = ExtResource("3_151cd")
+font_size = 84
+font_color = Color(1, 1, 0.741176, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.545098)
+shadow_offset = Vector2(1, 5)
+
+[sub_resource type="Animation" id="Animation_6r3hr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_kvm6j"]
+resource_name = "light"
+length = 14.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 6.9, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.4, 0.1, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4eloi"]
+_data = {
+"RESET": SubResource("Animation_6r3hr"),
+"light": SubResource("Animation_kvm6j")
+}
+
+[node name="TitleScreen" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tfy8i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -185.0
+offset_right = 262.0
+offset_bottom = 185.0
+grow_horizontal = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("2_hdpg6")
+region_rect = Rect2(47.9465, 47.6257, 48.0223, 48.1674)
+patch_margin_left = 8
+patch_margin_top = 41
+patch_margin_right = 8
+patch_margin_bottom = 40
+axis_stretch_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Spacer1" type="Control" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "  Advent
+"
+label_settings = SubResource("LabelSettings_wq6dr")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "     Dream
+"
+label_settings = SubResource("LabelSettings_elwpw")
+horizontal_alignment = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="NewGame" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_h1pmg")
+text = "New Game"
+
+[node name="Continue" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_h1pmg")
+text = "Continue"
+
+[node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_h1pmg")
+text = "Settings
+"
+
+[node name="Credits" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_h1pmg")
+text = "Credits
+"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StaffNormal64" type="Sprite2D" parent="."]
+position = Vector2(390, 105)
+rotation = -0.785398
+scale = Vector2(5, 5)
+texture = ExtResource("5_jekuu")
+
+[node name="StaffNormal65" type="Sprite2D" parent="."]
+position = Vector2(834, 105)
+rotation = -0.785398
+scale = Vector2(5, 5)
+texture = ExtResource("5_jekuu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_crtlk")
+autoplay = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+range_layer_max = 3
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.498039)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4eloi")
+}
+autoplay = "light"

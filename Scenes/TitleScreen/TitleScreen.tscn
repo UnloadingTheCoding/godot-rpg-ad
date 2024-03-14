@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://onbu10xaarsw"]
+[gd_scene load_steps=13 format=3 uid="uid://onbu10xaarsw"]
 
+[ext_resource type="Script" path="res://Scenes/TitleScreen/TitleScreen.gd" id="1_t8utp"]
 [ext_resource type="Texture2D" uid="uid://c0ysw6p3ue53i" path="res://TitleScreen2.png" id="1_tfy8i"]
 [ext_resource type="Texture2D" uid="uid://4yjgpcqn6kag" path="res://Assets/UIassets/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Panels_And_Slots/TintedVariations/Minifantasy_GuiPanelsAndSlotsBlue.png" id="2_hdpg6"]
 [ext_resource type="FontFile" uid="uid://chti06fhegtm3" path="res://Assets/NbPixelFontBundle_v1_0(1)/Bitfantasy.ttf" id="3_151cd"]
@@ -66,6 +67,7 @@ _data = {
 }
 
 [node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_t8utp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -147,18 +149,21 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 
 [node name="NewGame" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_h1pmg")
 text = "New Game"
 
-[node name="Continue" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Continue_option" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_h1pmg")
 text = "Continue"
 
 [node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_h1pmg")
@@ -166,6 +171,7 @@ text = "Settings
 "
 
 [node name="Credits" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_h1pmg")
@@ -202,3 +208,5 @@ libraries = {
 "": SubResource("AnimationLibrary_4eloi")
 }
 autoplay = "light"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]

@@ -9,6 +9,17 @@ extends CanvasLayer
 @onready var status = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status
 
 
+func _process(delta):
+	if Input.is_action_pressed("back"):
+		is_back_pressed()
+		
+		
+func is_back_pressed():
+		close_all_windows()
+		characters.visible = true
+		
+		
+
 func _on_items_pressed():
 	close_all_windows()
 	inventory.visible = true

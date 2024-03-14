@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bcq2rtial72vf"]
+[gd_scene load_steps=23 format=3 uid="uid://bcq2rtial72vf"]
 
 [ext_resource type="Texture2D" uid="uid://d26qdrb6au0ec" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Ground_Tiles.png" id="1_pii2m"]
 [ext_resource type="Texture2D" uid="uid://86bsliyvott" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Village.png" id="2_6fdb2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bhobqit0orjbo" path="res://Assets/Characters/Character Sprites 1 - Fantasy Dreamland/Character Sprites 16x16/Character_019.png" id="10_f37d3"]
 [ext_resource type="Texture2D" uid="uid://dw0bdj5abprrt" path="res://Assets/Characters/Character Sprites 3 - Fantasy Dreamland/Character Sprites 16x16/Character_084.png" id="11_etlku"]
 [ext_resource type="PackedScene" uid="uid://bji30meh012ld" path="res://Scenes/Menu/menu.tscn" id="12_6i82n"]
+[ext_resource type="PackedScene" uid="uid://bpq1dypvddmad" path="res://Scenes/Entrance_exit/entrance_exit.tscn" id="13_bpmvu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_goyge"]
 texture = ExtResource("1_pii2m")
@@ -15130,3 +15131,8 @@ lines = PackedStringArray("name_Dickard", "I be hearing strange noises coming fr
 
 [node name="Menu" parent="." instance=ExtResource("12_6i82n")]
 visible = false
+
+[node name="Entrance_Exit" parent="." instance=ExtResource("13_bpmvu")]
+position = Vector2(742, 613)
+scale = Vector2(0.68, 1)
+scene = "res://Scenes/shop_test.tscn"

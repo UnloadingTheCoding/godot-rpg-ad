@@ -210,3 +210,6 @@ libraries = {
 autoplay = "light"
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/Continue_option" to="." method="_on_continue_option_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

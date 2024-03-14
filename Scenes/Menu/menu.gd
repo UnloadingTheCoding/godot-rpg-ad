@@ -9,7 +9,7 @@ extends CanvasLayer
 @onready var status = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("back"):
 		is_back_pressed()
 		

@@ -9,9 +9,22 @@ extends CanvasLayer
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
 func _on_new_game_pressed():
-	get_tree().change_scene_to_file("res://Scenes/test.tscn")
+	var scene = "res://Scenes/test.tscn"
+	ScreenTransition.change_scene(scene)
+
+
+func _on_continue_option_pressed():
+	print("pressed continue")
+
+
+func _on_settings_pressed():
+	print("pressed settings")
+
+
+func _on_credits_pressed():
+	print("pressed credits")

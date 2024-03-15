@@ -1,6 +1,6 @@
 extends Node
 
-class_name Charecter
+class_name Character
 	
 #Equipment
 var left: Equip

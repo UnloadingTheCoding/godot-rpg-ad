@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0jxcl2ucyckj"]
+[gd_scene load_steps=11 format=3 uid="uid://b0jxcl2ucyckj"]
 
 [ext_resource type="Texture2D" uid="uid://k4s763obpnvn" path="res://Assets/Environment/Interior Tileset - Fantasy Dreamland Reborn/16x16/FDR_Interior.png" id="1_quxbj"]
 [ext_resource type="Texture2D" uid="uid://cpg6xdd4rmai2" path="res://Assets/Environment/Blacksmith Workshop Tileset - Fantasy Dreamland Reborn/16x16/FDR_Blacksmith.png" id="2_0qvfs"]
 [ext_resource type="PackedScene" uid="uid://ckqo01jmemk8a" path="res://Scenes/Characters/NPC/npc.tscn" id="2_iodky"]
+[ext_resource type="PackedScene" uid="uid://cldgtj0biuxye" path="res://Scenes/Characters/player.tscn" id="4_cnnwb"]
+[ext_resource type="Script" path="res://Scenes/Portal/Portal.gd" id="5_t7cx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0rwnn"]
 texture = ExtResource("1_quxbj")
@@ -6505,6 +6507,9 @@ texture = ExtResource("2_0qvfs")
 [sub_resource type="TileSet" id="TileSet_e3ib0"]
 sources/0 = SubResource("TileSetAtlasSource_3x87b")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvo0"]
+size = Vector2(48, 20)
+
 [node name="ShopTest" type="Node2D"]
 
 [node name="Interior1" type="TileMap" parent="."]
@@ -6524,3 +6529,22 @@ position = Vector2(327, 122)
 [node name="Interior2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_e3ib0")
 format = 2
+
+[node name="Player" parent="." instance=ExtResource("4_cnnwb")]
+
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(277, 284)
+script = ExtResource("5_t7cx8")
+scene = "res://Scenes/test.tscn"
+portal_name = "ItemShop"
+destination = "ShopEnt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_fkvo0")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Start" type="Area2D" parent="Portal"]
+position = Vector2(0, -27)
+
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

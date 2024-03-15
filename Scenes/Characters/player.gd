@@ -4,10 +4,6 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
-#stats
-var attack: int
-var defense: int
-var strength: int
 
 # Movement
 const SPEED = 120
@@ -40,4 +36,4 @@ func get_movement():
 		state_machine.travel("idle")
 		velocity = Vector2.ZERO
 		
-	
+

@@ -1,2 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
+Assets/
+tf_char1.png.import
+TitleScreen2.png.import
+TitleScreen.png.import
+tf_char1.png
+TitleScreen.png
+TitleScreen2.png

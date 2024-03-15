@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bcq2rtial72vf"]
+[gd_scene load_steps=24 format=3 uid="uid://bcq2rtial72vf"]
 
 [ext_resource type="Texture2D" uid="uid://d26qdrb6au0ec" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Ground_Tiles.png" id="1_pii2m"]
 [ext_resource type="Texture2D" uid="uid://86bsliyvott" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Village.png" id="2_6fdb2"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bhobqit0orjbo" path="res://Assets/Characters/Character Sprites 1 - Fantasy Dreamland/Character Sprites 16x16/Character_019.png" id="10_f37d3"]
 [ext_resource type="Texture2D" uid="uid://dw0bdj5abprrt" path="res://Assets/Characters/Character Sprites 3 - Fantasy Dreamland/Character Sprites 16x16/Character_084.png" id="11_etlku"]
 [ext_resource type="PackedScene" uid="uid://bji30meh012ld" path="res://Scenes/Menu/menu.tscn" id="12_6i82n"]
-[ext_resource type="PackedScene" uid="uid://bpq1dypvddmad" path="res://Scenes/Entrance_exit/entrance_exit.tscn" id="13_bpmvu"]
+[ext_resource type="Script" path="res://Scenes/Portal/Portal.gd" id="13_3o6oj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_goyge"]
 texture = ExtResource("1_pii2m")
@@ -15061,6 +15061,9 @@ size = Vector2(10, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4w6t"]
 size = Vector2(10, 13)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvo0"]
+size = Vector2(15, 20)
+
 [node name="Test" type="Node"]
 
 [node name="TM16x16" type="TileMap" parent="."]
@@ -15132,7 +15135,19 @@ lines = PackedStringArray("name_Dickard", "I be hearing strange noises coming fr
 [node name="Menu" parent="." instance=ExtResource("12_6i82n")]
 visible = false
 
-[node name="Entrance_Exit" parent="." instance=ExtResource("13_bpmvu")]
-position = Vector2(742, 613)
-scale = Vector2(0.68, 1)
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(742, 618)
+script = ExtResource("13_3o6oj")
 scene = "res://Scenes/shop_test.tscn"
+portal_name = "ShopEnt"
+destination = "ItemShop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(-0.5, -6)
+shape = SubResource("RectangleShape2D_fkvo0")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Start" type="Area2D" parent="Portal"]
+position = Vector2(-1, 16)
+
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

@@ -1,14 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpq1dypvddmad"]
 
-[ext_resource type="Script" path="res://Scenes/Entrance_exit/Entrance_Exit.gd" id="1_ek5wv"]
+[ext_resource type="Script" path="res://Scenes/Portal/Portal.gd" id="1_6y7wn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvo0"]
+size = Vector2(15, 20)
 
-[node name="Entrance_Exit" type="Area2D"]
-script = ExtResource("1_ek5wv")
+[node name="Portal" type="Area2D"]
+process_mode = 3
+script = ExtResource("1_6y7wn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fkvo0")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Start" type="Area2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

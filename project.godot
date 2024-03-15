@@ -21,6 +21,7 @@ SignalManager="*res://Singletons/signal_manager.gd"
 GameManager="*res://Singletons/game_manager.gd"
 CharacterManager="*res://Singletons/character_manager.gd"
 ScreenTransition="*res://Singletons/screen_transition.tscn"
+MainCam="*res://Scenes/Camera/main_cam.tscn"
 
 [filesystem]
 

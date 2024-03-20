@@ -15085,7 +15085,6 @@ layer_3/tile_data = PackedInt32Array(2031661, 1310721, 9, 2031662, 1376257, 9, 2
 position = Vector2(551, 480)
 
 [node name="MainCam" parent="." instance=ExtResource("3_q4h08")]
-zoom = Vector2(2.4, 2.4)
 
 [node name="NPC" type="CharacterBody2D" parent="."]
 position = Vector2(630, 454)

@@ -195,6 +195,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("5_jekuu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_crtlk")
 autoplay = true
 

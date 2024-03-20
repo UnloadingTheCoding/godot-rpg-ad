@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var continue_option = %Continue_option
 @onready var settings = %Settings
 @onready var credits = %Credits
+@onready var music = $AudioStreamPlayer
 
 
 
@@ -14,6 +15,7 @@ func _process(_delta):
 
 
 func _on_new_game_pressed():
+	#await music_fade()
 	var scene = "res://Scenes/test.tscn"
 	ScreenTransition.change_scene(scene)
 
@@ -28,3 +30,12 @@ func _on_settings_pressed():
 
 func _on_credits_pressed():
 	print("pressed credits")
+	
+
+""" Consider turning music into autoload to control fading and better manage audio"""
+
+#func music_fade():
+	#var tween = create_tween()
+	#tween.tween_property(music, "volume_db", -40.0, 0.5)
+	#await tween.finished
+	#

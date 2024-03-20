@@ -1,6 +1,7 @@
 extends Area2D
 
-@onready var shop_menu = $ShopMenu
+@onready var shop_menu_container = $ShopMenuContainer
+
 
 var selling: bool = false
 
@@ -10,9 +11,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	open_menu()
-
+	close_menu()
 
 func _on_body_entered(body):
 	if body == get_tree().get_first_node_in_group("Player"):
@@ -26,9 +27,11 @@ func _on_body_exited(body):
 
 func open_menu():
 	if selling == true and Input.is_action_pressed("action_button"):
-		shop_menu.visible = true
+		shop_menu_container.visible = true
 		get_tree().paused = true
 
 
 func close_menu():
-	pass
+	if selling == true and Input.is_action_pressed("back"):
+		shop_menu_container.visible = false
+		get_tree().paused = false

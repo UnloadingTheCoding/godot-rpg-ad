@@ -23,6 +23,10 @@ CharacterManager="*res://Singletons/character_manager.gd"
 ScreenTransition="*res://Singletons/screen_transition.tscn"
 MainCam="*res://Scenes/Camera/main_cam.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [filesystem]
 
 import/blender/enabled=false

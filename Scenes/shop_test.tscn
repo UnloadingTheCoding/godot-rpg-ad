@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0jxcl2ucyckj"]
+[gd_scene load_steps=12 format=3 uid="uid://b0jxcl2ucyckj"]
 
 [ext_resource type="Texture2D" uid="uid://k4s763obpnvn" path="res://Assets/Environment/Interior Tileset - Fantasy Dreamland Reborn/16x16/FDR_Interior.png" id="1_quxbj"]
 [ext_resource type="Texture2D" uid="uid://cpg6xdd4rmai2" path="res://Assets/Environment/Blacksmith Workshop Tileset - Fantasy Dreamland Reborn/16x16/FDR_Blacksmith.png" id="2_0qvfs"]
 [ext_resource type="Texture2D" uid="uid://dkmwkhju0gxv7" path="res://Assets/Characters/Character Sprites 3 - Fantasy Dreamland/Character Sprites 16x16/Character_081.png" id="2_5xep6"]
 [ext_resource type="PackedScene" uid="uid://cldgtj0biuxye" path="res://Scenes/Characters/player.tscn" id="4_cnnwb"]
 [ext_resource type="Script" path="res://Scenes/Portal/Portal.gd" id="5_t7cx8"]
+[ext_resource type="PackedScene" uid="uid://lbrp1yxmyc47" path="res://Scenes/ShopMenu/shop_menu.tscn" id="6_oueti"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0rwnn"]
 texture = ExtResource("1_quxbj")
@@ -6551,5 +6552,8 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Start" type="Area2D" parent="Portal"]
 position = Vector2(0, -27)
+
+[node name="ShopMenu" parent="." instance=ExtResource("6_oueti")]
+position = Vector2(328, 150)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var sell_list: Array[String]
+
 @onready var shop_menu_container = $ShopMenuContainer
 @onready var buy_inventory = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory
 @onready var sell_inventory = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/SellInventory

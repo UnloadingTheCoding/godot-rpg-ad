@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgmfngfuup8w7"]
+[gd_scene load_steps=6 format=3 uid="uid://cgmfngfuup8w7"]
 
 [ext_resource type="Script" path="res://Scenes/ShopItem/shop_item.gd" id="1_ikaka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3o0t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ynpn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="Theme" id="Theme_anlf2"]
+Button/styles/focus = SubResource("StyleBoxFlat_n3o0t")
 Button/styles/normal = SubResource("StyleBoxFlat_5ynpn")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o1xan"]

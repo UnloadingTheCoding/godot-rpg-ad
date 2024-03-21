@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var sell_list: Array[String]
+@export var sell_list: Array[Array]
 
 @onready var shop_menu_container = $ShopMenuContainer
 @onready var buy_inventory = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory
@@ -17,17 +17,9 @@ var selling: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	clear_description()
+	build_sell_list()
 	SignalManager.description_update.connect(on_description_update)
 	
-	for key in sell_list:
-		var ml_item = InventoryMasterList.inventory[key]
-		var item = shop_item.instantiate()
-		buy_menu_columns.add_child(item)
-		item.item_icon.texture = ml_item.item_texture
-		item.item_name.text = ml_item.item_name
-		item.description = ml_item.item_description
-		item.price.text = str(500)
-		item.item_ref = item
 
 
 func _process(_delta):
@@ -43,6 +35,22 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body == get_tree().get_first_node_in_group("Player"):
 		selling = false
+
+
+func build_sell_list():
+	for item_info in sell_list:
+		var item_info_name = item_info[0]
+		var item_info_price = item_info[1]
+		
+		var ml_item = InventoryMasterList.inventory[item_info_name]
+		var item = shop_item.instantiate()
+		buy_menu_columns.add_child(item)
+		
+		item.item_icon.texture = ml_item.item_texture
+		item.item_name.text = ml_item.item_name
+		item.description = ml_item.item_description
+		item.price.text = str(item_info_price)
+		item.item_ref = item
 
 
 func open_menu():
@@ -63,6 +71,7 @@ func _on_buy_pressed():
 
 
 func _on_sell_pressed():
+	clear_description()
 	buy_inventory.visible = false
 	sell_inventory.visible = true
 

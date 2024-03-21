@@ -1,18 +1,20 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://ch05grofq7jqd"]
 
-[ext_resource type="Texture2D" uid="uid://cp66ejaco865d" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 154.png" id="1_odiea"]
+[ext_resource type="Texture2D" uid="uid://cl0pts7063ien" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 3/Style 3 Icon 159.png" id="1_v4ix5"]
 
 [sub_resource type="GDScript" id="GDScript_1615j"]
 script/source = "
 
 @export var item_name: String
-@export var item_texture: Texture
+@export var item_texture: Texture2D
 @export var item_description: String
 
+func get_item():
+	return self
 "
 
 [resource]
 script = SubResource("GDScript_1615j")
 item_name = "Mana Potion"
-item_texture = ExtResource("1_odiea")
+item_texture = ExtResource("1_v4ix5")
 item_description = "Recovers 25 MP"

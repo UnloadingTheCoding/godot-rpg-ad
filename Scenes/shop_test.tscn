@@ -6555,5 +6555,6 @@ position = Vector2(0, -27)
 
 [node name="ShopMenu" parent="." instance=ExtResource("6_oueti")]
 position = Vector2(328, 150)
+sell_list = Array[String](["hp_potion", "mp_potion"])
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

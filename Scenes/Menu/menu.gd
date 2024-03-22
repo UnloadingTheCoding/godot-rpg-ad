@@ -15,11 +15,10 @@ func _process(_delta):
 		
 		
 func is_back_pressed():
-		close_all_windows()
-		characters.visible = true
+	close_all_windows()
+	characters.visible = true
 		
 		
-
 func _on_items_pressed():
 	close_all_windows()
 	inventory.visible = true

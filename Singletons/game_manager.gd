@@ -11,3 +11,5 @@ func _ready():
 
 func on_destination_update(portal_name):
 	player_destination = portal_name
+
+

@@ -16,6 +16,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 
+
 func get_movement():
 	direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	if direction != Vector2.ZERO:
@@ -36,4 +37,3 @@ func get_movement():
 		state_machine.travel("idle")
 		velocity = Vector2.ZERO
 		
-

@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://cldgtj0biuxye"]
+[gd_scene load_steps=30 format=3 uid="uid://cldgtj0biuxye"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/player.gd" id="1_nv6m3"]
 [ext_resource type="Texture2D" uid="uid://dbiathgv3a65b" path="res://Assets/Characters/Character Sprites 1 - Fantasy Dreamland/Character Sprites 16x16/Character_031.png" id="2_rl8tk"]
 [ext_resource type="PackedScene" uid="uid://ctkd61rn23pa8" path="res://Scenes/DialogBox/dialog_box.tscn" id="3_kbjlt"]
+[ext_resource type="PackedScene" uid="uid://bji30meh012ld" path="res://Scenes/Menu/menu.tscn" id="4_orfbs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3adg"]
 size = Vector2(10, 15)
@@ -252,3 +253,6 @@ parameters/walk/blend_position = Vector2(0, 0)
 
 [node name="DialogBox" parent="." instance=ExtResource("3_kbjlt")]
 visible = false
+
+[node name="Menu" parent="." instance=ExtResource("4_orfbs")]
+process_mode = 3

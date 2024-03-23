@@ -12,6 +12,3 @@ signal pause_controls
 #ShopMenu Signal
 signal description_update(String)
 
-#PlayerMenu Signals
-#signal open_menu
-#signal close_menu

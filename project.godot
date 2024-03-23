@@ -23,7 +23,6 @@ CharacterManager="*res://Singletons/character_manager.gd"
 ScreenTransition="*res://Singletons/screen_transition.tscn"
 MainCam="*res://Scenes/Camera/main_cam.tscn"
 InventoryMasterList="*res://Singletons/inventory_master_list.tscn"
-Menu="*res://Scenes/Menu/menu.tscn"
 
 [display]
 

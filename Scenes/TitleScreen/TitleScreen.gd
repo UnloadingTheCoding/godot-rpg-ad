@@ -16,6 +16,7 @@ func _process(_delta):
 
 func _on_new_game_pressed():
 	#await music_fade()
+	SignalManager.change_game_state.emit(GameManager.game_state.GAME_NORMAL)
 	var scene = "res://Scenes/test.tscn"
 	ScreenTransition.change_scene(scene)
 

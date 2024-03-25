@@ -54,6 +54,7 @@ shape = SubResource("RectangleShape2D_6gkns")
 
 [node name="ShopMenuContainer" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="ShopMenuContainer"]
 anchors_preset = 15
@@ -190,6 +191,7 @@ layout_mode = 2
 
 [node name="BuyMenuColumns" type="VBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 40
 
 [node name="NameAndPricePanels" type="HBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer/BuyMenuColumns"]

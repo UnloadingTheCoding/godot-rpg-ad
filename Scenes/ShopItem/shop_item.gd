@@ -3,6 +3,7 @@ extends Control
 @onready var item_icon = $BuyItemSelect/ItemIcon
 @onready var item_name = $BuyItemSelect/ItemName
 @onready var price = $BuyItemSelect/Price
+
 var description: String
 var item_ref 
 

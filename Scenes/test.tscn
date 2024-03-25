@@ -4608,25 +4608,25 @@ texture = ExtResource("2_6fdb2")
 19:15/0/physics_layer_0/angular_velocity = 0.0
 19:15/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 19:15/0/physics_layer_1/angular_velocity = 0.0
-19:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+19:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4)
 20:15/0 = 0
 20:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:15/0/physics_layer_0/angular_velocity = 0.0
 20:15/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 20:15/0/physics_layer_1/angular_velocity = 0.0
-20:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+20:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -8, -8, -8, -8, 4, 0, 4)
 21:15/0 = 0
 21:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 21:15/0/physics_layer_0/angular_velocity = 0.0
 21:15/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 21:15/0/physics_layer_1/angular_velocity = 0.0
-21:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+21:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 4, 0, 4)
 22:15/0 = 0
 22:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 22:15/0/physics_layer_0/angular_velocity = 0.0
 22:15/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 22:15/0/physics_layer_1/angular_velocity = 0.0
-22:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
+22:15/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4)
 27:15/0 = 0
 27:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 27:15/0/physics_layer_0/angular_velocity = 0.0
@@ -15062,7 +15062,7 @@ size = Vector2(10, 13)
 size = Vector2(10, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvo0"]
-size = Vector2(15, 20)
+size = Vector2(12, 9)
 
 [node name="Test" type="Node"]
 
@@ -15132,7 +15132,6 @@ shape = SubResource("RectangleShape2D_k4w6t")
 lines = PackedStringArray("name_Dickard", "I be hearing strange noises coming from the cave northwest from here.")
 
 [node name="Menu" parent="." instance=ExtResource("12_6i82n")]
-visible = false
 
 [node name="Portal" type="Area2D" parent="."]
 position = Vector2(742, 618)
@@ -15142,7 +15141,7 @@ portal_name = "ShopEnt"
 destination = "ItemShop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-position = Vector2(-0.5, -6)
+position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_fkvo0")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 

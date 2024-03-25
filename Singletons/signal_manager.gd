@@ -1,5 +1,8 @@
 extends Node
 
+
+signal change_game_state(String)
+
 #DialogSignals
 signal dialog_lines(PackedStringArray)
 signal is_dialog_complete()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3mlvvqwcr58f"]
 
-[ext_resource type="Script" path="res://ScreenTransition.gd" id="1_pdtc7"]
+[ext_resource type="Script" path="res://Singletons/ScreenTransition.gd" id="1_pdtc7"]
 
 [sub_resource type="Animation" id="Animation_git0x"]
 length = 0.001

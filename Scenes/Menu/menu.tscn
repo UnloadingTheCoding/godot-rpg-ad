@@ -259,7 +259,6 @@ value = 100.0
 show_percentage = false
 
 [node name="Inventory" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -267,33 +266,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.5
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="Item" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -306,15 +312,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item2" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item2" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item2"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item2"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item2"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item2"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -327,15 +333,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item3" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item3" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item3"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item3"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item3"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item3"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -348,15 +354,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item4" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item4" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item4"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item4"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item4"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item4"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -369,15 +375,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item5" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item5" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item5"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item5"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item5"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item5"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -390,15 +396,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item6" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item6" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item6"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item6"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item6"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item6"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -411,15 +417,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item7" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item7" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item7"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item7"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item7"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item7"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -432,15 +438,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item8" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item8" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item8"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item8"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item8"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item8"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -453,15 +459,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item9" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item9" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item9"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item9"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item9"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item9"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -474,15 +480,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item10" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item10" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item10"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item10"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item10"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item10"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -495,15 +501,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item11" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item11" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item11"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item11"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item11"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item11"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -516,15 +522,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item12" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item12" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item12"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item12"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item12"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item12"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -537,15 +543,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item13" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item13" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item13"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item13"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item13"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item13"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -558,15 +564,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item14" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item14" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item14"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item14"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item14"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item14"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -579,15 +585,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item15" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item15" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item15"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item15"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item15"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item15"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -600,15 +606,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item16" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item16" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item16"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item16"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item16"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item16"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -621,15 +627,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item17" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item17" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item17"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item17"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item17"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item17"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -642,15 +648,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item18" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item18" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item18"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item18"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item18"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item18"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -663,15 +669,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item19" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item19" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item19"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item19"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item19"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item19"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -684,15 +690,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item20" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item20" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item20"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item20"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item20"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item20"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -705,15 +711,15 @@ theme = SubResource("Theme_lbjl1")
 text = "NO.20"
 alignment = 0
 
-[node name="Item21" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item21" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item21"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item21"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item21"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item21"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -726,15 +732,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item22" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item22" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item22"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item22"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item22"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item22"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -747,15 +753,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item23" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item23" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item23"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item23"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item23"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item23"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -768,15 +774,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item24" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item24" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item24"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item24"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item24"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item24"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -789,15 +795,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item25" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item25" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item25"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item25"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item25"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item25"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -810,15 +816,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item26" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item26" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item26"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item26"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item26"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item26"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -831,15 +837,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item27" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item27" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item27"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item27"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item27"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item27"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -852,15 +858,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item28" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item28" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item28"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item28"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item28"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item28"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -873,15 +879,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item29" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item29" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item29"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item29"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item29"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item29"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -894,15 +900,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item30" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item30" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item30"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item30"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item30"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item30"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -915,15 +921,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item31" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item31" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item31"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item31"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item31"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item31"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -936,15 +942,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item32" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item32" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item32"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item32"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item32"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item32"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -957,15 +963,15 @@ theme = SubResource("Theme_lbjl1")
 text = "Elixir"
 alignment = 0
 
-[node name="Item33" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer"]
+[node name="Item33" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item33"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item33"]
 position = Vector2(17, 19)
 texture = ExtResource("4_wvl48")
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/MarginContainer/ScrollContainer/GridContainer/Item33"]
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/GridContainer/Item33"]
 custom_minimum_size = Vector2(160, 20)
 layout_mode = 2
 offset_left = 40.0
@@ -977,6 +983,24 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_lbjl1")
 text = "lAST"
 alignment = 0
+
+[node name="ItemDescriptPanel" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemDescriptLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/ItemDescriptPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = -18.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Item information and description goes here"
+autowrap_mode = 2
 
 [node name="Magic" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false

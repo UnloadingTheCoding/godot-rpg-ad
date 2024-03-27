@@ -20,9 +20,10 @@ config/icon="res://Assets/BattleFX/Sword Item Icons/Swords Normal/Swords_Normal_
 SignalManager="*res://Singletons/signal_manager.gd"
 GameManager="*res://Singletons/game_manager.gd"
 CharacterManager="*res://Singletons/character_manager.gd"
-ScreenTransition="*res://Singletons/screen_transition.tscn"
-MainCam="*res://Scenes/Camera/main_cam.tscn"
 InventoryMasterList="*res://Singletons/inventory_master_list.tscn"
+InventoryManager="*res://Singletons/inventory_manager.gd"
+MainCam="*res://Scenes/Camera/main_cam.tscn"
+ScreenTransition="*res://Singletons/screen_transition.tscn"
 
 [display]
 

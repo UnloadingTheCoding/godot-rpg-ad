@@ -8,5 +8,4 @@ var description: String
 var item_ref 
 
 func _on_buy_item_select_pressed():
-	print(item_name.text)
 	SignalManager.description_update.emit(description)

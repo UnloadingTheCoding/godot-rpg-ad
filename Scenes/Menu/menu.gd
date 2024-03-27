@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var characters = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Characters
 @onready var inventory = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory
+@onready var item_container = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/ItemContainer
 @onready var magic = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Magic
 @onready var equipment = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment
 @onready var settings = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Settings
@@ -12,7 +13,7 @@ var is_okay_to_exit: bool
 
 
 func _ready():
-	pass
+	build_inventory_list()
 
 
 func _process(_delta):
@@ -20,31 +21,32 @@ func _process(_delta):
 	if Input.is_action_just_pressed("back"):
 		on_close_menu()
 		is_back_pressed()
+
 		
 func on_open_menu():
 	if Input.is_action_pressed("inventory") and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
 		self.visible = true
 		is_okay_to_exit = true
 		get_tree().paused = true
-		
+
 		
 func on_close_menu():
 	if is_okay_to_exit:
 		self.visible = false
 		get_tree().paused = false
-		
+
 		
 func is_back_pressed():
 	close_all_windows()
 	is_okay_to_exit = true
 	characters.visible = true
-		
+
 		
 func _on_items_pressed():
 	close_all_windows()
 	is_okay_to_exit = false
-	inventory.visible = true
-	
+	inventory.visible = true	
+
 	
 func _on_status_pressed():
 	close_all_windows()
@@ -62,14 +64,14 @@ func _on_magic_pressed():
 	close_all_windows()
 	is_okay_to_exit = false
 	magic.visible = true
-	
 
+	
 func _on_options_pressed():
 	close_all_windows()
 	is_okay_to_exit = false
 	settings.visible = true
-	
 
+	
 func _on_save_pressed():
 	close_all_windows()
 	is_okay_to_exit = false
@@ -84,3 +86,10 @@ func close_all_windows():
 	settings.visible = false
 	save.visible = false
 	status.visible = false
+
+
+func build_inventory_list():
+	var items: Array = InventoryManager.inventory
+	
+	for item in items:
+		item_container.add_child(item)

@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bj3ryenfgg5p6"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bj3ryenfgg5p6"]
 
 [ext_resource type="FontFile" uid="uid://brcbsc72sd8oq" path="res://Assets/NbPixelFontBundle_v1_0(1)/Habbo.ttf" id="1_lqiki"]
+[ext_resource type="FontFile" uid="uid://cg5v84a1l063y" path="res://MenuText.tres" id="2_ppdgo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scbp2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -44,6 +45,19 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1afb2"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.811765, 0.811765, 0.811765, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g0yx"]
 bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
@@ -122,9 +136,12 @@ Label/constants/shadow_offset_y = 3
 Label/constants/shadow_outline_size = 4
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_lqiki")
+LineEdit/fonts/font = ExtResource("2_ppdgo")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_1afb2")
 Panel/styles/panel = SubResource("StyleBoxFlat_3g0yx")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_0r0t7")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_fja41")
+SpinBox/icons/updown = null
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_6t681")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_ytbel")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_0yqch")

@@ -9,9 +9,11 @@ extends Area2D
 @onready var buy_menu_columns = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer/BuyMenuColumns
 @onready var shop_item = preload("res://Scenes/ShopItem/shop_item.tscn")
 
-@onready var description_label = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/Description/DescriptionLabel
+@onready var description_label = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/Description/DescriptionLabel
+@onready var buy_sell_window = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow
 
 
+var shop_menu_active: bool = false
 var selling: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -19,23 +21,24 @@ func _ready():
 	clear_description()
 	build_sell_list()
 	SignalManager.description_update.connect(on_description_update)
-	
+	SignalManager.open_buy_sell_window.connect(on_open_buy_sell_window)
 
 
 func _process(_delta):
 	open_menu()
 	close_menu()
+	activate_close_sell_window()
 
 
 
 func _on_body_entered(body):
 	if body == get_tree().get_first_node_in_group("Player"):
-		selling = true
+		shop_menu_active = true
 		
 		
 func _on_body_exited(body):
 	if body == get_tree().get_first_node_in_group("Player"):
-		selling = false
+		shop_menu_active = false
 
 
 func build_sell_list():
@@ -55,15 +58,37 @@ func build_sell_list():
 
 
 func open_menu():
-	if selling == true and Input.is_action_pressed("action_button"):
+	if shop_menu_active == true and Input.is_action_just_pressed("action_button") and selling == false:
+		SignalManager.change_game_state.emit(GameManager.game_state.GAME_SHOP)
 		shop_menu_container.visible = true
+		clear_description()
 		get_tree().paused = true
 
 
 func close_menu():
-	if selling == true and Input.is_action_pressed("back"):
+	if shop_menu_active == true and Input.is_action_just_pressed("back") and selling == false:
+		SignalManager.change_game_state.emit(GameManager.game_state.GAME_NORMAL)
 		shop_menu_container.visible = false
 		get_tree().paused = false
+
+
+func open_sell_window():
+	buy_sell_window.visible = true
+	selling = true
+	
+	
+func on_open_buy_sell_window():
+	open_sell_window()
+	
+	
+func activate_close_sell_window():
+	if Input.is_action_just_pressed("back") and selling == true:
+		close_sell_window()
+		
+		
+func close_sell_window():
+	buy_sell_window.visible = false
+	selling = false
 
 
 func _on_buy_pressed():
@@ -73,6 +98,7 @@ func _on_buy_pressed():
 
 func _on_sell_pressed():
 	clear_description()
+	close_sell_window()
 	buy_inventory.visible = false
 	sell_inventory.visible = true
 
@@ -88,3 +114,7 @@ func clear_description():
 
 func on_description_update(text):
 	description_label.text = text
+
+
+func _on_cancel_pressed():
+	close_sell_window()

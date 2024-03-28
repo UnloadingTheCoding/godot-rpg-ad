@@ -54,6 +54,7 @@ shape = SubResource("RectangleShape2D_6gkns")
 
 [node name="ShopMenuContainer" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="ShopMenuContainer"]
 anchors_preset = 15
@@ -924,11 +925,17 @@ theme = SubResource("Theme_pd43j")
 text = "lAST"
 alignment = 0
 
-[node name="Description" type="Panel" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BottomPanels" type="HBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 30
 
-[node name="DescriptionLabel" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/Description"]
+[node name="Description" type="Panel" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DescriptionLabel" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/Description"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -942,59 +949,85 @@ grow_vertical = 2
 text = "Item Description information goes here and we need to make sure its limited"
 autowrap_mode = 2
 
-[node name="BuySellWindow" type="Panel" parent="ShopMenuContainer/PanelContainer/MarginContainer"]
+[node name="BuySellWindow" type="Panel" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels"]
+visible = false
 custom_minimum_size = Vector2(320, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/BuySellWindow"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 27.0
-offset_top = 41.0
-offset_right = -6.0
-offset_bottom = -13.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/BuySellWindow/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BuyItemName" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Item Name Here"
+horizontal_alignment = 1
+
+[node name="Qty" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "Qty:"
+
+[node name="BuyItemQuantity" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="ShopMenuContainer/PanelContainer/MarginContainer/BuySellWindow/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Vbox1" type="VBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BuySellItem" type="Button" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox1"]
 layout_mode = 2
 text = "Buy"
 
-[node name="Button2" type="Button" parent="ShopMenuContainer/PanelContainer/MarginContainer/BuySellWindow/HBoxContainer/VBoxContainer"]
+[node name="Cancel" type="Button" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox1"]
 layout_mode = 2
 text = "Cancel"
 
-[node name="SpinBox" type="SpinBox" parent="ShopMenuContainer/PanelContainer/MarginContainer/BuySellWindow/HBoxContainer"]
+[node name="Vbox2" type="VBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2"]
+layout_mode = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+text = "Total:"
+
+[node name="Label2" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2"]
+layout_mode = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+text = "546561"
+
+[node name="SpinBox" type="SpinBox" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-
-[node name="BuyItemName" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/BuySellWindow"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 10.0
-offset_right = 200.0
-offset_bottom = 36.0
-text = "Item Name Here"
-
-[node name="BuyItemQuantity" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/BuySellWindow"]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 10.0
-offset_right = 279.0
-offset_bottom = 36.0
-text = "99"
+alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="pressed" from="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selector/MarginContainer/HBoxContainer/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selector/MarginContainer/HBoxContainer/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selector/MarginContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox1/Cancel" to="." method="_on_cancel_pressed"]

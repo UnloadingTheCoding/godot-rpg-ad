@@ -31,7 +31,7 @@ func on_open_menu():
 
 		
 func on_close_menu():
-	if is_okay_to_exit:
+	if is_okay_to_exit and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
 		self.visible = false
 		get_tree().paused = false
 

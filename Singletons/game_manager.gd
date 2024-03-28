@@ -3,7 +3,7 @@ extends Node
 var player_destination: String
 
 var current_state = game_state.TITLESCREEN
-enum game_state {TITLESCREEN, GAME_NORMAL, GAME_CUTSCENE, GAME_BATTLE}
+enum game_state {TITLESCREEN, GAME_NORMAL, GAME_CUTSCENE, GAME_BATTLE, GAME_SHOP}
 
 
 # Called when the node enters the scene tree for the first time.

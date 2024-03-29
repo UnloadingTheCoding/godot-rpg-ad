@@ -3,10 +3,10 @@ extends Node
 const INVENTORY_CAPACITY: int =  50
 const GOLD_CAPACITY: int = 1000000
 
-var inventory: Array[Array]
+var inventory: Array
 var inventory_size: int = inventory.size()
 
-var gold: int
+var gold: int = 5000
 
 # Inventory Methods
 func get_inventory() -> Array:

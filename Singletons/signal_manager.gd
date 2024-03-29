@@ -15,3 +15,4 @@ signal pause_controls
 #ShopMenu Signals
 signal description_update(String)
 signal open_buy_sell_window
+signal item_position(Use_item)

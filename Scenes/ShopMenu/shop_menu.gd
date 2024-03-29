@@ -11,10 +11,19 @@ extends Area2D
 
 @onready var description_label = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/Description/DescriptionLabel
 @onready var buy_sell_window = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow
+@onready var spin_box = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2/SpinBox
+#BS window labels
+@onready var buy_item_name = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2/BuyItemName
+@onready var total = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2/Total
+@onready var qty = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2/Qty
+
+@onready var gold_total = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/TopPanels/Money/MarginContainer/GoldTotal
+
 
 
 var shop_menu_active: bool = false
 var selling: bool = false
+var current_item: Use_item
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,12 +31,15 @@ func _ready():
 	build_sell_list()
 	SignalManager.description_update.connect(on_description_update)
 	SignalManager.open_buy_sell_window.connect(on_open_buy_sell_window)
+	SignalManager.item_position.connect(on_item_position)
 
 
 func _process(_delta):
 	open_menu()
 	close_menu()
 	activate_close_sell_window()
+	set_total()
+	update_gold()
 
 
 
@@ -54,7 +66,7 @@ func build_sell_list():
 		item.item_name.text = ml_item.item_name
 		item.description = ml_item.item_description
 		item.price.text = str(item_info_price)
-		item.item_ref = item
+		item.item_ref = sell_list.find(item_info)
 
 
 func open_menu():
@@ -112,9 +124,40 @@ func clear_description():
 	description_label.text = ""
 
 
+func set_total():
+	if sell_list[current_item]:
+		var price = sell_list[current_item][1] 
+		total.text = str(spin_box.value * price)
+	else:
+		total.text = str(0)
+		
+		
+func update_gold():
+	gold_total.text = str(InventoryManager.gold)
+
+
+func update_BS_window():
+	buy_item_name.text = current_item.item_name
+
+
 func on_description_update(text):
 	description_label.text = text
 
 
 func _on_cancel_pressed():
 	close_sell_window()
+
+
+func on_item_position(pos):
+	current_item = pos
+
+
+func _on_buy_sell_item_pressed():
+	var quantity = spin_box.value
+	if InventoryManager.gold >= int(total.text):
+		var sold_amount = int(total.text)
+		print("sold")
+		InventoryManager.decrease_gold(sold_amount)
+	else:
+		print("not enough")
+

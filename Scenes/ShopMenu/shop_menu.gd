@@ -23,7 +23,7 @@ extends Area2D
 
 var shop_menu_active: bool = false
 var selling: bool = false
-var current_item: Use_item
+var current_item: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -66,7 +66,8 @@ func build_sell_list():
 		item.item_name.text = ml_item.item_name
 		item.description = ml_item.item_description
 		item.price.text = str(item_info_price)
-		item.item_ref = sell_list.find(item_info)
+		item.item_id = ml_item.id
+		item.item_pos = sell_list.find(item_info)
 
 
 func open_menu():
@@ -116,6 +117,7 @@ func _on_sell_pressed():
 
 
 func _on_exit_pressed():
+	SignalManager.change_game_state.emit(GameManager.game_state.GAME_NORMAL)
 	shop_menu_container.visible = false
 	get_tree().paused = false
 
@@ -137,8 +139,8 @@ func update_gold():
 
 
 func update_BS_window():
-	buy_item_name.text = current_item.item_name
-
+	#buy_item_name.text = current_item.item_name
+	pass
 
 func on_description_update(text):
 	description_label.text = text
@@ -158,6 +160,7 @@ func _on_buy_sell_item_pressed():
 		var sold_amount = int(total.text)
 		print("sold")
 		InventoryManager.decrease_gold(sold_amount)
+		InventoryManager.add_item(InventoryMasterList.inventory[sell_list[current_item][0]], quantity)
 	else:
 		print("not enough")
 

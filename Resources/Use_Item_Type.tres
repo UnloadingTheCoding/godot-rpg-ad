@@ -4,10 +4,12 @@
 
 [sub_resource type="GDScript" id="GDScript_1615j"]
 script/source = "
-
+@export var id: String
 @export var item_name: String
 @export var item_texture: Texture2D
 @export var item_description: String
+
+var quantity: int
 
 func get_item():
 	return self
@@ -15,6 +17,7 @@ func get_item():
 
 [resource]
 script = SubResource("GDScript_1615j")
+id = ""
 item_name = "Mana Potion"
 item_texture = ExtResource("1_v4ix5")
 item_description = "Recovers 25 MP"

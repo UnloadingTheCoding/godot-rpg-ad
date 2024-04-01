@@ -9,11 +9,9 @@ extends CanvasLayer
 @onready var save = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Save
 @onready var status = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status
 
+var item_scene = preload("res://Scenes/Menu/item.tscn")
+
 var is_okay_to_exit: bool
-
-
-func _ready():
-	build_inventory_list()
 
 
 func _process(_delta):
@@ -44,6 +42,7 @@ func is_back_pressed():
 		
 func _on_items_pressed():
 	close_all_windows()
+	build_inventory_list()
 	is_okay_to_exit = false
 	inventory.visible = true	
 
@@ -92,4 +91,10 @@ func build_inventory_list():
 	var items: Array = InventoryManager.inventory
 	
 	for item in items:
-		item_container.add_child(item)
+		print(items.size())
+		var add_item = item_scene.instantiate()
+		item_container.add_child(add_item)
+		
+		add_item.item_name.text = item[0].item_name
+		add_item.icon.texture = item[0].item_texture
+		

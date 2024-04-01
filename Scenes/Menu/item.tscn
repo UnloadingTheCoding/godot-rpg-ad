@@ -45,6 +45,8 @@ Button/styles/pressed = SubResource("StyleBoxFlat_yrlir")
 custom_minimum_size = Vector2(180, 45)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 45.0
 script = ExtResource("1_urt7w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -61,7 +63,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_lbjl1")
-text = "Elixir"
+theme_override_font_sizes/font_size = 24
+text = "dsfdf"
 alignment = 0
 
 [node name="Label" type="Label" parent="."]
@@ -74,6 +77,7 @@ offset_top = -1.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 24
 text = "99"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1

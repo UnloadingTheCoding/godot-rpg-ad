@@ -54,6 +54,7 @@ shape = SubResource("RectangleShape2D_6gkns")
 
 [node name="ShopMenuContainer" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="ShopMenuContainer"]
 anchors_preset = 15

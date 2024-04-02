@@ -15,7 +15,6 @@ extends Area2D
 #BS window labels
 @onready var buy_item_name = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2/BuyItemName
 @onready var total = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2/Total
-@onready var qty = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2/Qty
 
 @onready var gold_total = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/TopPanels/Money/MarginContainer/GoldTotal
 
@@ -23,7 +22,7 @@ extends Area2D
 
 var shop_menu_active: bool = false
 var selling: bool = false
-var current_item: int
+var current_item: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +31,7 @@ func _ready():
 	SignalManager.description_update.connect(on_description_update)
 	SignalManager.open_buy_sell_window.connect(on_open_buy_sell_window)
 	SignalManager.item_position.connect(on_item_position)
-
+	SignalManager.update_current_buy_sell_item_name.connect(on_update_current_buy_sell_item_name)
 
 func _process(_delta):
 	open_menu()
@@ -40,7 +39,6 @@ func _process(_delta):
 	activate_close_sell_window()
 	set_total()
 	update_gold()
-
 
 
 func _on_body_entered(body):
@@ -85,13 +83,14 @@ func close_menu():
 		get_tree().paused = false
 
 
-func open_sell_window():
+func open_buy_sell_window():
 	buy_sell_window.visible = true
 	selling = true
 	
 	
 func on_open_buy_sell_window():
-	open_sell_window()
+	spin_box.value = spin_box.min_value
+	open_buy_sell_window()
 	
 	
 func activate_close_sell_window():
@@ -138,12 +137,12 @@ func update_gold():
 	gold_total.text = str(InventoryManager.gold)
 
 
-func update_BS_window():
-	#buy_item_name.text = current_item.item_name
-	pass
-
 func on_description_update(text):
 	description_label.text = text
+
+
+func on_update_current_buy_sell_item_name(text):
+	buy_item_name.text = text
 
 
 func _on_cancel_pressed():
@@ -156,7 +155,7 @@ func on_item_position(pos):
 
 func _on_buy_sell_item_pressed():
 	var quantity = spin_box.value
-	if InventoryManager.gold >= int(total.text):
+	if InventoryManager.gold >= int(total.text) and InventoryManager.inventory.size() != InventoryManager.INVENTORY_CAPACITY:
 		var sold_amount = int(total.text)
 		InventoryManager.decrease_gold(sold_amount)
 		InventoryManager.add_item(InventoryMasterList.inventory[sell_list[current_item][0]], quantity)

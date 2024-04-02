@@ -158,7 +158,7 @@ theme_override_constants/separation = 10
 
 [node name="Buy" type="Button" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selector/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "BUY"
+text = "SHOP"
 
 [node name="Sell" type="Button" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selector/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -950,6 +950,7 @@ text = "Item Description information goes here and we need to make sure its limi
 autowrap_mode = 2
 
 [node name="BuySellWindow" type="Panel" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels"]
+visible = false
 custom_minimum_size = Vector2(320, 140)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -957,34 +958,26 @@ size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 311.0
+offset_bottom = 130.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
 [node name="BuyItemName" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Item Name Here"
-horizontal_alignment = 1
-
-[node name="ReadOnlyQty" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-text = "Qty:"
-
-[node name="Qty" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "99"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer"]
@@ -1022,6 +1015,9 @@ text = "546561"
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+min_value = 1.0
+max_value = 99.0
+value = 1.0
 alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

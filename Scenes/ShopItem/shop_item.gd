@@ -15,6 +15,4 @@ func _on_buy_item_select_pressed():
 	SignalManager.description_update.emit(description)
 	SignalManager.open_buy_sell_window.emit()
 	SignalManager.item_position.emit(item_pos)
-	#if activate_BS_window == true:
-		#SignalManager.open_buy_sell_window.emit()
-	#activate_BS_window = true
+	SignalManager.update_current_buy_sell_item_name.emit(item_name.text)

@@ -17,20 +17,15 @@ remove reduntdant shit
 """
 
 
-const INVENTORY_CAPACITY: int =  50
+const INVENTORY_CAPACITY: int =  10
 const GOLD_CAPACITY: int = 1000000
 
 var inventory: Array[Array]
 var inventory_ref: Dictionary
 var inventory_size: int = inventory.size()
 
-var gold: int = 5000
+var gold: int = 900000
 
-
-func _ready():
-	pass
-	#add_item(InventoryMasterList.inventory["hp_potion"], 5)
-	#add_item(InventoryMasterList.inventory["mp_potion"], 5)
 	
 
 # Inventory Methods
@@ -38,22 +33,25 @@ func get_inventory() -> Array:
 	return inventory
 
 
-func get_item(id: String):
-	for i in range(inventory.size()):
-		if inventory[i][0].id == id:
-			pass
-	#inventory.filter(func(id): id == )
-	#var item = inventory[position][0]
-	#var quantity: int = inventory[position][1] 
-	#return [item, quantity]
+func get_item(id: String, quantity: int, start: int = 0):
+	for i in range(start, inventory.size()):
+		# check item ID [0] and quantity [1]
+		if inventory[i][0].id == id and (inventory[i][1] + quantity) <= 99:
+			return i
+		elif (inventory[i][1] + quantity) > 99 and (i + 1) < (inventory.size() - 1):
+			get_item(id, quantity, i + 1)
 
 
-func add_item(item, quantity):
-	if inventory_size < INVENTORY_CAPACITY and quantity < 100:
+func add_item(item, quantity: int):
+	var item_to_find = get_item(item.id, quantity)
+	if item_to_find != null:
+		increase_item(item_to_find, quantity)
+	elif inventory_size < INVENTORY_CAPACITY and quantity <= 99:
+		print("skipped")
 		inventory.append([item, quantity])
 		inventory_size += 1
 
-
+	
 func remove_item(item: int):
 	inventory.pop_at(item)
 	if inventory_size > 0:

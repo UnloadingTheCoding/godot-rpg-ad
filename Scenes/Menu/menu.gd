@@ -9,6 +9,8 @@ extends CanvasLayer
 @onready var save = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Save
 @onready var status = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status
 
+@onready var item_descript_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/ItemDescriptPanel/ItemDescriptLabel
+
 var item_scene = preload("res://Scenes/Menu/item.tscn")
 
 var is_okay_to_exit: bool
@@ -42,6 +44,9 @@ func is_back_pressed():
 		
 func _on_items_pressed():
 	close_all_windows()
+	for item in item_container.get_children():
+		item_container.remove_child(item)
+		item.queue_free()
 	build_inventory_list()
 	is_okay_to_exit = false
 	inventory.visible = true	
@@ -91,10 +96,9 @@ func build_inventory_list():
 	var items: Array = InventoryManager.inventory
 	
 	for item in items:
-		print(items.size())
 		var add_item = item_scene.instantiate()
 		item_container.add_child(add_item)
 		
 		add_item.item_name.text = item[0].item_name
 		add_item.icon.texture = item[0].item_texture
-		
+		add_item.quantity.text = str(item[1])

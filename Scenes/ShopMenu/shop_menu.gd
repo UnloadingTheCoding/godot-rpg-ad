@@ -158,7 +158,6 @@ func _on_buy_sell_item_pressed():
 	var quantity = spin_box.value
 	if InventoryManager.gold >= int(total.text):
 		var sold_amount = int(total.text)
-		print("sold")
 		InventoryManager.decrease_gold(sold_amount)
 		InventoryManager.add_item(InventoryMasterList.inventory[sell_list[current_item][0]], quantity)
 	else:

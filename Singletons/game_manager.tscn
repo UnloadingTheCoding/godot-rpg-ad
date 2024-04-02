@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgdblsossdwgf"]
+
+[ext_resource type="Script" path="res://Singletons/game_manager.gd" id="1_m4mo4"]
+[ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="2_fhujo"]
+
+[node name="GameManager" type="CanvasLayer"]
+process_mode = 3
+layer = 7
+script = ExtResource("1_m4mo4")
+
+[node name="NoInputScreen" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Warning" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -90.0
+offset_right = 240.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fhujo")
+
+[node name="MarginContainer" type="MarginContainer" parent="Warning"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Warning/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="WarningMessage" type="Label" parent="Warning/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "place some warning over here"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Warning/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Warning/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WarningClose" type="Button" parent="Warning/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Close"
+
+[node name="Spacer2" type="Control" parent="Warning/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Warning/MarginContainer/VBoxContainer/HBoxContainer/WarningClose" to="." method="_on_warning_close_pressed"]

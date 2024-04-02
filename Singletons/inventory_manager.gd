@@ -6,7 +6,7 @@ const GOLD_CAPACITY: int = 1000000
 var inventory: Array[Array]
 var inventory_size: int = inventory.size()
 
-var gold: int = 900000
+var gold: int = 1000
 
 	
 

@@ -20,6 +20,7 @@ extends Area2D
 
 
 
+
 var shop_menu_active: bool = false
 var selling: bool = false
 var current_item: int = 0
@@ -69,7 +70,7 @@ func build_sell_list():
 
 
 func open_menu():
-	if shop_menu_active == true and Input.is_action_just_pressed("action_button") and selling == false:
+	if shop_menu_active == true and Input.is_action_just_pressed("action_button") and selling == false and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
 		SignalManager.change_game_state.emit(GameManager.game_state.GAME_SHOP)
 		shop_menu_container.visible = true
 		clear_description()
@@ -77,7 +78,7 @@ func open_menu():
 
 
 func close_menu():
-	if shop_menu_active == true and Input.is_action_just_pressed("back") and selling == false:
+	if shop_menu_active == true and Input.is_action_just_pressed("back") and selling == false and GameManager.current_state == GameManager.game_state.GAME_SHOP:
 		SignalManager.change_game_state.emit(GameManager.game_state.GAME_NORMAL)
 		shop_menu_container.visible = false
 		get_tree().paused = false
@@ -94,7 +95,9 @@ func on_open_buy_sell_window():
 	
 	
 func activate_close_sell_window():
-	if Input.is_action_just_pressed("back") and selling == true:
+	var game_shop_state =  GameManager.game_state.GAME_SHOP
+	var current_game_state = GameManager.current_state
+	if Input.is_action_just_pressed("back") and selling == true and current_game_state == game_shop_state:
 		close_sell_window()
 		
 		
@@ -159,6 +162,9 @@ func _on_buy_sell_item_pressed():
 		var sold_amount = int(total.text)
 		InventoryManager.decrease_gold(sold_amount)
 		InventoryManager.add_item(InventoryMasterList.inventory[sell_list[current_item][0]], quantity)
+	elif InventoryManager.gold < int(total.text) :
+		SignalManager.warning.emit("Not enough gold!")
+		close_sell_window()
 	else:
-		print("not enough")
-
+		SignalManager.warning.emit("Inventory full!")
+		close_sell_window()

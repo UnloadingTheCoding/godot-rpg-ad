@@ -2,6 +2,7 @@ extends Node
 
 
 signal change_game_state(String)
+signal warning(String)
 
 #DialogSignals
 signal dialog_lines(PackedStringArray)

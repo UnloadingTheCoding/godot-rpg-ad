@@ -13,6 +13,6 @@ var item_id: String
 
 func _on_buy_item_select_pressed():
 	SignalManager.description_update.emit(description)
-	SignalManager.open_buy_sell_window.emit()
+	SignalManager.open_buy_sell_window.emit("Buy")
 	SignalManager.item_position.emit(item_pos)
 	SignalManager.update_current_buy_sell_item_name.emit(item_name.text)

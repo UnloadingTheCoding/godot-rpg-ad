@@ -6,11 +6,14 @@ extends Area2D
 @onready var buy_inventory = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory
 @onready var sell_inventory = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/SellInventory
 
+@onready var sell_list_container = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/SellInventory/ScrollContainer/SellListContainer
 @onready var buy_menu_columns = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer/BuyMenuColumns
 @onready var shop_item = preload("res://Scenes/ShopItem/shop_item.tscn")
+@onready var sell_item = preload("res://Scenes/ShopSellItem/ShopSellItem.tscn")
 
 @onready var description_label = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/Description/DescriptionLabel
 @onready var buy_sell_window = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow
+@onready var buy_sell_item = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox1/BuySellItem
 @onready var spin_box = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2/SpinBox
 #BS window labels
 @onready var buy_item_name = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer2/BuyItemName
@@ -28,7 +31,7 @@ var current_item: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	clear_description()
-	build_sell_list()
+	build_shop_list()
 	SignalManager.description_update.connect(on_description_update)
 	SignalManager.open_buy_sell_window.connect(on_open_buy_sell_window)
 	SignalManager.item_position.connect(on_item_position)
@@ -52,7 +55,7 @@ func _on_body_exited(body):
 		shop_menu_active = false
 
 
-func build_sell_list():
+func build_shop_list():
 	for item_info in sell_list:
 		var item_info_name = item_info[0]
 		var item_info_price = item_info[1]
@@ -67,6 +70,23 @@ func build_sell_list():
 		item.price.text = str(item_info_price)
 		item.item_id = ml_item.id
 		item.item_pos = sell_list.find(item_info)
+
+
+func build_sell_list():
+	var items: Array = InventoryManager.inventory
+	
+
+	for item in sell_list_container.get_children():
+		sell_list_container.remove_child(item)
+		item.queue_free()
+	
+	for item in items:
+		var add_item = sell_item.instantiate()
+		sell_list_container.add_child(add_item)
+		
+		add_item.item_name.text = item[0].item_name
+		add_item.icon.texture = item[0].item_texture
+		add_item.quantity.text = str(item[1])
 
 
 func open_menu():
@@ -89,7 +109,8 @@ func open_buy_sell_window():
 	selling = true
 	
 	
-func on_open_buy_sell_window():
+func on_open_buy_sell_window(mode):
+	buy_sell_item.text = mode	
 	spin_box.value = spin_box.min_value
 	open_buy_sell_window()
 	
@@ -116,11 +137,12 @@ func _on_sell_pressed():
 	close_sell_window()
 	buy_inventory.visible = false
 	sell_inventory.visible = true
-
+	build_sell_list()
 
 func _on_exit_pressed():
 	SignalManager.change_game_state.emit(GameManager.game_state.GAME_NORMAL)
 	shop_menu_container.visible = false
+	selling = false
 	get_tree().paused = false
 
 
@@ -157,14 +179,23 @@ func on_item_position(pos):
 
 
 func _on_buy_sell_item_pressed():
+	if buy_sell_item.text == "Buy":
+		buy_behavior()
+	elif buy_sell_item.text == "Sell":
+		pass
+
+func buy_behavior():
 	var quantity = spin_box.value
 	if InventoryManager.gold >= int(total.text) and InventoryManager.inventory.size() != InventoryManager.INVENTORY_CAPACITY:
 		var sold_amount = int(total.text)
 		InventoryManager.decrease_gold(sold_amount)
 		InventoryManager.add_item(InventoryMasterList.inventory[sell_list[current_item][0]], quantity)
 	elif InventoryManager.gold < int(total.text) :
+		# Replace with warning sound
 		SignalManager.warning.emit("Not enough gold!")
+		clear_description()
 		close_sell_window()
 	else:
 		SignalManager.warning.emit("Inventory full!")
+		clear_description()
 		close_sell_window()

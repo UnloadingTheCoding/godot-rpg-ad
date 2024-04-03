@@ -14,7 +14,8 @@ signal current_portal(String)
 signal pause_controls
 
 #ShopMenu Signals
+signal shop_sell_item_emitter(Node)
 signal description_update(String)
 signal open_buy_sell_window(String)
-signal item_position(Use_item)
+signal item_position(int)
 signal update_current_buy_sell_item_name(String)

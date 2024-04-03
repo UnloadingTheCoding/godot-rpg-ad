@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var sell_list: Array[Array]
+@export var shop_list: Array[Array]
 
 @onready var shop_menu_container = $ShopMenuContainer
 @onready var buy_inventory = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory
@@ -23,10 +23,11 @@ extends Area2D
 
 
 
-
+var sell_list: Array
 var shop_menu_active: bool = false
 var selling: bool = false
-var current_item: int = 0
+var current_shop_item: int = 0
+var current_sell_item
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,12 +37,14 @@ func _ready():
 	SignalManager.open_buy_sell_window.connect(on_open_buy_sell_window)
 	SignalManager.item_position.connect(on_item_position)
 	SignalManager.update_current_buy_sell_item_name.connect(on_update_current_buy_sell_item_name)
+	SignalManager.shop_sell_item_emitter.connect(on_shop_sell_item_emitter)
+
 
 func _process(_delta):
 	open_menu()
 	close_menu()
 	activate_close_sell_window()
-	set_total()
+	#set_total()
 	update_gold()
 
 
@@ -56,7 +59,7 @@ func _on_body_exited(body):
 
 
 func build_shop_list():
-	for item_info in sell_list:
+	for item_info in shop_list:
 		var item_info_name = item_info[0]
 		var item_info_price = item_info[1]
 		
@@ -69,7 +72,7 @@ func build_shop_list():
 		item.description = ml_item.item_description
 		item.price.text = str(item_info_price)
 		item.item_id = ml_item.id
-		item.item_pos = sell_list.find(item_info)
+		item.item_pos = shop_list.find(item_info)
 
 
 func build_sell_list():
@@ -87,7 +90,8 @@ func build_sell_list():
 		add_item.item_name.text = item[0].item_name
 		add_item.icon.texture = item[0].item_texture
 		add_item.quantity.text = str(item[1])
-
+		add_item.sell_price = item[0].sell_price
+		add_item.item = item[0].get_item()
 
 func open_menu():
 	if shop_menu_active == true and Input.is_action_just_pressed("action_button") and selling == false and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
@@ -151,8 +155,8 @@ func clear_description():
 
 
 func set_total():
-	if sell_list[current_item]:
-		var price = sell_list[current_item][1] 
+	if shop_list[current_shop_item]:
+		var price = shop_list[current_shop_item][1] 
 		total.text = str(spin_box.value * price)
 	else:
 		total.text = str(0)
@@ -164,6 +168,7 @@ func update_gold():
 
 func on_description_update(text):
 	description_label.text = text
+	total.text = str(shop_list[current_shop_item][1] * spin_box.value)
 
 
 func on_update_current_buy_sell_item_name(text):
@@ -175,21 +180,33 @@ func _on_cancel_pressed():
 
 
 func on_item_position(pos):
-	current_item = pos
+	current_shop_item = pos
+
+
+func on_shop_sell_item_emitter(item):
+	current_sell_item = item
+	buy_item_name.text = item.item_name
+	update_sell_total()
+
+
+func update_sell_total():
+	var price = current_sell_item.sell_price
+	total.text = str(spin_box.value * price)
 
 
 func _on_buy_sell_item_pressed():
 	if buy_sell_item.text == "Buy":
 		buy_behavior()
 	elif buy_sell_item.text == "Sell":
-		pass
+		sell_behavior()
+
 
 func buy_behavior():
 	var quantity = spin_box.value
 	if InventoryManager.gold >= int(total.text) and InventoryManager.inventory.size() != InventoryManager.INVENTORY_CAPACITY:
 		var sold_amount = int(total.text)
 		InventoryManager.decrease_gold(sold_amount)
-		InventoryManager.add_item(InventoryMasterList.inventory[sell_list[current_item][0]], quantity)
+		InventoryManager.add_item(InventoryMasterList.inventory[shop_list[current_shop_item][0]], quantity)
 	elif InventoryManager.gold < int(total.text) :
 		# Replace with warning sound
 		SignalManager.warning.emit("Not enough gold!")
@@ -199,3 +216,19 @@ func buy_behavior():
 		SignalManager.warning.emit("Inventory full!")
 		clear_description()
 		close_sell_window()
+
+
+func sell_behavior():
+	var quantity = spin_box.value
+
+
+func _on_spin_box_value_changed(value):
+	if buy_sell_item.text == "Buy":
+		var price = shop_list[current_shop_item][1] 
+		total.text = str(spin_box.value * price)
+	elif buy_sell_item.text == "Sell":
+		
+		update_sell_total()
+		
+func update_sell_quantity_max():
+	spin_box.max_value = current_sell_item.quantity

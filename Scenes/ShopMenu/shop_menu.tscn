@@ -283,7 +283,7 @@ text = "Total:"
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.5
-text = "546561"
+text = "900"
 
 [node name="SpinBox" type="SpinBox" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2"]
 layout_mode = 2
@@ -301,3 +301,4 @@ alignment = 1
 [connection signal="pressed" from="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selector/MarginContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox1/BuySellItem" to="." method="_on_buy_sell_item_pressed"]
 [connection signal="pressed" from="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox1/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="value_changed" from="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox2/SpinBox" to="." method="_on_spin_box_value_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7u0yd573kp63"]
+[gd_scene load_steps=6 format=3 uid="uid://c7u0yd573kp63"]
 
 [ext_resource type="Script" path="res://Singletons/inventory_master_list.gd" id="1_d1ayj"]
 [ext_resource type="Texture2D" uid="uid://cl0pts7063ien" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 3/Style 3 Icon 159.png" id="3_xmbu5"]
@@ -9,39 +9,33 @@ script/source = "
 @export var item_name: String
 @export var item_texture: Texture2D
 @export var item_description: String
+@export var sell_price: int
+
+var quantity: int
 
 func get_item():
 	return self
 "
 
-[sub_resource type="Resource" id="Resource_sxy2u"]
+[sub_resource type="Resource" id="Resource_4g28b"]
 script = SubResource("GDScript_1615j")
 id = "hp_potion"
 item_name = "Health Potion"
 item_texture = ExtResource("3_xmbu5")
 item_description = "Recovers 50 HP"
+sell_price = 50
 
-[sub_resource type="GDScript" id="GDScript_s4t1y"]
-script/source = "
-@export var id: String
-@export var item_name: String
-@export var item_texture: Texture2D
-@export var item_description: String
-
-func get_item():
-	return self
-"
-
-[sub_resource type="Resource" id="Resource_1jq4w"]
-script = SubResource("GDScript_s4t1y")
+[sub_resource type="Resource" id="Resource_jp2uy"]
+script = SubResource("GDScript_1615j")
 id = "mp_potion"
 item_name = "Mana Potion"
 item_texture = ExtResource("3_xmbu5")
 item_description = "Recovers 25 MP"
+sell_price = 250
 
 [node name="Node" type="Node"]
 script = ExtResource("1_d1ayj")
 inventory = {
-"hp_potion": SubResource("Resource_sxy2u"),
-"mp_potion": SubResource("Resource_1jq4w")
+"hp_potion": SubResource("Resource_4g28b"),
+"mp_potion": SubResource("Resource_jp2uy")
 }

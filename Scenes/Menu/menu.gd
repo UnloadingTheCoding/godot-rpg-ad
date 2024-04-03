@@ -102,3 +102,4 @@ func build_inventory_list():
 		add_item.item_name.text = item[0].item_name
 		add_item.icon.texture = item[0].item_texture
 		add_item.quantity.text = str(item[1])
+		add_item.sell_price = item[0].sell_price

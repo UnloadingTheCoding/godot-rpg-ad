@@ -2,6 +2,7 @@ extends Control
 
 
 var item
+var sell_price: int
 
 @onready var icon = $Sprite2D
 @onready var item_name = $Button
@@ -11,4 +12,4 @@ var item
 
 func _on_button_pressed():
 	SignalManager.open_buy_sell_window.emit("Sell")
-	
+	SignalManager.shop_sell_item_emitter.emit(item)

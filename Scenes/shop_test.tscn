@@ -6554,7 +6554,8 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 position = Vector2(0, -27)
 
 [node name="ShopMenu" parent="." instance=ExtResource("6_oueti")]
-position = Vector2(328, 150)
-shop_list = Array[Array]([["hp_potion", 100], ["mp_potion", 500]])
+position = Vector2(328, 151)
+shop_list = Array[Array]([["hp_potion", 100], ["mp_potion", 2], ["armor", 3], ["sword", 4], ["antidote", 5], ["relic", 6], ["combat_item", 7]])
+speech = Array[String](["Welcome to my shop.", "My best stuff!", "Whadya got for me?", "Thank ya!", "Here you go."])
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

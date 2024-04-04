@@ -21,11 +21,11 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 350.0
-offset_right = -2.0
+offset_left = 175.0
+offset_right = -177.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 3
 theme = ExtResource("2_mg4uc")
 metadata/_edit_use_anchors_ = true
 
@@ -50,7 +50,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="Label" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/TopPanels/TextLine_Or_Chars_viable"]
+[node name="MerchantSpeech" type="Label" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/TopPanels/TextLine_Or_Chars_viable"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,7 +153,8 @@ layout_mode = 2
 [node name="BuyMenuColumns" type="VBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 40
+size_flags_vertical = 3
+theme_override_constants/separation = 20
 
 [node name="NameAndPricePanels" type="HBoxContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer/BuyMenuColumns"]
 layout_mode = 2
@@ -170,6 +171,12 @@ layout_mode = 2
 size_flags_horizontal = 6
 text = "Price"
 horizontal_alignment = 2
+
+[node name="ShopListContainer" type="GridContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer/BuyMenuColumns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/v_separation = 40
 
 [node name="SellInventory" type="MarginContainer" parent="ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection"]
 visible = false

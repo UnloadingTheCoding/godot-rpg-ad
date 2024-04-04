@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://xrd7geke7nje"]
+
+[ext_resource type="Texture2D" uid="uid://dey5o73arwid5" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 153.png" id="1_bptkl"]
+
+[sub_resource type="GDScript" id="GDScript_yv7iv"]
+script/source = "@export var id: String
+@export var item_name: String
+@export var item_texture: Texture2D
+@export var item_description: String
+@export var sell_price: int
+
+var quantity: int
+
+func get_item():
+	return self"
+
+[resource]
+script = SubResource("GDScript_yv7iv")
+id = "antidote"
+item_name = "Antidote"
+item_texture = ExtResource("1_bptkl")
+item_description = "Cures Poison"
+sell_price = 75

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dspog5mja35g"]
+
+[ext_resource type="Texture2D" uid="uid://1drgfontiuy3" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 167.png" id="1_6dkh6"]
+
+[sub_resource type="GDScript" id="GDScript_jnas4"]
+script/source = "@export var id: String
+@export var item_name: String
+@export var item_texture: Texture2D
+@export var item_description: String
+@export var sell_price: int
+
+var quantity: int
+
+func get_item():
+	return self
+"
+
+[resource]
+script = SubResource("GDScript_jnas4")
+id = "armor"
+item_name = "Leather Armor"
+item_texture = ExtResource("1_6dkh6")
+item_description = "Leathery Protection"
+sell_price = 500

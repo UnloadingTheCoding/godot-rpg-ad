@@ -2,15 +2,19 @@ extends Area2D
 
 @export var shop_list: Array[Array]
 
+@export var speech: Array[String]
+enum speech_order {GREETING, SHOPPING, SELLING, BUY, SOLD}
+
 @onready var shop_menu_container = $ShopMenuContainer
 @onready var buy_inventory = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory
 @onready var sell_inventory = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/SellInventory
 
+@onready var shop_list_container = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer/BuyMenuColumns/ShopListContainer
 @onready var sell_list_container = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/SellInventory/ScrollContainer/SellListContainer
-@onready var buy_menu_columns = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/CenterPanels/Selection/BuyInventory/ScrollContainer/BuyMenuColumns
 @onready var shop_item = preload("res://Scenes/ShopItem/shop_item.tscn")
 @onready var sell_item = preload("res://Scenes/ShopSellItem/ShopSellItem.tscn")
 
+@onready var merchant_speech = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/TopPanels/TextLine_Or_Chars_viable/MerchantSpeech
 @onready var description_label = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/Description/DescriptionLabel
 @onready var buy_sell_window = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow
 @onready var buy_sell_item = $ShopMenuContainer/PanelContainer/MarginContainer/VBoxContainer/BottomPanels/BuySellWindow/MarginContainer/VBoxContainer/HBoxContainer/Vbox1/BuySellItem
@@ -26,6 +30,7 @@ extends Area2D
 var sell_list: Array
 var shop_menu_active: bool = false
 var selling: bool = false
+
 var current_shop_item: int = 0
 var current_sell_item_price: int 
 var current_sell_item_qty: int
@@ -40,7 +45,7 @@ func _ready():
 	SignalManager.item_position.connect(on_item_position)
 	SignalManager.update_current_buy_sell_item_name.connect(on_update_current_buy_sell_item_name)
 	SignalManager.shop_sell_item_emitter.connect(on_shop_sell_item_emitter)
-
+	
 
 func _process(_delta):
 	open_menu()
@@ -66,7 +71,7 @@ func build_shop_list():
 		
 		var ml_item = InventoryMasterList.inventory[item_info_name]
 		var item = shop_item.instantiate()
-		buy_menu_columns.add_child(item)
+		shop_list_container.add_child(item)
 		
 		item.item_icon.texture = ml_item.item_texture
 		item.item_name.text = ml_item.item_name
@@ -79,7 +84,6 @@ func build_shop_list():
 func build_sell_list():
 	var items: Array = InventoryManager.inventory
 	
-
 	for item in sell_list_container.get_children():
 		sell_list_container.remove_child(item)
 		item.queue_free()
@@ -94,6 +98,7 @@ func build_sell_list():
 		add_item.sell_price = items[i][0].sell_price
 		add_item.item = items[i][0].get_item()
 		add_item.pos = i
+		add_item.description = items[i][0].item_description
 		
 		
 func open_menu():
@@ -102,6 +107,7 @@ func open_menu():
 		shop_menu_container.visible = true
 		clear_description()
 		get_tree().paused = true
+		update_merchant_speech(speech[speech_order.GREETING])
 
 
 func close_menu():
@@ -140,6 +146,7 @@ func _on_buy_pressed():
 	spin_box.max_value = 99
 	buy_inventory.visible = true
 	sell_inventory.visible = false
+	update_merchant_speech(speech[speech_order.SHOPPING])
 
 
 func _on_sell_pressed():
@@ -148,6 +155,8 @@ func _on_sell_pressed():
 	buy_inventory.visible = false
 	sell_inventory.visible = true
 	build_sell_list()
+	update_merchant_speech(speech[speech_order.SELLING])	
+	
 
 func _on_exit_pressed():
 	SignalManager.change_game_state.emit(GameManager.game_state.GAME_NORMAL)
@@ -159,15 +168,23 @@ func _on_exit_pressed():
 func clear_description():
 	description_label.text = ""
 
-		
-func update_gold():
-	gold_total.text = str(InventoryManager.gold)
-
 
 func on_description_update(text):
 	description_label.text = text
 	total.text = str(shop_list[current_shop_item][1] * spin_box.value)
 	
+	
+func update_gold():
+	gold_total.text = str(InventoryManager.gold)
+
+
+func update_merchant_speech(text: String):
+	merchant_speech.text = text
+	
+	
+func clear_merchant_speech():
+	merchant_speech.text = ""
+
 
 func on_update_current_buy_sell_item_name(text):
 	buy_item_name.text = text
@@ -207,6 +224,7 @@ func buy_behavior():
 		var sold_amount = int(total.text)
 		InventoryManager.decrease_gold(sold_amount)
 		InventoryManager.add_item(InventoryMasterList.inventory[shop_list[current_shop_item][0]], quantity)
+		update_merchant_speech(speech[speech_order.BUY])
 	elif InventoryManager.gold < int(total.text) :
 		# Replace with warning sound
 		SignalManager.warning.emit("Not enough gold!")
@@ -231,6 +249,7 @@ func sell_behavior():
 			sell_list_container.get_child(-1)._on_button_pressed()
 		else:
 			close_sell_window()
+	update_merchant_speech(speech[speech_order.SOLD])
 	build_sell_list()
 	
 
@@ -242,5 +261,7 @@ func _on_spin_box_value_changed(value):
 		update_sell_quantity_max()
 		update_sell_total()
 		
+		
 func update_sell_quantity_max():
 	spin_box.max_value = current_sell_item_qty
+

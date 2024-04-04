@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://du7kkfw764s30"]
+
+[ext_resource type="Texture2D" uid="uid://cfqik1a1bh14h" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 259.png" id="1_d0bif"]
+
+[sub_resource type="GDScript" id="GDScript_1go1x"]
+script/source = "@export var id: String
+@export var item_name: String
+@export var item_texture: Texture2D
+@export var item_description: String
+@export var sell_price: int
+
+var quantity: int
+
+func get_item():
+	return self
+"
+
+[resource]
+script = SubResource("GDScript_1go1x")
+id = "relic"
+item_name = "Stone Ring"
+item_texture = ExtResource("1_d0bif")
+item_description = "Ring for the Stoned"
+sell_price = 2500

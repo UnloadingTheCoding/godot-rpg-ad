@@ -1,12 +1,12 @@
 extends Node
 
-const INVENTORY_CAPACITY: int =  10
+const INVENTORY_CAPACITY: int =  50
 const GOLD_CAPACITY: int = 1000000
 
 var inventory: Array[Array]
 var inventory_size: int = inventory.size()
 
-var gold: int = 10000
+var gold: int = 999999
 
 	
 
@@ -21,7 +21,7 @@ func get_item(id: String, quantity: int, start: int = 0):
 		if inventory[i][0].id == id and inventory[i][1] <= 98:
 			return i
 		elif (inventory[i][1] + quantity) > 99 and (i + 1) < (inventory.size() - 1):
-			get_item(id, quantity, i + 1)
+			continue
 
 
 func add_item(item, quantity: int):

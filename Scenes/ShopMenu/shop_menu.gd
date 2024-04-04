@@ -27,7 +27,9 @@ var sell_list: Array
 var shop_menu_active: bool = false
 var selling: bool = false
 var current_shop_item: int = 0
-var current_sell_item
+var current_sell_item_price: int 
+var current_sell_item_qty: int
+var current_item_pos: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,7 +46,6 @@ func _process(_delta):
 	open_menu()
 	close_menu()
 	activate_close_sell_window()
-	#set_total()
 	update_gold()
 
 
@@ -83,16 +84,18 @@ func build_sell_list():
 		sell_list_container.remove_child(item)
 		item.queue_free()
 	
-	for item in items:
+	for i in range(items.size()):
 		var add_item = sell_item.instantiate()
 		sell_list_container.add_child(add_item)
 		
-		add_item.item_name.text = item[0].item_name
-		add_item.icon.texture = item[0].item_texture
-		add_item.quantity.text = str(item[1])
-		add_item.sell_price = item[0].sell_price
-		add_item.item = item[0].get_item()
-
+		add_item.item_name.text = items[i][0].item_name
+		add_item.icon.texture = items[i][0].item_texture
+		add_item.quantity.text = str(items[i][1])
+		add_item.sell_price = items[i][0].sell_price
+		add_item.item = items[i][0].get_item()
+		add_item.pos = i
+		
+		
 func open_menu():
 	if shop_menu_active == true and Input.is_action_just_pressed("action_button") and selling == false and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
 		SignalManager.change_game_state.emit(GameManager.game_state.GAME_SHOP)
@@ -132,6 +135,9 @@ func close_sell_window():
 
 
 func _on_buy_pressed():
+	clear_description()
+	close_sell_window()
+	spin_box.max_value = 99
 	buy_inventory.visible = true
 	sell_inventory.visible = false
 
@@ -153,14 +159,6 @@ func _on_exit_pressed():
 func clear_description():
 	description_label.text = ""
 
-
-func set_total():
-	if shop_list[current_shop_item]:
-		var price = shop_list[current_shop_item][1] 
-		total.text = str(spin_box.value * price)
-	else:
-		total.text = str(0)
-		
 		
 func update_gold():
 	gold_total.text = str(InventoryManager.gold)
@@ -169,7 +167,7 @@ func update_gold():
 func on_description_update(text):
 	description_label.text = text
 	total.text = str(shop_list[current_shop_item][1] * spin_box.value)
-
+	
 
 func on_update_current_buy_sell_item_name(text):
 	buy_item_name.text = text
@@ -183,15 +181,17 @@ func on_item_position(pos):
 	current_shop_item = pos
 
 
-func on_shop_sell_item_emitter(item):
-	current_sell_item = item
-	buy_item_name.text = item.item_name
+func on_shop_sell_item_emitter(item_name ,price, quantity, pos):
+	current_sell_item_qty = int(quantity.text)
+	buy_item_name.text = item_name.text
+	current_sell_item_price = price
+	current_item_pos = pos
+	update_sell_quantity_max()
 	update_sell_total()
 
 
 func update_sell_total():
-	var price = current_sell_item.sell_price
-	total.text = str(spin_box.value * price)
+	total.text = str(spin_box.value * current_sell_item_price)
 
 
 func _on_buy_sell_item_pressed():
@@ -220,15 +220,27 @@ func buy_behavior():
 
 func sell_behavior():
 	var quantity = spin_box.value
-
+	if current_sell_item_qty >= quantity:
+		InventoryManager.increase_gold(current_sell_item_price * quantity)
+		current_sell_item_qty -= quantity
+		InventoryManager.decrease_item(current_item_pos, quantity)
+	if current_sell_item_qty == 0:
+		InventoryManager.remove_item(current_item_pos)
+		if sell_list_container.get_child_count() > 1:
+			build_sell_list()
+			sell_list_container.get_child(-1)._on_button_pressed()
+		else:
+			close_sell_window()
+	build_sell_list()
+	
 
 func _on_spin_box_value_changed(value):
 	if buy_sell_item.text == "Buy":
 		var price = shop_list[current_shop_item][1] 
 		total.text = str(spin_box.value * price)
 	elif buy_sell_item.text == "Sell":
-		
+		update_sell_quantity_max()
 		update_sell_total()
 		
 func update_sell_quantity_max():
-	spin_box.max_value = current_sell_item.quantity
+	spin_box.max_value = current_sell_item_qty

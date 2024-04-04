@@ -6,7 +6,7 @@ const GOLD_CAPACITY: int = 1000000
 var inventory: Array[Array]
 var inventory_size: int = inventory.size()
 
-var gold: int = 1000
+var gold: int = 10000
 
 	
 
@@ -34,7 +34,7 @@ func add_item(item, quantity: int):
 
 	
 func remove_item(item: int):
-	inventory.pop_at(item)
+	inventory.remove_at(item)
 	if inventory_size > 0:
 		inventory_size -= 1
 
@@ -50,7 +50,7 @@ func increase_item(item: int, amount: int):
 	
 func decrease_item(item: int, amount: int):
 	var quantity: int = inventory[item][1] 
-	if (quantity - amount) > 0:
+	if (quantity - amount) >= 0:
 		inventory[item][1] -= amount
 	
 	

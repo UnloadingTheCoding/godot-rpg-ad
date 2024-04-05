@@ -251,7 +251,7 @@ size_flags_stretch_ratio = 3.0
 
 [node name="ItemContainer" type="GridContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 25
+theme_override_constants/h_separation = 22
 columns = 2
 
 [node name="ItemDescriptPanel" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer"]

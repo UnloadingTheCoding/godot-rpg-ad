@@ -3,11 +3,12 @@ extends Node
 
 var current_characters: Array[Character]
 
+@export var all_characters: Dictionary
+
 
 func add_character():
 	#Complete when Character class is finished
 	pass
-
 	
 func equip_character():
 	pass

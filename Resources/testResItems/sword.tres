@@ -11,6 +11,13 @@ script/source = "@export var id: String
 
 var quantity: int
 
+
+var item_root
+@export var item_type: String = \"weapon\"
+@export var equip_position: String
+
+@export var stat_bonus: int
+
 func get_item():
 	return self
 "
@@ -22,3 +29,6 @@ item_name = "Iron Sword"
 item_texture = ExtResource("1_lknoj")
 item_description = "Heavy Iron great for slashing"
 sell_price = 400
+item_type = "weapon"
+equip_position = "right"
+stat_bonus = 30

@@ -1,25 +1,29 @@
 extends Node
 
 class_name Character
+
+var level: int
+var experience: int
+var exp_goal: int
 	
-	
-var char_name: String
-var char_sprite: Sprite2D
+@export var char_name: String
+@export var char_sprite: Texture2D
+@export var char_portrait: Texture2D
 
 
 #Stats	
-var max_health: int 
+@export var max_health: int 
 var health: int 
 
-var max_mana: int 
+@export var max_mana: int 
 var mana: int 
 
-var max_stamina: int 	
+@export var max_stamina: int 	
 var stamina: int 
 
-var strength: int 
-var intellect: int 
-var agility: int 
+@export var strength: int 
+@export var intellect: int 
+@export var agility: int 
 
 
 #Equipment
@@ -54,8 +58,8 @@ func update_stats():
 			weapon += equipment[item].stat_bonus 
 		elif equipment[item].item_type == "armor":
 			weapon += equipment[item].stat_bonus
-		if equipment[item].item_type == null:
-			weapon += 0 
+		elif equipment[item].item_type == null:
+			continue
 			
 	attack = weapon + strength
 	defense = armor + int((agility + strength) / 2) 
@@ -65,8 +69,10 @@ func equip(key: String, item):
 	equipment[key] = item
 	update_stats()
 	
+	
 func unequip(key: String):
 	equipment[key] = null
 	update_stats()
 	
 	
+

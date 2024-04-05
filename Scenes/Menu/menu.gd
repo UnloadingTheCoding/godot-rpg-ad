@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @onready var characters = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Characters
+var char_box = preload("res://Scenes/Menu/char_stats.tscn")
+
 @onready var inventory = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory
 @onready var item_container = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/MarginContainer/ScrollContainer/ItemContainer
 @onready var magic = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Magic
@@ -24,10 +26,11 @@ func _process(_delta):
 
 		
 func on_open_menu():
-	if Input.is_action_pressed("inventory") and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
+	if Input.is_action_just_pressed("inventory") and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
 		self.visible = true
 		is_okay_to_exit = true
 		get_tree().paused = true
+		load_characters()
 
 		
 func on_close_menu():
@@ -40,7 +43,21 @@ func is_back_pressed():
 	close_all_windows()
 	is_okay_to_exit = true
 	characters.visible = true
-
+	
+	
+func load_characters():
+	var container = characters.get_child(0).get_child(0)
+	for character in CharacterManager.current_characters:
+		var current = CharacterManager.current_characters[character].instantiate()
+		var char_box_stats = char_box.instantiate()
+		container.add_child(char_box_stats)
+		char_box_stats.char_name.text = current.char_name
+		char_box_stats.lvl_quantity.text = str(5)
+		char_box_stats.current_hp.text = str(current.health)
+		char_box_stats.max_hp.text = str(current.max_health)
+		char_box_stats.current_mp.text = str(current.mana)
+		char_box_stats.max_mp.text = str(current.max_mana)
+		
 		
 func _on_items_pressed():
 	close_all_windows()

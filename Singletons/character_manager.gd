@@ -1,14 +1,24 @@
 extends Node
 
 
-var current_characters: Array[Character]
+var current_characters: Dictionary
 
-@export var all_characters: Dictionary
+var test = preload("res://Scenes/Characters/TestChars/TestChar1.tscn")
+var test2 = preload("res://Scenes/Characters/TestChars/TestChar2.tscn")
+
+var all_characters: Dictionary = {
+	"test" : test,
+	"test2" : test2
+}
 
 
-func add_character():
+func _ready():
+	add_character("test")
+	add_character("test2")
+
+func add_character(name_key: String):
 	#Complete when Character class is finished
-	pass
+	current_characters[name_key] = all_characters[name_key]
 	
 func equip_character():
 	pass

@@ -1,0 +1,131 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckstm4ld0qvx6"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/char_stats.gd" id="1_5ofi2"]
+[ext_resource type="Texture2D" uid="uid://4j54mr7nrpmf" path="res://tf_char1.png" id="1_iiadp"]
+[ext_resource type="FontFile" uid="uid://cg5v84a1l063y" path="res://MenuText.tres" id="2_oig7g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d5d5"]
+atlas = ExtResource("1_iiadp")
+region = Rect2(0, 0, 48.134, 48.309)
+margin = Rect2(5, 0, 10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1ech"]
+line_spacing = 0.0
+font = ExtResource("2_oig7g")
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0.0823529, 0.0823529, 0.0823529, 0.109804)
+shadow_offset = Vector2(1, 3)
+
+[node name="CharStats" type="Control"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -752.0
+offset_bottom = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_5ofi2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6d5d5")
+expand_mode = 2
+flip_h = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="CharacterNameAndLevel" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CharName" type="Label" parent="HBoxContainer/VBoxContainer/CharacterNameAndLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hero"
+
+[node name="LvlText" type="Label" parent="HBoxContainer/VBoxContainer/CharacterNameAndLevel"]
+layout_mode = 2
+text = "Lvl:"
+horizontal_alignment = 2
+
+[node name="LvlQuantity" type="Label" parent="HBoxContainer/VBoxContainer/CharacterNameAndLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "99"
+horizontal_alignment = 2
+
+[node name="HPContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="HBoxContainer/VBoxContainer/HPContainer"]
+layout_mode = 2
+text = "HP: "
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="CurrentHP" type="Label" parent="HBoxContainer/VBoxContainer/HPContainer"]
+layout_mode = 2
+text = "999"
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="Separator" type="Label" parent="HBoxContainer/VBoxContainer/HPContainer"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="MaxHP" type="Label" parent="HBoxContainer/VBoxContainer/HPContainer"]
+layout_mode = 2
+text = "999"
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="MPContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MP" type="Label" parent="HBoxContainer/VBoxContainer/MPContainer"]
+layout_mode = 2
+text = "MP: "
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="CurrentMP" type="Label" parent="HBoxContainer/VBoxContainer/MPContainer"]
+layout_mode = 2
+text = "999"
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="MP3" type="Label" parent="HBoxContainer/VBoxContainer/MPContainer"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="MaxMP" type="Label" parent="HBoxContainer/VBoxContainer/MPContainer"]
+layout_mode = 2
+text = "999"
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="LevelText" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Next Level:"
+label_settings = SubResource("LabelSettings_p1ech")
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 100.0
+show_percentage = false

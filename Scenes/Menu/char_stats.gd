@@ -1,6 +1,6 @@
 extends Control
 
-@onready var texture_rect = $HBoxContainer/TextureRect
+@onready var texture_rect = $HBoxContainer/MarginContainer/TextureRect
 
 @onready var char_name = $HBoxContainer/VBoxContainer/CharacterNameAndLevel/CharName
 @onready var lvl_quantity = $HBoxContainer/VBoxContainer/CharacterNameAndLevel/LvlQuantity
@@ -13,4 +13,5 @@ extends Control
 @onready var max_mp = $HBoxContainer/VBoxContainer/MPContainer/MaxMP
 
 @onready var level_text = $HBoxContainer/VBoxContainer/LevelText
-@onready var progress_bar = $HBoxContainer/VBoxContainer/ProgressBar
+@onready var progress_bar = $HBoxContainer/VBoxContainer/Panel/ProgressBar
+

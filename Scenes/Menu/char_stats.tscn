@@ -1,13 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckstm4ld0qvx6"]
+[gd_scene load_steps=12 format=3 uid="uid://ckstm4ld0qvx6"]
 
 [ext_resource type="Script" path="res://Scenes/Menu/char_stats.gd" id="1_5ofi2"]
 [ext_resource type="Texture2D" uid="uid://4j54mr7nrpmf" path="res://tf_char1.png" id="1_iiadp"]
+[ext_resource type="Texture2D" uid="uid://cuh161don7k16" path="res://Assets/UIassets/Retro Inventory/Scaled 3x/Inventory_9Slices.png" id="2_ls3p2"]
 [ext_resource type="FontFile" uid="uid://cg5v84a1l063y" path="res://MenuText.tres" id="2_oig7g"]
+[ext_resource type="Texture2D" uid="uid://blw8a8b1s3utd" path="res://Assets/UIassets/Retro Inventory/Original/Health_03.png" id="5_e5tut"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6d5d5"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_06fp1"]
+texture = ExtResource("2_ls3p2")
+texture_margin_left = 15.3976
+texture_margin_top = 15.3976
+texture_margin_right = 15.3976
+texture_margin_bottom = 15.0121
+region_rect = Rect2(0, 0, 96, 96)
+
+[sub_resource type="Theme" id="Theme_t7g3c"]
+Panel/styles/panel = SubResource("StyleBoxTexture_06fp1")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa6gs"]
 atlas = ExtResource("1_iiadp")
-region = Rect2(0, 0, 48.134, 48.309)
-margin = Rect2(5, 0, 10, 10)
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p1ech"]
 line_spacing = 0.0
@@ -18,6 +30,17 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0.0823529, 0.0823529, 0.0823529, 0.109804)
 shadow_offset = Vector2(1, 3)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mc1je"]
+texture = ExtResource("5_e5tut")
+texture_margin_left = 10.955
+texture_margin_top = 7.19435
+texture_margin_right = 10.7915
+texture_margin_bottom = 7.19435
+region_rect = Rect2(-0.0820084, 0, 64.082, 16)
+
+[sub_resource type="Theme" id="Theme_pmvoj"]
+Panel/styles/panel = SubResource("StyleBoxTexture_mc1je")
 
 [node name="CharStats" type="Control"]
 custom_minimum_size = Vector2(0, 140)
@@ -41,9 +64,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_6d5d5")
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+theme = SubResource("Theme_t7g3c")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_fa6gs")
 expand_mode = 2
 flip_h = true
 
@@ -124,8 +160,17 @@ layout_mode = 2
 text = "Next Level:"
 label_settings = SubResource("LabelSettings_p1ech")
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 8)
+[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-value = 100.0
+size_flags_vertical = 6
+theme = SubResource("Theme_pmvoj")
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(165, 6)
+layout_mode = 2
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 15.0
+offset_bottom = 13.0
 show_percentage = false

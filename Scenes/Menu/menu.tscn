@@ -1,9 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://bji30meh012ld"]
+[gd_scene load_steps=9 format=3 uid="uid://bji30meh012ld"]
 
 [ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="1_act3r"]
 [ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_q7ce3"]
+[ext_resource type="Texture2D" uid="uid://dqg7p78k41nx6" path="res://Resources/Themes/BlueStandard.tres" id="3_lbvph"]
 
 [sub_resource type="Theme" id="Theme_72u4k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6wvo"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 0)
+border_width_left = 10
+border_width_top = 22
+border_width_right = 22
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="Theme" id="Theme_tmdar"]
+Panel/styles/panel = SubResource("StyleBoxFlat_w6wvo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_meh1i"]
+texture = ExtResource("3_lbvph")
+
+[sub_resource type="Theme" id="Theme_510k2"]
+Panel/styles/panel = SubResource("StyleBoxTexture_meh1i")
 
 [node name="Menu" type="CanvasLayer"]
 visible = false
@@ -41,12 +65,14 @@ size_flags_stretch_ratio = 3.0
 theme = SubResource("Theme_72u4k")
 
 [node name="Characters" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tmdar")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Characters"]
 layout_mode = 0
@@ -59,14 +85,29 @@ offset_bottom = 469.0
 layout_mode = 2
 theme_override_constants/separation = 10
 
+[node name="BG" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_meh1i")
+
 [node name="Inventory" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tmdar")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory"]
 layout_mode = 1
@@ -109,61 +150,87 @@ offset_right = -18.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Item information and description goes here"
 autowrap_mode = 2
 
 [node name="Magic" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tmdar")
 
 [node name="Status" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tmdar")
 
 [node name="Equipment" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tmdar")
 
 [node name="Settings" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tmdar")
 
 [node name="Save" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tmdar")
 
 [node name="Spacer" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="Options" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer"]
+z_index = 5
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_act3r")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w6wvo")
+
+[node name="BG" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_510k2")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options"]
 layout_mode = 1

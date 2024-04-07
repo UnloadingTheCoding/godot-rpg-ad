@@ -2,13 +2,13 @@ extends Node
 
 class_name Character
 
-var level: int
 var experience: int
-var exp_goal: int
-	
+var experience_to_next_level: int
+var level: int
+
 @export var char_name: String
 @export var char_sprite: Texture2D
-@export var char_portrait: Texture2D
+@export var char_portrait: AtlasTexture
 
 
 #Stats	
@@ -75,4 +75,6 @@ func unequip(key: String):
 	update_stats()
 	
 	
-
+func gain_level():
+	if level < 100:
+		level += 1

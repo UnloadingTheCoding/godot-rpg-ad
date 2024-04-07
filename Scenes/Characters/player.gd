@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
 @onready var sprite_2d = $Sprite2D
+@onready var menu = $Menu
 
 # Movement
 const SPEED = 120

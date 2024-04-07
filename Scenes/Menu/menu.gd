@@ -47,20 +47,35 @@ func is_back_pressed():
 	
 func load_characters():
 	var container = characters.get_child(0).get_child(0)
+	for child in container.get_children():
+		container.remove_child(child)
+		child.queue_free()
 	for character in CharacterManager.current_characters:
-		var current = CharacterManager.current_characters[character].instantiate()
+		var current = CharacterManager.current_characters[character]
 		var char_box_stats = char_box.instantiate()
 		container.add_child(char_box_stats)
 		char_box_stats.char_name.text = current.char_name
-		char_box_stats.lvl_quantity.text = str(5)
+		char_box_stats.lvl_quantity.text = str(current.level)
 		char_box_stats.current_hp.text = str(current.health)
 		char_box_stats.max_hp.text = str(current.max_health)
 		char_box_stats.current_mp.text = str(current.mana)
 		char_box_stats.max_mp.text = str(current.max_mana)
-		
+		char_box_stats.texture_rect.texture = current.char_portrait
+		if current.level < 99:
+			char_box_stats.progress_bar.max_value =  CharacterManager.level_guide[current.level][0]
+		else:
+			char_box_stats.progress_bar.max_value = 0
+		if current.level == 1:
+			char_box_stats.progress_bar.value = current.experience
+		else:
+			char_box_stats.progress_bar.value = abs(CharacterManager.level_guide[current.level - 1][1] - current.experience)
+		print(char_box_stats.progress_bar.value)
+		print(char_box_stats.progress_bar.max_value)
+
 		
 func _on_items_pressed():
 	close_all_windows()
+	item_descript_label.text = ""
 	for item in item_container.get_children():
 		item_container.remove_child(item)
 		item.queue_free()
@@ -120,3 +135,4 @@ func build_inventory_list():
 		add_item.icon.texture = item[0].item_texture
 		add_item.quantity.text = str(item[1])
 		add_item.sell_price = item[0].sell_price
+		add_item.description = item[0].item_description

@@ -64,6 +64,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_hhp8r")
 
 [node name="Buffer" type="Panel" parent="MarginContainer/Panel"]
+layout_mode = 0
 theme = SubResource("Theme_nulq2")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]

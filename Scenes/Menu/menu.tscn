@@ -365,32 +365,32 @@ size_flags_horizontal = 3
 [node name="RightHand" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "R:"
+text = "RHand: "
 
 [node name="LeftHand" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "L:"
+text = "LHand: "
 
 [node name="HeadEquip" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "H:"
+text = "Head:  "
 
 [node name="ArmorEquip" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "A:"
+text = "Armor: "
 
 [node name="FeetEquip" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "F:"
+text = "Feet:  "
 
 [node name="SpecialEquip" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "S:"
+text = "Relic: "
 
 [node name="Equipment" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false

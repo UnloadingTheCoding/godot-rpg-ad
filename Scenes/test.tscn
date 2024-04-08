@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcq2rtial72vf"]
+[gd_scene load_steps=23 format=3 uid="uid://bcq2rtial72vf"]
 
 [ext_resource type="Texture2D" uid="uid://d26qdrb6au0ec" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Ground_Tiles.png" id="1_pii2m"]
 [ext_resource type="Texture2D" uid="uid://86bsliyvott" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Village.png" id="2_6fdb2"]
-[ext_resource type="PackedScene" uid="uid://cldgtj0biuxye" path="res://Scenes/Characters/player.tscn" id="2_r4xki"]
 [ext_resource type="Texture2D" uid="uid://bqq8o7hke4dlo" path="res://Assets/Environment/Mountains - Fantasy Dreamland/16x16/FD_Mountains.png" id="3_hjom5"]
 [ext_resource type="Texture2D" uid="uid://c7tc0n3gvvgoo" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Water_Tiles.png" id="3_n5nac"]
 [ext_resource type="PackedScene" uid="uid://d35pknv1m1vhh" path="res://Scenes/Camera/main_cam.tscn" id="3_q4h08"]
@@ -15081,9 +15080,6 @@ layer_3/y_sort_origin = 5
 layer_3/z_index = 100
 layer_3/tile_data = PackedInt32Array(2031661, 1310721, 9, 2031662, 1376257, 9, 2097193, 1048577, 10, 2097194, 1114113, 10, 2097195, 1179649, 10, 2097196, 1245185, 10, 2097197, 1310721, 10, 2097198, 1376257, 10, 2097199, 1441793, 10, 2097200, 1507329, 10, 2097201, 1572865, 10, 2097202, 1638401, 10)
 
-[node name="Player" parent="." instance=ExtResource("2_r4xki")]
-position = Vector2(551, 480)
-
 [node name="MainCam" parent="." instance=ExtResource("3_q4h08")]
 
 [node name="NPC" type="CharacterBody2D" parent="."]
@@ -15116,6 +15112,21 @@ shape = SubResource("RectangleShape2D_eb210")
 [node name="DialogLines" parent="NPC2" instance=ExtResource("9_jcwic")]
 lines = PackedStringArray("name_Bobert", "Best to stock up before you head out on your journey.", "Blarry\'s goods has the best price around here, well its really the only one")
 
+[node name="NPC4" type="CharacterBody2D" parent="."]
+position = Vector2(539, 533)
+
+[node name="Sprite2D" type="Sprite2D" parent="NPC4"]
+texture = ExtResource("10_f37d3")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC4"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_eb210")
+
+[node name="DialogLines" parent="NPC4" instance=ExtResource("9_jcwic")]
+lines = PackedStringArray("name_Bobbed", "This better werk", "I\'ll be pissed if it don\'t!")
+
 [node name="NPC3" type="CharacterBody2D" parent="."]
 position = Vector2(400, 424)
 
@@ -15129,7 +15140,7 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_k4w6t")
 
 [node name="DialogLines" parent="NPC3" instance=ExtResource("9_jcwic")]
-lines = PackedStringArray("name_Dickard", "I be hearing strange noises coming from the cave northwest from here.")
+lines = PackedStringArray("name_Dicksley", "I be hearing strange noises coming from the cave northwest from here.")
 
 [node name="Menu" parent="." instance=ExtResource("12_6i82n")]
 

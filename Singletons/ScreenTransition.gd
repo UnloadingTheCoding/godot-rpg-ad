@@ -12,3 +12,4 @@ func change_scene(scene: String):
 	anim.play("fade_in")
 	get_tree().paused =	false
 	await anim.animation_finished
+	CharacterManager.load_character()

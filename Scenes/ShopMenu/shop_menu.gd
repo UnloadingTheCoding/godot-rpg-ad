@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var shop_list: Array[Array]
+@export var facing_direction: Vector2
 
 @export var speech: Array[String]
 enum speech_order {GREETING, SHOPPING, SELLING, BUY, SOLD}
@@ -102,7 +103,8 @@ func build_sell_list():
 		
 		
 func open_menu():
-	if shop_menu_active == true and Input.is_action_just_pressed("action_button") and selling == false and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
+	var player = get_tree().get_first_node_in_group("Player")
+	if shop_menu_active == true and Input.is_action_just_pressed("action_button") and selling == false and GameManager.current_state == GameManager.game_state.GAME_NORMAL and facing_direction == player.last_known_direction:
 		SignalManager.change_game_state.emit(GameManager.game_state.GAME_SHOP)
 		shop_menu_container.visible = true
 		clear_description()

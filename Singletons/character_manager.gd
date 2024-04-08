@@ -5,6 +5,7 @@ var current_characters: Dictionary
 
 var test = preload("res://Scenes/Characters/TestChars/TestChar1.tscn")
 var test2 = preload("res://Scenes/Characters/TestChars/TestChar2.tscn")
+var player = preload("res://Scenes/Characters/player.tscn")
 
 var all_characters: Dictionary = {
 	"test" : test,
@@ -18,6 +19,13 @@ func _ready():
 	current_characters["test"].equip("right", InventoryMasterList.inventory["sword"])
 	add_character("test2")
 	
+
+func load_character():
+	var check = get_tree().get_first_node_in_group("Player")
+	if check == null:
+		var add_player = player.instantiate()
+		get_parent().add_child(add_player)
+
 
 func add_character(name_key: String, lvl: int = 1, experience: int = level_guide[0][0]):
 	#Complete when Character class is finished

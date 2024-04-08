@@ -23,6 +23,7 @@ CharacterManager="*res://Singletons/character_manager.gd"
 InventoryMasterList="*res://Singletons/inventory_master_list.tscn"
 InventoryManager="*res://Singletons/inventory_manager.gd"
 MainCam="*res://Scenes/Camera/main_cam.tscn"
+DialogBox="*res://Scenes/DialogBox/dialog_box.tscn"
 ScreenTransition="*res://Singletons/screen_transition.tscn"
 
 [debug]

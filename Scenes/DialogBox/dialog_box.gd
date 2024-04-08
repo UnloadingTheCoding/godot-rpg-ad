@@ -24,6 +24,7 @@ func _process(_delta):
 func next_line() -> void:
 	if dbox_is_active and Input.is_action_just_pressed("action_button"):
 		if dialog_lines.size() <= 0:
+			SignalManager.change_game_state.emit(GameManager.previous_state)
 			visible = !dbox_is_visible
 			dbox_is_active = false
 			get_tree().paused = false
@@ -40,7 +41,7 @@ func on_lines_received(lines) -> void:
 	dialog_lines = lines.duplicate()
 	visible = dbox_is_visible
 	dbox_is_active = true
-
+	SignalManager.change_game_state.emit(GameManager.game_state.GAME_DIALOG)
 	get_tree().paused = true
 	check_name()
 	dialog_box.text = dialog_lines[0]

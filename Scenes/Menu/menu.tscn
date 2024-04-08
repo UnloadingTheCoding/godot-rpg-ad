@@ -1,30 +1,59 @@
-[gd_scene load_steps=9 format=3 uid="uid://bji30meh012ld"]
+[gd_scene load_steps=18 format=3 uid="uid://bji30meh012ld"]
 
 [ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="1_act3r"]
 [ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_q7ce3"]
 [ext_resource type="Texture2D" uid="uid://dqg7p78k41nx6" path="res://Resources/Themes/BlueStandard.tres" id="3_lbvph"]
+[ext_resource type="Texture2D" uid="uid://bn0vm188a74rt" path="res://Assets/UIassets/Pixelart Graphical User Interface/User Interface 01/Inventory_9slices_06.png" id="4_66hqg"]
+[ext_resource type="Texture2D" uid="uid://4j54mr7nrpmf" path="res://tf_char1.png" id="5_w4u45"]
+[ext_resource type="Texture2D" uid="uid://hstjmqxrqtqp" path="res://Assets/UIassets/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Selectors/Minifantasy_GuiSelectors.png" id="6_k01eu"]
 
 [sub_resource type="Theme" id="Theme_72u4k"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_meh1i"]
+texture = ExtResource("3_lbvph")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6wvo"]
 bg_color = Color(0.113725, 0.262745, 0.654902, 0)
-border_width_left = 10
-border_width_top = 22
-border_width_right = 22
-border_width_bottom = 10
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
 border_color = Color(1, 1, 1, 1)
 border_blend = true
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-corner_detail = 20
 
 [sub_resource type="Theme" id="Theme_tmdar"]
 Panel/styles/panel = SubResource("StyleBoxFlat_w6wvo")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_meh1i"]
-texture = ExtResource("3_lbvph")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ug4t1"]
+texture = ExtResource("4_66hqg")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(10, 10, 28, 28)
+
+[sub_resource type="Theme" id="Theme_f3exo"]
+Panel/styles/panel = SubResource("StyleBoxTexture_ug4t1")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gudl"]
+atlas = ExtResource("5_w4u45")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n8sw"]
+atlas = ExtResource("6_k01eu")
+region = Rect2(43, 148, 5, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqg8r"]
+atlas = ExtResource("6_k01eu")
+region = Rect2(43, 164, 5, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n25lo"]
+atlas = ExtResource("6_k01eu")
+region = Rect2(43, 148, 5, 8)
 
 [sub_resource type="Theme" id="Theme_510k2"]
 Panel/styles/panel = SubResource("StyleBoxTexture_meh1i")
@@ -64,8 +93,32 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 theme = SubResource("Theme_72u4k")
 
+[node name="BG" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -8.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_meh1i")
+
+[node name="Buffer" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tmdar")
+
 [node name="Characters" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 z_index = 5
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,19 +137,6 @@ offset_bottom = 469.0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Characters/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
-
-[node name="BG" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = -8.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_meh1i")
 
 [node name="Inventory" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
@@ -173,6 +213,184 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_tmdar")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatusTopContainer" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Panel" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_f3exo")
+
+[node name="CharPortrait" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer/Panel"]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 134.0
+offset_bottom = 134.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_6gudl")
+expand_mode = 2
+flip_h = true
+
+[node name="TopStatusLabels" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer"]
+layout_mode = 2
+
+[node name="StatusName" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer/TopStatusLabels"]
+layout_mode = 2
+text = "Name here
+"
+
+[node name="StatusLevel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer/TopStatusLabels"]
+layout_mode = 2
+text = "Level: 99"
+
+[node name="StatusHealth" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer/TopStatusLabels"]
+layout_mode = 2
+text = "HP: 999/999"
+
+[node name="StatusMana" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer/TopStatusLabels"]
+layout_mode = 2
+text = "MP: 999/999"
+
+[node name="StatusNextLevel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer/TopStatusLabels"]
+layout_mode = 2
+text = "Next level:"
+
+[node name="SwitchButtons" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SwitchStatusLeft" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_4n8sw")
+texture_hover = SubResource("AtlasTexture_aqg8r")
+stretch_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SwitchStatusRight" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_n25lo")
+texture_hover = SubResource("AtlasTexture_aqg8r")
+stretch_mode = 0
+flip_h = true
+
+[node name="StatusBottomContainer" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Attack" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Atk: 200"
+
+[node name="Defense" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Def: 200"
+
+[node name="MagicAttack" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "M.Atk: 200"
+
+[node name="MagicDefense" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "M.Def: 200"
+
+[node name="Stamina" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Stamina: 45"
+
+[node name="Speed" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Speed: 99"
+
+[node name="Strength" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Str: 77"
+
+[node name="Agility" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Agi: 34"
+
+[node name="Intellect" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Int: 89"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer"]
+layout_mode = 2
+
+[node name="Equip" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightHand" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "R:"
+
+[node name="LeftHand" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "L:"
+
+[node name="HeadEquip" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "H:"
+
+[node name="ArmorEquip" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "A:"
+
+[node name="FeetEquip" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "F:"
+
+[node name="SpecialEquip" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "S:"
 
 [node name="Equipment" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
@@ -279,6 +497,8 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Save"
 
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons/SwitchStatusLeft" to="." method="_on_switch_status_left_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons/SwitchStatusRight" to="." method="_on_switch_status_right_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Items" to="." method="_on_items_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Status" to="." method="_on_status_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Equip" to="." method="_on_equip_pressed"]

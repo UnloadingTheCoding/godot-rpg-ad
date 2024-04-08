@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bj3ryenfgg5p6"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bj3ryenfgg5p6"]
 
 [ext_resource type="FontFile" uid="uid://brcbsc72sd8oq" path="res://Assets/NbPixelFontBundle_v1_0(1)/Habbo.ttf" id="1_lqiki"]
 [ext_resource type="FontFile" uid="uid://cg5v84a1l063y" path="res://MenuText.tres" id="2_ppdgo"]
+[ext_resource type="Texture2D" uid="uid://c4ldwjjrclbwu" path="res://Assets/UIassets/Pixelart Graphical User Interface/User Interface 01/Button_Medium_07.png" id="2_thmk3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scbp2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -45,6 +46,14 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qbe7b"]
+texture = ExtResource("2_thmk3")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(2, 2, 28, 12)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1wos"]
 
@@ -121,6 +130,14 @@ corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
 expand_margin_left = 3.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ltstk"]
+texture = ExtResource("2_thmk3")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(2, 2, 28, 12)
+
 [resource]
 default_font_size = 32
 Button/colors/font_outline_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
@@ -131,6 +148,7 @@ Button/styles/focus = SubResource("StyleBoxFlat_scbp2")
 Button/styles/hover = SubResource("StyleBoxFlat_l5bvo")
 Button/styles/normal = SubResource("StyleBoxFlat_ni11a")
 Button/styles/pressed = SubResource("StyleBoxFlat_t8mp5")
+HSeparator/styles/separator = SubResource("StyleBoxTexture_qbe7b")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.113725)
 Label/constants/outline_size = 4
@@ -151,3 +169,4 @@ VScrollBar/styles/grabber = SubResource("StyleBoxFlat_6t681")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_ytbel")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_0yqch")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_kkfls")
+VSeparator/styles/separator = SubResource("StyleBoxTexture_ltstk")

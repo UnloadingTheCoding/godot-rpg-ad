@@ -26,12 +26,14 @@ var stamina: int
 @export var agility: int 
 
 
+
 #Equipment
 var equipment: Dictionary = {
-	"left" : null,
-	"right": null,
+	"right" : null,
+	"left": null,
 	"head" : null,
 	"body" : null,
+	"feet" : null,
 	"special" : null
 }
 
@@ -49,21 +51,23 @@ var magic_def: int
 var speed: int
 
 
+
 func update_stats():
 	weapon = 0
 	armor = 0
 	
 	for item in equipment:
-		if equipment[item].item_type == "weapon":
+		if equipment[item] == null:
+			continue
+		elif equipment[item].item_type == "weapon":
 			weapon += equipment[item].stat_bonus 
 		elif equipment[item].item_type == "armor":
 			weapon += equipment[item].stat_bonus
-		elif equipment[item].item_type == null:
-			continue
+
 			
 	attack = weapon + strength
 	defense = armor + int((agility + strength) / 2) 
-
+	
 			
 func equip(key: String, item):
 	equipment[key] = item

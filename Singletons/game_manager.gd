@@ -9,7 +9,7 @@ var player_destination: String
 
 var current_state = game_state.TITLESCREEN
 var previous_state
-enum game_state {TITLESCREEN, GAME_NORMAL, GAME_CUTSCENE, GAME_BATTLE, GAME_SHOP, GAME_WARNING}
+enum game_state {TITLESCREEN, GAME_NORMAL, GAME_CUTSCENE, GAME_BATTLE, GAME_SHOP, GAME_WARNING, GAME_DIALOG}
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +24,7 @@ func on_destination_update(portal_name):
 
 
 func on_change_game_state(state):
+	previous_state = current_state
 	current_state = state
 
 

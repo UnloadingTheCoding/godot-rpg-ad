@@ -15,11 +15,9 @@ var all_characters: Dictionary = {
 func _ready():
 	build_level_guide()
 	add_character("test")
+	current_characters["test"].equip("right", InventoryMasterList.inventory["sword"])
 	add_character("test2")
 	
-func _process(delta):
-	if Input.is_action_just_pressed("test"):
-		add_experience("test", 50)
 
 func add_character(name_key: String, lvl: int = 1, experience: int = level_guide[0][0]):
 	#Complete when Character class is finished
@@ -31,6 +29,7 @@ func add_character(name_key: String, lvl: int = 1, experience: int = level_guide
 	else:
 		current_characters[name_key].experience = experience
 		current_characters[name_key].experience_to_next_level = level_guide[lvl][0]
+	current_characters[name_key].update_stats()
 		
 func equip_character():
 	pass
@@ -67,7 +66,7 @@ func build_level_guide():
 
 func add_experience(character: String, experience: int):
 	current_characters[character].experience += experience 
-	if current_characters[character].experience >= current_characters[character].experience_to_next_level and  \
+	while current_characters[character].experience >= current_characters[character].experience_to_next_level and  \
 	current_characters[character].level < 99:
 		raise_level(character)
 	

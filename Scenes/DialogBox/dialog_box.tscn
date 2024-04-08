@@ -1,24 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctkd61rn23pa8"]
+[gd_scene load_steps=10 format=3 uid="uid://ctkd61rn23pa8"]
 
 [ext_resource type="Script" path="res://Scenes/DialogBox/dialog_box.gd" id="1_awlni"]
 [ext_resource type="Texture2D" uid="uid://4yjgpcqn6kag" path="res://Assets/UIassets/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Panels_And_Slots/TintedVariations/Minifantasy_GuiPanelsAndSlotsBlue.png" id="2_4lh2j"]
+[ext_resource type="Texture2D" uid="uid://dqg7p78k41nx6" path="res://Resources/Themes/BlueStandard.tres" id="2_ku2jk"]
 [ext_resource type="LabelSettings" uid="uid://3p7ohfxt2awi" path="res://common_text.tres" id="3_vn2cj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmqh3"]
-bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.952941, 0.952941, 0.952941, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6wvo"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 0)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(1, 1, 1, 1)
 border_blend = true
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="Theme" id="Theme_2ss3o"]
-Panel/styles/panel = SubResource("StyleBoxFlat_cmqh3")
+[sub_resource type="Theme" id="Theme_l141w"]
+Panel/styles/panel = SubResource("StyleBoxFlat_w6wvo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hhp8r"]
+texture = ExtResource("2_ku2jk")
+
+[sub_resource type="Theme" id="Theme_nulq2"]
+Panel/styles/panel = SubResource("StyleBoxFlat_w6wvo")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lup8r"]
 
@@ -38,8 +45,26 @@ theme_override_constants/margin_right = 170
 theme_override_constants/margin_bottom = 20
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
+z_index = 5
 layout_mode = 2
-theme = SubResource("Theme_2ss3o")
+theme = SubResource("Theme_l141w")
+
+[node name="BG" type="Panel" parent="MarginContainer/Panel"]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hhp8r")
+
+[node name="Buffer" type="Panel" parent="MarginContainer/Panel"]
+theme = SubResource("Theme_nulq2")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 layout_mode = 1
@@ -62,6 +87,7 @@ autowrap_mode = 2
 max_lines_visible = 3
 
 [node name="NameBox" type="NinePatchRect" parent="."]
+z_index = 5
 custom_minimum_size = Vector2(100, 30)
 offset_left = 192.0
 offset_top = 411.0
@@ -83,6 +109,7 @@ offset_bottom = 40.0
 theme_override_constants/margin_left = 20
 
 [node name="name_label" type="Label" parent="NameBox/MarginContainer"]
+z_index = 30
 layout_mode = 2
 text = "name"
 label_settings = ExtResource("3_vn2cj")

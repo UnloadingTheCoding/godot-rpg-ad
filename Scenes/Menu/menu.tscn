@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bji30meh012ld"]
+[gd_scene load_steps=20 format=3 uid="uid://bji30meh012ld"]
 
 [ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="1_act3r"]
 [ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_q7ce3"]
@@ -55,6 +55,10 @@ region = Rect2(43, 164, 5, 8)
 atlas = ExtResource("6_k01eu")
 region = Rect2(43, 148, 5, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdmqy"]
+atlas = ExtResource("6_k01eu")
+region = Rect2(48, 276, 7, 8.29721)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqla"]
 bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
 border_width_left = 4
@@ -68,7 +72,6 @@ border_blend = true
 Panel/styles/panel = SubResource("StyleBoxTexture_meh1i")
 
 [node name="Menu" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_q7ce3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -126,6 +129,7 @@ grow_vertical = 2
 theme = SubResource("Theme_tmdar")
 
 [node name="Characters" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
+visible = false
 z_index = 5
 z_as_relative = false
 layout_mode = 1
@@ -402,7 +406,6 @@ theme_override_font_sizes/font_size = 28
 text = "Relic: "
 
 [node name="Equipment" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
-visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 15
@@ -431,6 +434,7 @@ theme_override_constants/separation = 15
 [node name="EquipStats" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 5
 
 [node name="Panel" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
 custom_minimum_size = Vector2(140, 140)
@@ -452,9 +456,87 @@ texture = SubResource("AtlasTexture_6gudl")
 expand_mode = 2
 flip_h = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
+[node name="BaseStats" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="BaseAtk" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats"]
+layout_mode = 2
+text = "Atk: 50"
+
+[node name="BaseDef" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats"]
+layout_mode = 2
+text = "Def: 22"
+
+[node name="BaseMagAtk" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats"]
+layout_mode = 2
+text = "M.Atk: 15"
+
+[node name="BaseMagDef" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats"]
+layout_mode = 2
+text = "M.Def 14"
+
+[node name="BaseDodge" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats"]
+layout_mode = 2
+text = "Dodge: 25"
+
+[node name="BonusIndicators" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_vdmqy")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_vdmqy")
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_vdmqy")
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_vdmqy")
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_vdmqy")
+
+[node name="Bonus" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BonusAtk" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
+layout_mode = 2
+text = "75"
+horizontal_alignment = 1
+
+[node name="BonusDef" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="BonusMagAtk" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
+layout_mode = 2
+text = "18"
+horizontal_alignment = 1
+
+[node name="BonusMagDef" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
+layout_mode = 2
+text = "19"
+horizontal_alignment = 1
+
+[node name="BonusDodge" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
+layout_mode = 2
+text = "40"
+horizontal_alignment = 1
 
 [node name="SeparatorAndSwitch" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
 layout_mode = 2

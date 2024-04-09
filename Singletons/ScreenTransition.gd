@@ -11,5 +11,5 @@ func change_scene(scene: String):
 	get_tree().change_scene_to_file(scene)
 	anim.play("fade_in")
 	get_tree().paused =	false
-	await anim.animation_finished
 	CharacterManager.load_character()
+	await anim.animation_finished

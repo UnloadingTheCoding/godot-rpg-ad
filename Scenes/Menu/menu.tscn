@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bji30meh012ld"]
+[gd_scene load_steps=19 format=3 uid="uid://bji30meh012ld"]
 
 [ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="1_act3r"]
 [ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_q7ce3"]
@@ -54,6 +54,15 @@ region = Rect2(43, 164, 5, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_n25lo"]
 atlas = ExtResource("6_k01eu")
 region = Rect2(43, 148, 5, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqla"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
 
 [sub_resource type="Theme" id="Theme_510k2"]
 Panel/styles/panel = SubResource("StyleBoxTexture_meh1i")
@@ -403,6 +412,206 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_tmdar")
 
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="EquipStats" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_f3exo")
+
+[node name="CharPortrait" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Panel"]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 134.0
+offset_bottom = 134.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_6gudl")
+expand_mode = 2
+flip_h = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SeparatorAndSwitch" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SwitchStatusLeft" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_4n8sw")
+texture_hover = SubResource("AtlasTexture_aqg8r")
+stretch_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SwitchStatusRight" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_n25lo")
+texture_hover = SubResource("AtlasTexture_aqg8r")
+stretch_mode = 0
+flip_h = true
+
+[node name="EquippedItems" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Spacer1" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="LeftButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Left "
+
+[node name="HeadButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Head"
+
+[node name="FeetButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Feet "
+
+[node name="EquipLabels1" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="LeftLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
+custom_minimum_size = Vector2(1, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "leather armor"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HeadLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
+custom_minimum_size = Vector2(1, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="FeetLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
+custom_minimum_size = Vector2(1, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="RightButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Right "
+
+[node name="ArmorButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AccButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EquipLabels2" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="RightLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
+custom_minimum_size = Vector2(1, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ArmorLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
+custom_minimum_size = Vector2(1, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AccLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
+custom_minimum_size = Vector2(1, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer2" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.1
+
+[node name="Separator" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/Separator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EquipInventory" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EInventory" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rhqla")
+
 [node name="Settings" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
 z_index = 5
@@ -499,6 +708,8 @@ text = "Save"
 
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons/SwitchStatusLeft" to="." method="_on_switch_status_left_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons/SwitchStatusRight" to="." method="_on_switch_status_right_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch/SwitchStatusLeft" to="." method="_on_switch_status_left_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch/SwitchStatusRight" to="." method="_on_switch_status_right_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Items" to="." method="_on_items_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Status" to="." method="_on_status_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Equip" to="." method="_on_equip_pressed"]

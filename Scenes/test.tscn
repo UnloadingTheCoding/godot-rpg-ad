@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bcq2rtial72vf"]
+[gd_scene load_steps=24 format=3 uid="uid://bcq2rtial72vf"]
 
 [ext_resource type="Texture2D" uid="uid://d26qdrb6au0ec" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Ground_Tiles.png" id="1_pii2m"]
 [ext_resource type="Texture2D" uid="uid://86bsliyvott" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Village.png" id="2_6fdb2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dw0bdj5abprrt" path="res://Assets/Characters/Character Sprites 3 - Fantasy Dreamland/Character Sprites 16x16/Character_084.png" id="11_etlku"]
 [ext_resource type="PackedScene" uid="uid://bji30meh012ld" path="res://Scenes/Menu/menu.tscn" id="12_6i82n"]
 [ext_resource type="Script" path="res://Scenes/Portal/Portal.gd" id="13_3o6oj"]
+[ext_resource type="PackedScene" uid="uid://bpq1dypvddmad" path="res://Scenes/Portal/portal.tscn" id="13_7v28a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_goyge"]
 texture = ExtResource("1_pii2m")
@@ -15061,12 +15062,11 @@ size = Vector2(10, 13)
 size = Vector2(10, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvo0"]
-size = Vector2(12, 9)
+size = Vector2(12, 4.5)
 
 [node name="Test" type="Node"]
 
 [node name="TM16x16" type="TileMap" parent="."]
-scale = Vector2(1.00788, 1.0218)
 tile_set = SubResource("TileSet_qy1jy")
 format = 2
 layer_0/name = "1"
@@ -15152,11 +15152,15 @@ portal_name = "ShopEnt"
 destination = "ItemShop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-position = Vector2(0, -11.5)
+position = Vector2(-6, -12.25)
 shape = SubResource("RectangleShape2D_fkvo0")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Start" type="Area2D" parent="Portal"]
-position = Vector2(-1, 16)
+position = Vector2(-6, 14)
+
+[node name="Portal2" parent="." instance=ExtResource("13_7v28a")]
+position = Vector2(640, 720)
+portal_name = "player_start"
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

@@ -5,7 +5,7 @@ extends Node
 @onready var no_input_screen = $NoInputScreen
 
 
-var player_destination: String
+var player_destination: String = "player_start"
 
 var current_state = game_state.TITLESCREEN
 var previous_state

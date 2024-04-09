@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bji30meh012ld"]
+[gd_scene load_steps=21 format=3 uid="uid://bji30meh012ld"]
 
 [ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="1_act3r"]
 [ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_q7ce3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bn0vm188a74rt" path="res://Assets/UIassets/Pixelart Graphical User Interface/User Interface 01/Inventory_9slices_06.png" id="4_66hqg"]
 [ext_resource type="Texture2D" uid="uid://4j54mr7nrpmf" path="res://tf_char1.png" id="5_w4u45"]
 [ext_resource type="Texture2D" uid="uid://hstjmqxrqtqp" path="res://Assets/UIassets/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Selectors/Minifantasy_GuiSelectors.png" id="6_k01eu"]
+[ext_resource type="Texture2D" uid="uid://co0gaptfs50cl" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 006.png" id="7_su8lg"]
 
 [sub_resource type="Theme" id="Theme_72u4k"]
 
@@ -640,12 +641,14 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "Armor"
 
 [node name="AccButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "Acc"
 
 [node name="EquipLabels2" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
 layout_mode = 2
@@ -693,6 +696,63 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhqla")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Leather Armor"
+icon = ExtResource("7_su8lg")
+flat = true
+
+[node name="Button2" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Leather Armor"
+icon = ExtResource("7_su8lg")
+flat = true
+
+[node name="Button3" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Leather Armor"
+icon = ExtResource("7_su8lg")
+flat = true
+
+[node name="Button4" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Leather Armor"
+icon = ExtResource("7_su8lg")
+flat = true
 
 [node name="Settings" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false

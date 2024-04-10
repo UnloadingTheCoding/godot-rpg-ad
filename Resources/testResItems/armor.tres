@@ -11,6 +11,14 @@ script/source = "@export var id: String
 
 var quantity: int
 
+@export var item_type: String 
+@export var equip_position: String
+@export var item_category: String
+# Size 5 array of bonuses
+@export var stat_bonus: Array[int] 
+
+
+
 func get_item():
 	return self
 "
@@ -22,3 +30,7 @@ item_name = "Leather Armor"
 item_texture = ExtResource("1_6dkh6")
 item_description = "Leathery Protection"
 sell_price = 500
+item_type = "equip"
+equip_position = "armor"
+item_category = "armor"
+stat_bonus = Array[int]([0, 20, 0, 0, 5])

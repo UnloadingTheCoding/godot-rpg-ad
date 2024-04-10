@@ -38,19 +38,24 @@ var current_status_char_reference: int = 0
 
 @onready var equipment = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment
 # Equip nodes
+var equip_item = preload("res://Scenes/Menu/equip_inv_button.tscn")
 @onready var e_inventory = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory
 var current_equip_char_reference: int = 0
+@onready var equip_item_container = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/EquipItemContainer
 @onready var equip_char_portrait = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Panel/EquipCharPortrait
 @onready var base_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseAtk
 @onready var base_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseDef
 @onready var base_mag_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseMagAtk
 @onready var base_mag_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseMagDef
 @onready var base_dodge = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseDodge
-@onready var indicator_1 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/Indicator1
-@onready var indicator_2 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/Indicator2
-@onready var indicator_3 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/Indicator3
-@onready var indicator_4 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/indicator4
-@onready var indicator_5 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/Indicator5
+
+@onready var indicator_1 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control/Indicator1
+@onready var indicator_2 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control2/Indicator2
+@onready var indicator_3 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control3/Indicator3
+@onready var indicator_4 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control4/Indicator4
+@onready var indicator_5 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control5/Indicator5
+var indicators: Array = [indicator_1, indicator_2, indicator_3, indicator_4, indicator_5]
+
 @onready var bonus_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusAtk
 @onready var bonus_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusDef
 @onready var bonus_mag_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusMagAtk
@@ -238,28 +243,66 @@ func _on_switch_equip_right_pressed():
 	load_equip_window()
 
 
+func build_equip_list(equip_position: String):
+	var items: Array = InventoryManager.inventory
+	
+	for item in items:
+		if item[0].item_type == "equip":
+			if item[0].equip_position == equip_position:
+				var add_item = equip_item.instantiate()
+				equip_item_container.add_child(add_item)
+				
+				add_item.text = item[0].item_name
+				add_item.icon = item[0].item_texture
+			
+
+func clear_build_list():
+	for item in equip_item_container.get_children():
+		equip_item_container.remove_child(item)
+		item.queue_free()
+
+
+func update_stat_bonus(indicator: int, bonuses: Array, position: String):
+	var current: Character = CharacterManager.current_characters[characters_reference[current_equip_char_reference]]
+	if current.equipment[position] != null:
+		for index in range(current.equipment[position].stat_bonus.size()):
+			if current.equipment[position].stat_bonus[index] < bonuses[index]:
+				pass
+
 func _on_left_button_pressed():
 	e_inventory.visible = true
+	clear_build_list()
+	build_equip_list("left")
 
 
 func _on_head_button_pressed():
 	e_inventory.visible = true
+	clear_build_list()
+	build_equip_list("head")
 
 
 func _on_feet_button_pressed():
 	e_inventory.visible = true
+	clear_build_list()
+	build_equip_list("feet")
 
 
 func _on_right_button_pressed():
 	e_inventory.visible = true
+	clear_build_list()
+	build_equip_list("right")
 
 
 func _on_armor_button_pressed():
 	e_inventory.visible = true
+	clear_build_list()
+	build_equip_list("armor")
 
 
 func _on_acc_button_pressed():
 	e_inventory.visible = true
+	clear_build_list()
+	build_equip_list("acc")
 
 
 func _on_magic_pressed():

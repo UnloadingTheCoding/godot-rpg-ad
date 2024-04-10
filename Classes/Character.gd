@@ -42,9 +42,14 @@ var equipment: Dictionary = {
 #Equipment Stats
 var weapon
 var armor
+var m_weapon
+var m_armor
+var e_dodge
 
 	
 #BattleStats
+enum combat_stats {ATTACK, DEFENSE, MAGIC_OFF, MAGIC_DEF, DODGE}
+var c_stats_holder: Array = [attack, defense, magic_off, dodge]
 var attack: int
 var defense: int
 var magic_off: int
@@ -56,19 +61,25 @@ var dodge: int
 func update_stats():
 	weapon = 0
 	armor = 0
+	m_weapon = 0
+	m_armor = 0
+	e_dodge = 0
+	
 	
 	for item in equipment:
 		if equipment[item] == null:
 			continue
-		elif equipment[item].item_type == "weapon":
-			weapon += equipment[item].stat_bonus 
-		elif equipment[item].item_type == "armor":
-			weapon += equipment[item].stat_bonus
-
+		weapon += equipment[item].stat_bonus[combat_stats.ATTACK]
+		armor += equipment[item].stat_bonus[combat_stats.DEFENSE]
+		m_weapon += equipment[item].stat_bonus[combat_stats.MAGIC_OFF]
+		m_armor += equipment[item].stat_bonus[combat_stats.MAGIC_DEF]
+		e_dodge += equipment[item].stat_bonus[combat_stats.DODGE]
 			
 	attack = weapon + strength
 	defense = armor + int((agility + strength) / 2) 
-	
+	magic_off = m_weapon + intellect
+	magic_def = m_armor + int(intellect / 2)
+	dodge = e_dodge + int(speed / 2)
 			
 func equip(key: String, item):
 	equipment[key] = item

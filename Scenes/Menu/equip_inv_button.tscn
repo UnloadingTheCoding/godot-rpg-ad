@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c00my64eynldr"]
+[gd_scene load_steps=3 format=3 uid="uid://c00my64eynldr"]
 
 [ext_resource type="Texture2D" uid="uid://co0gaptfs50cl" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 006.png" id="1_5vlse"]
+[ext_resource type="Script" path="res://Scenes/Menu/equip_inv_button.gd" id="2_ugj04"]
 
 [node name="Equip_Inv" type="Button"]
 custom_minimum_size = Vector2(180, 30)
@@ -9,3 +10,4 @@ theme_override_font_sizes/font_size = 24
 text = "Leather Armor"
 icon = ExtResource("1_5vlse")
 flat = true
+script = ExtResource("2_ugj04")

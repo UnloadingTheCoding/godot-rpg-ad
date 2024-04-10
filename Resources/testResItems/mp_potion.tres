@@ -8,6 +8,7 @@ script/source = "@export var id: String
 @export var item_texture: Texture2D
 @export var item_description: String
 @export var sell_price: int
+@export var item_type:String
 
 var quantity: int
 
@@ -21,3 +22,4 @@ item_name = "Mana Potion"
 item_texture = ExtResource("1_qcgwg")
 item_description = "Recovers 25 MP"
 sell_price = 250
+item_type = "use"

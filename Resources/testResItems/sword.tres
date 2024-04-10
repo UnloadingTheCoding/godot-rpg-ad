@@ -13,10 +13,12 @@ var quantity: int
 
 
 var item_root
-@export var item_type: String = \"weapon\"
+@export var item_type: String 
 @export var equip_position: String
+@export var item_category: String
 
-@export var stat_bonus: int
+# Size 5 array of bonuses
+@export var stat_bonus: Array[int] 
 
 func get_item():
 	return self
@@ -29,6 +31,7 @@ item_name = "Iron Sword"
 item_texture = ExtResource("1_lknoj")
 item_description = "Heavy Iron great for slashing"
 sell_price = 400
-item_type = "weapon"
+item_type = "equip"
 equip_position = "right"
-stat_bonus = 30
+item_category = "weapon"
+stat_bonus = Array[int]([20, 0, 0, 0, -5])

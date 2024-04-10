@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bji30meh012ld"]
+[gd_scene load_steps=20 format=3 uid="uid://bji30meh012ld"]
 
 [ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="1_act3r"]
 [ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_q7ce3"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bn0vm188a74rt" path="res://Assets/UIassets/Pixelart Graphical User Interface/User Interface 01/Inventory_9slices_06.png" id="4_66hqg"]
 [ext_resource type="Texture2D" uid="uid://4j54mr7nrpmf" path="res://tf_char1.png" id="5_w4u45"]
 [ext_resource type="Texture2D" uid="uid://hstjmqxrqtqp" path="res://Assets/UIassets/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Selectors/Minifantasy_GuiSelectors.png" id="6_k01eu"]
-[ext_resource type="PackedScene" uid="uid://c00my64eynldr" path="res://Scenes/Menu/equip_inv_button.tscn" id="7_yq6r0"]
 
 [sub_resource type="Theme" id="Theme_72u4k"]
 
@@ -442,7 +441,7 @@ theme_override_constants/separation = 15
 [node name="EquipStats" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 
 [node name="Panel" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
 custom_minimum_size = Vector2(140, 140)
@@ -488,38 +487,77 @@ text = "M.Def 14"
 layout_mode = 2
 text = "Dodge: 25"
 
-[node name="BonusIndicators" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="BonusIndicators" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
-[node name="Indicator1" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+[node name="Indicator1" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control"]
 visible = false
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_vertical = 3
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
 texture = SubResource("AtlasTexture_vdmqy")
 
-[node name="Indicator2" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
-visible = false
+[node name="Control2" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_vertical = 3
+
+[node name="Indicator2" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control2"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
 texture = SubResource("AtlasTexture_vdmqy")
 
-[node name="Indicator3" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
-visible = false
+[node name="Control3" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_vertical = 3
+
+[node name="Indicator3" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control3"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
 texture = SubResource("AtlasTexture_vdmqy")
 
-[node name="indicator4" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
-visible = false
+[node name="Control4" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_vertical = 3
+
+[node name="Indicator4" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control4"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
 texture = SubResource("AtlasTexture_vdmqy")
 
-[node name="Indicator5" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
-visible = false
+[node name="Control5" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_vertical = 3
+
+[node name="Indicator5" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control5"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
 texture = SubResource("AtlasTexture_vdmqy")
 
 [node name="Bonus" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
@@ -532,6 +570,7 @@ horizontal_alignment = 1
 
 [node name="BonusDef" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
 layout_mode = 2
+text = "30"
 horizontal_alignment = 1
 
 [node name="BonusMagAtk" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
@@ -618,7 +657,6 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(1, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "leather armor"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -728,14 +766,11 @@ theme_override_constants/margin_bottom = 10
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer"]
+[node name="EquipItemContainer" type="GridContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
-
-[node name="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("7_yq6r0")]
-layout_mode = 2
 
 [node name="Settings" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false

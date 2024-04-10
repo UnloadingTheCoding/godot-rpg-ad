@@ -8,7 +8,7 @@ var char_box = preload("res://Scenes/Menu/char_stats.tscn")
 @onready var item_descript_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Inventory/VBoxContainer/ItemDescriptPanel/ItemDescriptLabel
 
 @onready var status = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status
-var current_char_reference: int = 0
+var current_status_char_reference: int = 0
 # top container status labels
 @onready var status_char_portrait = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer/Panel/CharPortrait
 @onready var status_name = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusTopContainer/TopStatusLabels/StatusName
@@ -21,6 +21,7 @@ var current_char_reference: int = 0
 @onready var defense = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats/Defense
 @onready var magic_attack = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats/MagicAttack
 @onready var magic_defense = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats/MagicDefense
+@onready var dodge = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats/Dodge
 @onready var stamina = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats/Stamina
 @onready var speed = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats/Speed
 @onready var strength = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats/Strength
@@ -35,8 +36,34 @@ var current_char_reference: int = 0
 @onready var special_equip = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Equip/SpecialEquip
 
 
-@onready var magic = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Magic
 @onready var equipment = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment
+# Equip nodes
+@onready var e_inventory = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory
+var current_equip_char_reference: int = 0
+@onready var equip_char_portrait = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Panel/EquipCharPortrait
+@onready var base_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseAtk
+@onready var base_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseDef
+@onready var base_mag_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseMagAtk
+@onready var base_mag_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseMagDef
+@onready var base_dodge = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseDodge
+@onready var indicator_1 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/Indicator1
+@onready var indicator_2 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/Indicator2
+@onready var indicator_3 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/Indicator3
+@onready var indicator_4 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/indicator4
+@onready var indicator_5 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators/Indicator5
+@onready var bonus_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusAtk
+@onready var bonus_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusDef
+@onready var bonus_mag_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusMagAtk
+@onready var bonus_mag_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusMagDef
+@onready var left_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/LeftLabel
+@onready var head_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/HeadLabel
+@onready var feet_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/FeetLabel
+@onready var right_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/RightLabel
+@onready var armor_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/ArmorLabel
+@onready var acc_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/AccLabel
+
+
+@onready var magic = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Magic
 @onready var settings = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Settings
 @onready var save = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Save
 
@@ -112,7 +139,7 @@ func _on_items_pressed():
 
 	
 func _on_status_pressed():
-	current_char_reference = 0
+	current_status_char_reference = 0
 	close_all_windows()
 	load_status_window()
 	is_okay_to_exit = false
@@ -120,20 +147,20 @@ func _on_status_pressed():
 	
 	
 func _on_switch_status_left_pressed():
-	current_char_reference -= 1
-	if current_char_reference < 0:
-		current_char_reference = characters_reference.size() - 1
+	current_status_char_reference -= 1
+	if current_status_char_reference < 0:
+		current_status_char_reference = characters_reference.size() - 1
 	load_status_window()
 
 
 func _on_switch_status_right_pressed():
-	current_char_reference += 1
-	if current_char_reference > characters_reference.size() - 1:
-		current_char_reference = 0
+	current_status_char_reference += 1
+	if current_status_char_reference > characters_reference.size() - 1:
+		current_status_char_reference = 0
 	load_status_window()
 	
 	
-func load_status_window(character: String = characters_reference[current_char_reference]):
+func load_status_window(character: String = characters_reference[current_status_char_reference]):
 	var current: Character = CharacterManager.current_characters[character]
 	status_char_portrait.texture = current.char_portrait
 	status_name.text = current.char_name
@@ -146,6 +173,7 @@ func load_status_window(character: String = characters_reference[current_char_re
 	defense.text = "Defense: {}".format({"" : current.defense})
 	magic_attack.text = "M.Atk: {}".format({"" : current.magic_off})
 	magic_defense.text = "M.Def: {}".format({"" : current.magic_def})
+	dodge.text = "Dodge: {}".format({"" : current.dodge})
 	stamina.text = "Stamina: {}".format({"" : current.max_stamina})
 	speed.text = "Speed: {}".format({"" : current.speed})
 	strength.text = "Strength: {}".format({"" : current.strength})
@@ -167,9 +195,71 @@ func load_status_window(character: String = characters_reference[current_char_re
 			
 
 func _on_equip_pressed():
+	current_equip_char_reference = 0
 	close_all_windows()
 	is_okay_to_exit = false
 	equipment.visible = true
+	load_equip_window()
+	
+	
+func load_equip_window(character: String = characters_reference[current_equip_char_reference]):
+	var current: Character = CharacterManager.current_characters[character]
+	equip_char_portrait.texture = current.char_portrait
+	base_atk.text = "Atk: {}".format({"" : current.attack})
+	base_def.text = "Def: {}".format({"" : current.defense})
+	base_mag_atk.text = "M.Atk: {}".format({"" : current.magic_off})
+	base_mag_def.text = "M.Def: {}".format({"" : current.magic_def})
+	base_dodge.text = "Dodge: {}".format({"" : current.dodge})
+	
+	var equip_window_equipment: Array = [right_label, left_label, head_label, armor_label, feet_label, acc_label]
+	var index = 0
+	for item in current.equipment:
+		if current.equipment[item] != null:
+			equip_window_equipment[index].text = "{}".format({"" : current.equipment[item].item_name})
+			index += 1
+		elif current.equipment[item] == null:
+			equip_window_equipment[index].text = ""
+			index += 1
+	
+
+func _on_switch_equip_left_pressed():
+	e_inventory.visible = false
+	current_equip_char_reference -= 1
+	if current_equip_char_reference < 0:
+		current_equip_char_reference = characters_reference.size() - 1
+	load_equip_window()
+
+
+func _on_switch_equip_right_pressed():
+	e_inventory.visible = false
+	current_equip_char_reference += 1
+	if current_equip_char_reference > characters_reference.size() - 1:
+		current_equip_char_reference = 0
+	load_equip_window()
+
+
+func _on_left_button_pressed():
+	e_inventory.visible = true
+
+
+func _on_head_button_pressed():
+	e_inventory.visible = true
+
+
+func _on_feet_button_pressed():
+	e_inventory.visible = true
+
+
+func _on_right_button_pressed():
+	e_inventory.visible = true
+
+
+func _on_armor_button_pressed():
+	e_inventory.visible = true
+
+
+func _on_acc_button_pressed():
+	e_inventory.visible = true
 
 
 func _on_magic_pressed():
@@ -198,6 +288,7 @@ func close_all_windows():
 	settings.visible = false
 	save.visible = false
 	status.visible = false
+	e_inventory.visible = false
 
 
 func build_inventory_list():
@@ -212,5 +303,8 @@ func build_inventory_list():
 		add_item.quantity.text = str(item[1])
 		add_item.sell_price = item[0].sell_price
 		add_item.description = item[0].item_description
+
+
+
 
 

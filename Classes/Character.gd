@@ -24,6 +24,7 @@ var stamina: int
 @export var strength: int 
 @export var intellect: int 
 @export var agility: int 
+@export var speed: int
 
 
 
@@ -48,7 +49,7 @@ var attack: int
 var defense: int
 var magic_off: int
 var magic_def: int
-var speed: int
+var dodge: int
 
 
 

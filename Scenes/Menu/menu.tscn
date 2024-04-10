@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bn0vm188a74rt" path="res://Assets/UIassets/Pixelart Graphical User Interface/User Interface 01/Inventory_9slices_06.png" id="4_66hqg"]
 [ext_resource type="Texture2D" uid="uid://4j54mr7nrpmf" path="res://tf_char1.png" id="5_w4u45"]
 [ext_resource type="Texture2D" uid="uid://hstjmqxrqtqp" path="res://Assets/UIassets/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Selectors/Minifantasy_GuiSelectors.png" id="6_k01eu"]
-[ext_resource type="Texture2D" uid="uid://co0gaptfs50cl" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 006.png" id="7_su8lg"]
+[ext_resource type="PackedScene" uid="uid://c00my64eynldr" path="res://Scenes/Menu/equip_inv_button.tscn" id="7_yq6r0"]
 
 [sub_resource type="Theme" id="Theme_72u4k"]
 
@@ -297,6 +297,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="SwitchStatusLeft" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_4n8sw")
@@ -308,6 +309,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SwitchStatusRight" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_n25lo")
@@ -344,6 +346,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "M.Def: 200"
 
+[node name="Dodge" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "M.Def: 200"
+
+[node name="Strength" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Str: 77"
+
 [node name="Stamina" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
@@ -353,11 +365,6 @@ text = "Stamina: 45"
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Speed: 99"
-
-[node name="Strength" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "Str: 77"
 
 [node name="Agility" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/StatusBottomContainer/Stats"]
 layout_mode = 2
@@ -444,7 +451,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = SubResource("Theme_f3exo")
 
-[node name="CharPortrait" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Panel"]
+[node name="EquipCharPortrait" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Panel"]
 custom_minimum_size = Vector2(110, 110)
 layout_mode = 0
 offset_left = 6.0
@@ -484,28 +491,33 @@ text = "Dodge: 25"
 [node name="BonusIndicators" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+[node name="Indicator1" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_vdmqy")
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+[node name="Indicator2" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_vdmqy")
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+[node name="Indicator3" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_vdmqy")
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+[node name="indicator4" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_vdmqy")
 
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+[node name="Indicator5" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BonusIndicators"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_vdmqy")
@@ -516,33 +528,29 @@ size_flags_horizontal = 3
 
 [node name="BonusAtk" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
 layout_mode = 2
-text = "75"
 horizontal_alignment = 1
 
 [node name="BonusDef" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
 layout_mode = 2
-text = "10"
 horizontal_alignment = 1
 
 [node name="BonusMagAtk" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
 layout_mode = 2
-text = "18"
 horizontal_alignment = 1
 
 [node name="BonusMagDef" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
 layout_mode = 2
-text = "19"
 horizontal_alignment = 1
 
 [node name="BonusDodge" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
 layout_mode = 2
-text = "40"
 horizontal_alignment = 1
 
 [node name="SeparatorAndSwitch" type="HBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SwitchStatusLeft" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch"]
+[node name="SwitchEquipLeft" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_4n8sw")
@@ -553,7 +561,8 @@ stretch_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SwitchStatusRight" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch"]
+[node name="SwitchEquipRight" type="TextureButton" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_n25lo")
@@ -577,6 +586,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
 [node name="LeftButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -584,6 +594,7 @@ size_flags_vertical = 3
 text = "Left "
 
 [node name="HeadButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -591,6 +602,7 @@ size_flags_vertical = 3
 text = "Head"
 
 [node name="FeetButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -630,6 +642,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
 [node name="RightButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -637,6 +650,7 @@ size_flags_vertical = 3
 text = "Right "
 
 [node name="ArmorButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -644,6 +658,7 @@ size_flags_vertical = 3
 text = "Armor"
 
 [node name="AccButton" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -693,6 +708,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="EInventory" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_rhqla")
@@ -718,41 +734,8 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="Button" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(180, 30)
+[node name="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("7_yq6r0")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "Leather Armor"
-icon = ExtResource("7_su8lg")
-flat = true
-
-[node name="Button2" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(180, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "Leather Armor"
-icon = ExtResource("7_su8lg")
-flat = true
-
-[node name="Button3" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(180, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "Leather Armor"
-icon = ExtResource("7_su8lg")
-flat = true
-
-[node name="Button4" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(180, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 24
-text = "Leather Armor"
-icon = ExtResource("7_su8lg")
-flat = true
 
 [node name="Settings" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
 visible = false
@@ -850,8 +833,14 @@ text = "Save"
 
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons/SwitchStatusLeft" to="." method="_on_switch_status_left_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons/SwitchStatusRight" to="." method="_on_switch_status_right_pressed"]
-[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch/SwitchStatusLeft" to="." method="_on_switch_status_left_pressed"]
-[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch/SwitchStatusRight" to="." method="_on_switch_status_right_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch/SwitchEquipLeft" to="." method="_on_switch_equip_left_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch/SwitchEquipRight" to="." method="_on_switch_equip_right_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer/HeadButton" to="." method="_on_head_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer/FeetButton" to="." method="_on_feet_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2/ArmorButton" to="." method="_on_armor_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2/AccButton" to="." method="_on_acc_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Items" to="." method="_on_items_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Status" to="." method="_on_status_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Equip" to="." method="_on_equip_pressed"]

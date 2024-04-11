@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Player
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = $AnimationTree.get("parameters/playback")

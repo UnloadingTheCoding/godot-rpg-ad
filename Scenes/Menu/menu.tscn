@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bji30meh012ld"]
+[gd_scene load_steps=31 format=3 uid="uid://bji30meh012ld"]
 
 [ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="1_act3r"]
 [ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_q7ce3"]
@@ -55,9 +55,47 @@ region = Rect2(43, 164, 5, 8)
 atlas = ExtResource("6_k01eu")
 region = Rect2(43, 148, 5, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vdmqy"]
-atlas = ExtResource("6_k01eu")
-region = Rect2(48, 276, 7, 8.29721)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s1655"]
+load_path = "res://.godot/imported/Minifantasy_GuiSelectors.png-b7c7a81e6ce5d7ee6cbd1d1d925a7526.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csbed"]
+atlas = SubResource("CompressedTexture2D_s1655")
+region = Rect2(48, 276, 7, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mo2tm"]
+load_path = "res://.godot/imported/Minifantasy_GuiSelectors.png-b7c7a81e6ce5d7ee6cbd1d1d925a7526.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_romnh"]
+atlas = SubResource("CompressedTexture2D_mo2tm")
+region = Rect2(48, 292, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20vgb"]
+atlas = SubResource("CompressedTexture2D_mo2tm")
+region = Rect2(48, 292, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl2qa"]
+atlas = SubResource("CompressedTexture2D_s1655")
+region = Rect2(48, 276, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_487ra"]
+atlas = SubResource("CompressedTexture2D_mo2tm")
+region = Rect2(48, 292, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi4km"]
+atlas = SubResource("CompressedTexture2D_s1655")
+region = Rect2(48, 276, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdhn7"]
+atlas = SubResource("CompressedTexture2D_mo2tm")
+region = Rect2(48, 292, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmekn"]
+atlas = SubResource("CompressedTexture2D_s1655")
+region = Rect2(48, 276, 7, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhyc7"]
+atlas = SubResource("CompressedTexture2D_mo2tm")
+region = Rect2(48, 292, 7, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqla"]
 bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
@@ -71,7 +109,17 @@ border_blend = true
 [sub_resource type="Theme" id="Theme_510k2"]
 Panel/styles/panel = SubResource("StyleBoxTexture_meh1i")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pltoo"]
+bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
 [node name="Menu" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_q7ce3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -413,6 +461,7 @@ theme_override_font_sizes/font_size = 28
 text = "Relic: "
 
 [node name="Equipment" type="Panel" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output"]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 15
@@ -499,66 +548,121 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
-[node name="Indicator1" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control"]
+[node name="GIndicator1" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_right = 20.0
 offset_bottom = 20.0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_vdmqy")
+texture = SubResource("AtlasTexture_csbed")
+
+[node name="RIndicator1" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_romnh")
 
 [node name="Control2" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
-[node name="Indicator2" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control2"]
+[node name="GIndicator2" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control2"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_csbed")
+
+[node name="RIndicator2" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control2"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_right = 20.0
 offset_bottom = 20.0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_vdmqy")
+texture = SubResource("AtlasTexture_20vgb")
 
 [node name="Control3" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
-[node name="Indicator3" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control3"]
+[node name="GIndicator3" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control3"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_right = 20.0
 offset_bottom = 20.0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_vdmqy")
+texture = SubResource("AtlasTexture_yl2qa")
+
+[node name="RIndicator3" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control3"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_487ra")
 
 [node name="Control4" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
-[node name="Indicator4" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control4"]
+[node name="GIndicator4" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control4"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_right = 20.0
 offset_bottom = 20.0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_vdmqy")
+texture = SubResource("AtlasTexture_hi4km")
+
+[node name="RIndicator4" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control4"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_wdhn7")
 
 [node name="Control5" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
-[node name="Indicator5" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control5"]
+[node name="GIndicator5" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control5"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_right = 20.0
 offset_bottom = 20.0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_vdmqy")
+texture = SubResource("AtlasTexture_qmekn")
+
+[node name="RIndicator5" type="TextureRect" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control5"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_bhyc7")
 
 [node name="Bonus" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats"]
 layout_mode = 2
@@ -570,7 +674,6 @@ horizontal_alignment = 1
 
 [node name="BonusDef" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
 layout_mode = 2
-text = "30"
 horizontal_alignment = 1
 
 [node name="BonusMagAtk" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus"]
@@ -866,6 +969,66 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Save"
 
+[node name="EquipConfirm" type="Panel" parent="MarginContainer"]
+visible = false
+z_index = 6
+layout_mode = 2
+theme = SubResource("Theme_tmdar")
+
+[node name="EquipConfirmBox" type="Panel" parent="MarginContainer/EquipConfirm"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.5
+offset_top = -50.0
+offset_right = -1.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_act3r")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pltoo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EquipConfirm/EquipConfirmBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Holder" type="VBoxContainer" parent="MarginContainer/EquipConfirm/EquipConfirmBox/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/EquipConfirm/EquipConfirmBox/MarginContainer/Holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Equip?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/EquipConfirm/EquipConfirmBox/MarginContainer/Holder"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="YesEquip" type="Button" parent="MarginContainer/EquipConfirm/EquipConfirmBox/MarginContainer/Holder/HBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+text = "Yes"
+
+[node name="CancelEquip" type="Button" parent="MarginContainer/EquipConfirm/EquipConfirmBox/MarginContainer/Holder/HBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+text = "Cancel"
+
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons/SwitchStatusLeft" to="." method="_on_switch_status_left_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Status/MarginContainer/VBoxContainer/SwitchButtons/SwitchStatusRight" to="." method="_on_switch_status_right_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/SeparatorAndSwitch/SwitchEquipLeft" to="." method="_on_switch_equip_left_pressed"]
@@ -882,3 +1045,5 @@ text = "Save"
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Magic" to="." method="_on_magic_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="MarginContainer/EquipConfirm/EquipConfirmBox/MarginContainer/Holder/HBoxContainer/YesEquip" to="." method="_on_yes_equip_pressed"]
+[connection signal="pressed" from="MarginContainer/EquipConfirm/EquipConfirmBox/MarginContainer/Holder/HBoxContainer/CancelEquip" to="." method="_on_cancel_equip_pressed"]

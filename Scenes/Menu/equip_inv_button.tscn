@@ -11,3 +11,5 @@ text = "Leather Armor"
 icon = ExtResource("1_5vlse")
 flat = true
 script = ExtResource("2_ugj04")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

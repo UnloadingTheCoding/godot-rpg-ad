@@ -49,12 +49,12 @@ var e_dodge
 	
 #BattleStats
 enum combat_stats {ATTACK, DEFENSE, MAGIC_OFF, MAGIC_DEF, DODGE}
-var c_stats_holder: Array = [attack, defense, magic_off, dodge]
 var attack: int
 var defense: int
 var magic_off: int
 var magic_def: int
 var dodge: int
+
 
 
 
@@ -80,6 +80,7 @@ func update_stats():
 	magic_off = m_weapon + intellect
 	magic_def = m_armor + int(intellect / 2)
 	dodge = e_dodge + int(speed / 2)
+		
 			
 func equip(key: String, item):
 	equipment[key] = item
@@ -94,3 +95,7 @@ func unequip(key: String):
 func gain_level():
 	if level < 100:
 		level += 1
+
+
+func get_stats():
+	return [attack, defense, magic_off, magic_def, dodge]

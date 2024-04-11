@@ -38,6 +38,9 @@ var current_status_char_reference: int = 0
 
 @onready var equipment = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment
 # Equip nodes
+var equip_now: bool = false
+# item to equip is [Item_location, ID]
+var item_to_equip: Array
 var equip_item = preload("res://Scenes/Menu/equip_inv_button.tscn")
 @onready var e_inventory = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipInventory/EInventory
 var current_equip_char_reference: int = 0
@@ -49,23 +52,33 @@ var current_equip_char_reference: int = 0
 @onready var base_mag_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseMagDef
 @onready var base_dodge = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/BaseStats/BaseDodge
 
-@onready var indicator_1 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control/Indicator1
-@onready var indicator_2 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control2/Indicator2
-@onready var indicator_3 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control3/Indicator3
-@onready var indicator_4 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control4/Indicator4
-@onready var indicator_5 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control5/Indicator5
-var indicators: Array = [indicator_1, indicator_2, indicator_3, indicator_4, indicator_5]
+@onready var g_indicator_1 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control/GIndicator1
+@onready var g_indicator_2 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control2/GIndicator2
+@onready var g_indicator_3 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control3/GIndicator3
+@onready var g_indicator_4 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control4/GIndicator4
+@onready var g_indicator_5 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control5/GIndicator5
+
+@onready var r_indicator_1 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control/RIndicator1
+@onready var r_indicator_2 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control2/RIndicator2
+@onready var r_indicator_3 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control3/RIndicator3
+@onready var r_indicator_4 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control4/RIndicator4
+@onready var r_indicator_5 = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/MarginContainer/BonusIndicators/Control5/RIndicator5
 
 @onready var bonus_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusAtk
 @onready var bonus_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusDef
 @onready var bonus_mag_atk = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusMagAtk
 @onready var bonus_mag_def = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusMagDef
+@onready var bonus_dodge = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquipStats/Bonus/BonusDodge
+
+
 @onready var left_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/LeftLabel
 @onready var head_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/HeadLabel
 @onready var feet_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/FeetLabel
 @onready var right_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/RightLabel
 @onready var armor_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/ArmorLabel
 @onready var acc_label = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/AccLabel
+
+@onready var equip_confirm = $MarginContainer/EquipConfirm
 
 
 @onready var magic = $MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Magic
@@ -101,6 +114,7 @@ func on_close_menu():
 
 		
 func is_back_pressed():
+	close_equip_confirm()
 	close_all_windows()
 	is_okay_to_exit = true
 	characters.visible = true
@@ -233,6 +247,8 @@ func _on_switch_equip_left_pressed():
 	if current_equip_char_reference < 0:
 		current_equip_char_reference = characters_reference.size() - 1
 	load_equip_window()
+	close_indicators()
+	clear_bonuses()
 
 
 func _on_switch_equip_right_pressed():
@@ -241,6 +257,8 @@ func _on_switch_equip_right_pressed():
 	if current_equip_char_reference > characters_reference.size() - 1:
 		current_equip_char_reference = 0
 	load_equip_window()
+	close_indicators()
+	clear_bonuses()
 
 
 func build_equip_list(equip_position: String):
@@ -252,9 +270,12 @@ func build_equip_list(equip_position: String):
 				var add_item = equip_item.instantiate()
 				equip_item_container.add_child(add_item)
 				
+				add_item.id = item[0].id
 				add_item.text = item[0].item_name
 				add_item.icon = item[0].item_texture
-			
+				add_item.equip_position = item[0].equip_position
+				add_item.stat_bonus = item[0].stat_bonus
+
 
 func clear_build_list():
 	for item in equip_item_container.get_children():
@@ -262,47 +283,125 @@ func clear_build_list():
 		item.queue_free()
 
 
-func update_stat_bonus(indicator: int, bonuses: Array, position: String):
+func close_indicators():
+	var g_indicators: Array = [g_indicator_1, g_indicator_2, g_indicator_3, g_indicator_4, g_indicator_5]	
+	var r_indicators: Array = [r_indicator_1, r_indicator_2, r_indicator_3, r_indicator_4, r_indicator_5]
+	
+	for indi in g_indicators:
+		indi.visible = false
+	for indi in r_indicators:
+		indi.visible = false
+
+
+func clear_bonuses():
+	var bonus_holder: Array = [bonus_atk, bonus_def, bonus_mag_atk, bonus_mag_def, bonus_dodge]
+	for bonus in bonus_holder:
+		bonus.visible = false
+
+
+func update_stat_bonus(bonuses: Array, position: String):
+	var bonus_holder: Array = [bonus_atk, bonus_def, bonus_mag_atk, bonus_mag_def, bonus_dodge]
+	var g_indicators: Array = [g_indicator_1, g_indicator_2, g_indicator_3, g_indicator_4, g_indicator_5]
+	var r_indicators: Array = [r_indicator_1, r_indicator_2, r_indicator_3, r_indicator_4, r_indicator_5]
+	
 	var current: Character = CharacterManager.current_characters[characters_reference[current_equip_char_reference]]
+	var current_char_stats = current.get_stats()
 	if current.equipment[position] != null:
 		for index in range(current.equipment[position].stat_bonus.size()):
-			if current.equipment[position].stat_bonus[index] < bonuses[index]:
-				pass
-
+			var current_item_bonus = current.equipment[position].stat_bonus[index]
+			if current_item_bonus < bonuses[index]:
+				g_indicators[index].visible = true
+				bonus_holder[index].visible = true
+				bonus_holder[index].text = str(current_char_stats[index] - current_item_bonus + bonuses[index])
+			elif current_item_bonus > bonuses[index]:
+				bonus_holder[index].visible = true
+				bonus_holder[index].text = str(current_char_stats[index] - current_item_bonus + bonuses[index])
+				r_indicators[index].visible = true
+			else:
+				bonus_holder[index].visible = true
+				bonus_holder[index].text = str(current_char_stats[index])
+	else :
+		for index in range(bonuses.size()):
+			if bonuses[index] > 0:
+				g_indicators[index].visible = true
+				bonus_holder[index].visible = true
+				bonus_holder[index].text = str(current_char_stats[index] + bonuses[index])
+			elif bonuses[index] < 0:
+				r_indicators[index].visible = true
+				bonus_holder[index].visible = true
+				bonus_holder[index].text = str(current_char_stats[index] + bonuses[index])
+			else:
+				bonus_holder[index].visible = true
+				bonus_holder[index].text = str(current_char_stats[index])
+				
+				
 func _on_left_button_pressed():
 	e_inventory.visible = true
+	close_indicators()
+	clear_bonuses()
 	clear_build_list()
 	build_equip_list("left")
 
 
 func _on_head_button_pressed():
 	e_inventory.visible = true
+	close_indicators()
+	clear_bonuses()
 	clear_build_list()
 	build_equip_list("head")
 
 
 func _on_feet_button_pressed():
 	e_inventory.visible = true
+	close_indicators()
+	clear_bonuses()
 	clear_build_list()
 	build_equip_list("feet")
 
 
 func _on_right_button_pressed():
 	e_inventory.visible = true
+	close_indicators()
+	clear_bonuses()
 	clear_build_list()
 	build_equip_list("right")
 
 
 func _on_armor_button_pressed():
 	e_inventory.visible = true
+	close_indicators()
+	clear_bonuses()
 	clear_build_list()
-	build_equip_list("armor")
+	build_equip_list("body")
 
 
 func _on_acc_button_pressed():
 	e_inventory.visible = true
+	close_indicators()
+	clear_bonuses()
 	clear_build_list()
 	build_equip_list("acc")
+	
+	
+func _on_cancel_equip_pressed():
+	close_indicators()
+	clear_bonuses()
+	close_equip_confirm()
+
+
+func _on_yes_equip_pressed():
+	var current: Character = CharacterManager.current_characters[characters_reference[current_equip_char_reference]]
+	current.equip(item_to_equip[0], InventoryMasterList.inventory[item_to_equip[1]])
+	close_equip_confirm()
+	close_indicators()
+	clear_bonuses()
+	load_equip_window()
+	item_to_equip = []
+
+
+func close_equip_confirm():
+	equip_now = false
+	equip_confirm.visible = false
 
 
 func _on_magic_pressed():
@@ -346,8 +445,5 @@ func build_inventory_list():
 		add_item.quantity.text = str(item[1])
 		add_item.sell_price = item[0].sell_price
 		add_item.description = item[0].item_description
-
-
-
 
 

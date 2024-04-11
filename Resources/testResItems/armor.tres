@@ -31,6 +31,6 @@ item_texture = ExtResource("1_6dkh6")
 item_description = "Leathery Protection"
 sell_price = 500
 item_type = "equip"
-equip_position = "armor"
+equip_position = "body"
 item_category = "armor"
 stat_bonus = Array[int]([0, 20, 0, 0, 5])

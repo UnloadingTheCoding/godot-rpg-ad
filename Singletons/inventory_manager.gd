@@ -25,6 +25,8 @@ func get_item(id: String, quantity: int, start: int = 0):
 
 
 func add_item(item, quantity: int):
+	if item == null:
+		return
 	var item_to_find = get_item(item.id, quantity)
 	if item_to_find != null:
 		increase_item(item_to_find, quantity)
@@ -48,10 +50,13 @@ func increase_item(item: int, amount: int):
 		inventory[item][1] = 99
 		add_item(inventory[item][0], difference)
 	
+	
 func decrease_item(item: int, amount: int):
 	var quantity: int = inventory[item][1] 
-	if (quantity - amount) >= 0:
+	if (quantity - amount) >= 1:
 		inventory[item][1] -= amount
+	else:
+		remove_item(item)
 	
 	
 # Gold Methods

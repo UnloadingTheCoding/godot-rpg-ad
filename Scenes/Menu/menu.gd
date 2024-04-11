@@ -101,6 +101,7 @@ func _process(_delta):
 		
 func on_open_menu():
 	if Input.is_action_just_pressed("inventory") and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
+		SignalManager.change_game_state.emit(GameManager.game_state.GAME_MENU)
 		self.visible = true
 		is_okay_to_exit = true
 		get_tree().paused = true
@@ -108,7 +109,8 @@ func on_open_menu():
 
 		
 func on_close_menu():
-	if is_okay_to_exit and GameManager.current_state == GameManager.game_state.GAME_NORMAL:
+	if is_okay_to_exit and GameManager.current_state == GameManager.game_state.GAME_MENU:
+		SignalManager.change_game_state.emit(GameManager.previous_state)
 		self.visible = false
 		get_tree().paused = false
 
@@ -337,6 +339,7 @@ func update_stat_bonus(bonuses: Array, position: String):
 				
 func _on_left_button_pressed():
 	e_inventory.visible = true
+	equip_now = false
 	close_indicators()
 	clear_bonuses()
 	clear_build_list()
@@ -345,6 +348,7 @@ func _on_left_button_pressed():
 
 func _on_head_button_pressed():
 	e_inventory.visible = true
+	equip_now = false
 	close_indicators()
 	clear_bonuses()
 	clear_build_list()
@@ -353,6 +357,7 @@ func _on_head_button_pressed():
 
 func _on_feet_button_pressed():
 	e_inventory.visible = true
+	equip_now = false
 	close_indicators()
 	clear_bonuses()
 	clear_build_list()
@@ -361,6 +366,7 @@ func _on_feet_button_pressed():
 
 func _on_right_button_pressed():
 	e_inventory.visible = true
+	equip_now = false
 	close_indicators()
 	clear_bonuses()
 	clear_build_list()
@@ -369,6 +375,7 @@ func _on_right_button_pressed():
 
 func _on_armor_button_pressed():
 	e_inventory.visible = true
+	equip_now = false
 	close_indicators()
 	clear_bonuses()
 	clear_build_list()
@@ -377,6 +384,7 @@ func _on_armor_button_pressed():
 
 func _on_acc_button_pressed():
 	e_inventory.visible = true
+	equip_now = false
 	close_indicators()
 	clear_bonuses()
 	clear_build_list()
@@ -392,10 +400,13 @@ func _on_cancel_equip_pressed():
 func _on_yes_equip_pressed():
 	var current: Character = CharacterManager.current_characters[characters_reference[current_equip_char_reference]]
 	current.equip(item_to_equip[0], InventoryMasterList.inventory[item_to_equip[1]])
+	InventoryManager.decrease_item(InventoryManager.get_item(item_to_equip[1], 1), 1)
 	close_equip_confirm()
 	close_indicators()
 	clear_bonuses()
 	load_equip_window()
+	clear_build_list()
+	build_equip_list(item_to_equip[0])
 	item_to_equip = []
 
 
@@ -447,3 +458,31 @@ func build_inventory_list():
 		add_item.description = item[0].item_description
 
 
+func equip_menu_unequip(label, position: String):
+	if label.text != null:
+		var current: Character = CharacterManager.current_characters[characters_reference[current_equip_char_reference]]
+		current.unequip(position)
+		load_equip_window()
+
+
+func _on_left_label_pressed():
+	equip_menu_unequip(left_label, "left")
+
+func _on_head_label_pressed():
+	equip_menu_unequip(head_label, "head")
+
+
+func _on_feet_label_pressed():
+	equip_menu_unequip(feet_label, "feet")
+
+
+func _on_right_label_pressed():
+	equip_menu_unequip(right_label, "right")
+
+
+func _on_armor_label_pressed():
+	equip_menu_unequip(armor_label, "body")
+
+
+func _on_acc_label_pressed():
+	equip_menu_unequip(acc_label, "acc")

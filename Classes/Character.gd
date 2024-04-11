@@ -35,7 +35,7 @@ var equipment: Dictionary = {
 	"head" : null,
 	"body" : null,
 	"feet" : null,
-	"special" : null
+	"acc" : null
 }
 
 
@@ -88,6 +88,7 @@ func equip(key: String, item):
 	
 	
 func unequip(key: String):
+	InventoryManager.add_item(equipment[key], 1)
 	equipment[key] = null
 	update_stats()
 	

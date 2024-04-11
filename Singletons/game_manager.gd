@@ -9,7 +9,7 @@ var player_destination: String = "player_start"
 
 var current_state = game_state.TITLESCREEN
 var previous_state
-enum game_state {TITLESCREEN, GAME_NORMAL, GAME_CUTSCENE, GAME_BATTLE, GAME_SHOP, GAME_WARNING, GAME_DIALOG}
+enum game_state {TITLESCREEN, GAME_NORMAL, GAME_CUTSCENE, GAME_BATTLE, GAME_SHOP, GAME_WARNING, GAME_DIALOG, GAME_MENU}
 
 
 # Called when the node enters the scene tree for the first time.

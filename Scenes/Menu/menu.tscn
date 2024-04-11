@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bji30meh012ld"]
+[gd_scene load_steps=33 format=3 uid="uid://bji30meh012ld"]
 
 [ext_resource type="Theme" uid="uid://bj3ryenfgg5p6" path="res://UI.tres" id="1_act3r"]
 [ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_q7ce3"]
@@ -96,6 +96,10 @@ region = Rect2(48, 276, 7, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhyc7"]
 atlas = SubResource("CompressedTexture2D_mo2tm")
 region = Rect2(48, 292, 7, 8)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5b71h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1gyj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhqla"]
 bg_color = Color(0.113725, 0.262745, 0.654902, 0.882353)
@@ -756,26 +760,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="LeftLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
+[node name="LeftLabel" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
 custom_minimum_size = Vector2(1, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5b71h")
 
-[node name="HeadLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
+[node name="HeadLabel" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
 custom_minimum_size = Vector2(1, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5b71h")
 
-[node name="FeetLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
+[node name="FeetLabel" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1"]
 custom_minimum_size = Vector2(1, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5b71h")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
 layout_mode = 2
@@ -811,26 +812,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="RightLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
+[node name="RightLabel" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
 custom_minimum_size = Vector2(1, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w1gyj")
 
-[node name="ArmorLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
+[node name="ArmorLabel" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
 custom_minimum_size = Vector2(1, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w1gyj")
 
-[node name="AccLabel" type="Label" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
+[node name="AccLabel" type="Button" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2"]
 custom_minimum_size = Vector2(1, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w1gyj")
 
 [node name="Spacer2" type="Control" parent="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems"]
 layout_mode = 2
@@ -1036,9 +1034,15 @@ text = "Cancel"
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer/HeadButton" to="." method="_on_head_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer/FeetButton" to="." method="_on_feet_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/LeftLabel" to="." method="_on_left_label_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/HeadLabel" to="." method="_on_head_label_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels1/FeetLabel" to="." method="_on_feet_label_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2/RightButton" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2/ArmorButton" to="." method="_on_armor_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/VBoxContainer2/AccButton" to="." method="_on_acc_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/RightLabel" to="." method="_on_right_label_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/ArmorLabel" to="." method="_on_armor_label_pressed"]
+[connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Output/Equipment/MarginContainer/VBoxContainer/EquippedItems/EquipLabels2/AccLabel" to="." method="_on_acc_label_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Items" to="." method="_on_items_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Status" to="." method="_on_status_pressed"]
 [connection signal="pressed" from="MarginContainer/MainWindow/MarginContainer/HBoxContainer/Options/MarginContainer/HBoxContainer/Equip" to="." method="_on_equip_pressed"]

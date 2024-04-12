@@ -15,10 +15,11 @@ func get_inventory() -> Array:
 	return inventory
 
 
-func get_item(id: String, quantity: int, start: int = 0):
+func get_item(id: String, quantity: int, start: int = 0, limit: int = 98):
+	
 	for i in range(start, inventory.size()):
 		# check item ID [0] and quantity [1]
-		if inventory[i][0].id == id and inventory[i][1] <= 98:
+		if inventory[i][0].id == id and inventory[i][1] <= limit:
 			return i
 		elif (inventory[i][1] + quantity) > 99 and (i + 1) < (inventory.size() - 1):
 			continue
@@ -36,6 +37,7 @@ func add_item(item, quantity: int):
 
 	
 func remove_item(item: int):
+	print(item)
 	inventory.remove_at(item)
 	if inventory_size > 0:
 		inventory_size -= 1

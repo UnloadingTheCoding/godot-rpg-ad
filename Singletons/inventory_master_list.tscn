@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7u0yd573kp63"]
+[gd_scene load_steps=10 format=3 uid="uid://c7u0yd573kp63"]
 
 [ext_resource type="Script" path="res://Singletons/inventory_master_list.gd" id="1_d1ayj"]
 [ext_resource type="Resource" uid="uid://n7erkkpwxybn" path="res://Resources/testResItems/hp_potion.tres" id="2_8j8to"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://dspog5mja35g" path="res://Resources/testResItems/armor.tres" id="6_qs28p"]
 [ext_resource type="Resource" uid="uid://du7kkfw764s30" path="res://Resources/testResItems/relic.tres" id="7_t1kl6"]
 [ext_resource type="Resource" uid="uid://byy0q3y1vdyf" path="res://Resources/testResItems/combat_item.tres" id="8_02vp0"]
+[ext_resource type="Resource" uid="uid://h8n2bsjpcban" path="res://Resources/testResItems/light_sword.tres" id="9_newu3"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_d1ayj")
@@ -16,6 +17,7 @@ inventory = {
 "armor": ExtResource("6_qs28p"),
 "combat_item": ExtResource("8_02vp0"),
 "hp_potion": ExtResource("2_8j8to"),
+"light_sword": ExtResource("9_newu3"),
 "mp_potion": ExtResource("3_yjqvb"),
 "relic": ExtResource("7_t1kl6"),
 "sword": ExtResource("5_8tlv4")

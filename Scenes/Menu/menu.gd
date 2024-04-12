@@ -399,8 +399,10 @@ func _on_cancel_equip_pressed():
 
 func _on_yes_equip_pressed():
 	var current: Character = CharacterManager.current_characters[characters_reference[current_equip_char_reference]]
+	if current.equipment[item_to_equip[0]] != null:
+		current.unequip(item_to_equip[0])
 	current.equip(item_to_equip[0], InventoryMasterList.inventory[item_to_equip[1]])
-	InventoryManager.decrease_item(InventoryManager.get_item(item_to_equip[1], 1), 1)
+	InventoryManager.decrease_item(InventoryManager.get_item(item_to_equip[1], 1, 0, 99), 1)
 	close_equip_confirm()
 	close_indicators()
 	clear_bonuses()
@@ -467,6 +469,7 @@ func equip_menu_unequip(label, position: String):
 
 func _on_left_label_pressed():
 	equip_menu_unequip(left_label, "left")
+
 
 func _on_head_label_pressed():
 	equip_menu_unequip(head_label, "head")

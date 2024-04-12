@@ -6552,8 +6552,8 @@ position = Vector2(0, -27)
 
 [node name="ShopMenu" parent="." instance=ExtResource("6_oueti")]
 position = Vector2(328, 151)
-shop_list = Array[Array]([["hp_potion", 100], ["mp_potion", 500], ["armor", 1], ["sword", 800], ["antidote", 150], ["relic", 5000], ["combat_item", 700]])
+shop_list = Array[Array]([["antidote", 150], ["hp_potion", 100], ["mp_potion", 500], ["sword", 800], ["armor", 1000], ["light_sword", 100000], ["relic", 5000], ["combat_item", 700]])
 facing_direction = Vector2(0, -1)
-speech = Array[String](["Welcome to my shop.", "My best stuff!", "Whadya got for me?", "Thank ya!", "Here you go."])
+speech = Array[String](["123", "213", "213", "213", "123"])
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

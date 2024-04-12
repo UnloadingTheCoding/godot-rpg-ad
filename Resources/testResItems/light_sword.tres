@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EquipItem" load_steps=3 format=3 uid="uid://h8n2bsjpcban"]
+
+[ext_resource type="Texture2D" uid="uid://btxfbk7vw221g" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 014.png" id="1_ng40y"]
+[ext_resource type="Script" path="res://Classes/EquipItem.gd" id="2_62fl6"]
+
+[resource]
+script = ExtResource("2_62fl6")
+id = "light_sword"
+item_name = "Light Sword"
+item_texture = ExtResource("1_ng40y")
+item_description = "Sword of a thousand truths"
+sell_price = 50000
+item_type = "equip"
+equip_position = "right"
+item_category = "weapon"
+stat_bonus = Array[int]([75, 0, 0, 0, 0])

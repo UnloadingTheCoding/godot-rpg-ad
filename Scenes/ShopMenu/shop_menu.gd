@@ -173,7 +173,7 @@ func clear_description():
 
 func on_description_update(text):
 	description_label.text = text
-	total.text = str(shop_list[current_shop_item][1] * spin_box.value)
+	#total.text = str(shop_list[current_shop_item][1] * spin_box.value)
 	
 	
 func update_gold():
@@ -190,6 +190,7 @@ func clear_merchant_speech():
 
 func on_update_current_buy_sell_item_name(text):
 	buy_item_name.text = text
+	total.text = str(shop_list[current_shop_item][1] * spin_box.value)
 
 
 func _on_cancel_pressed():
@@ -211,7 +212,7 @@ func on_shop_sell_item_emitter(item_name ,price, quantity, pos):
 
 func update_sell_total():
 	total.text = str(spin_box.value * current_sell_item_price)
-
+	
 
 func _on_buy_sell_item_pressed():
 	if buy_sell_item.text == "Buy":
@@ -222,7 +223,7 @@ func _on_buy_sell_item_pressed():
 
 func buy_behavior():
 	var quantity = spin_box.value
-	if InventoryManager.gold >= int(total.text) and InventoryManager.inventory.size() != InventoryManager.INVENTORY_CAPACITY:
+	if InventoryManager.gold >= int(total.text) and InventoryManager.inventory.size() < InventoryManager.INVENTORY_CAPACITY:
 		var sold_amount = int(total.text)
 		InventoryManager.decrease_gold(sold_amount)
 		InventoryManager.add_item(InventoryMasterList.inventory[shop_list[current_shop_item][0]], quantity)
@@ -232,6 +233,11 @@ func buy_behavior():
 		SignalManager.warning.emit("Not enough gold!")
 		clear_description()
 		close_sell_window()
+	elif InventoryManager.inventory.size() == InventoryManager.INVENTORY_CAPACITY and InventoryManager.get_item(shop_list[current_shop_item][0], quantity) != null:
+		var sold_amount = int(total.text)
+		InventoryManager.decrease_gold(sold_amount)
+		InventoryManager.add_item(InventoryMasterList.inventory[shop_list[current_shop_item][0]], quantity)
+		update_merchant_speech(speech[speech_order.BUY])
 	else:
 		SignalManager.warning.emit("Inventory full!")
 		clear_description()

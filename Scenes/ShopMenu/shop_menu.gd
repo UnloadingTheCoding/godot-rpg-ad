@@ -250,7 +250,7 @@ func sell_behavior():
 		InventoryManager.increase_gold(current_sell_item_price * quantity)
 		current_sell_item_qty -= quantity
 		InventoryManager.decrease_item(current_item_pos, quantity)
-	if current_sell_item_qty == 0:
+	elif current_sell_item_qty == 0:
 		InventoryManager.remove_item(current_item_pos)
 		if sell_list_container.get_child_count() > 1:
 			build_sell_list()

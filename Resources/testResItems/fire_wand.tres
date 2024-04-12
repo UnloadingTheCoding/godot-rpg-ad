@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EquipItem" load_steps=3 format=3 uid="uid://kw1xuai0akjg"]
+
+[ext_resource type="Texture2D" uid="uid://p3t02ipp1knc" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 117.png" id="1_8cito"]
+[ext_resource type="Script" path="res://Classes/EquipItem.gd" id="2_3numb"]
+
+[resource]
+script = ExtResource("2_3numb")
+id = "fire_wand"
+item_name = "Fire Wand"
+item_texture = ExtResource("1_8cito")
+item_description = "Shoot Fyre Ballz"
+sell_price = 1000
+item_type = "equip"
+equip_position = "left"
+item_category = "m_weapon"
+stat_bonus = Array[int]([0, 0, 15, 0, 0])

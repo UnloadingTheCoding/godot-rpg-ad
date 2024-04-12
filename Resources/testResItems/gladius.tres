@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EquipItem" load_steps=3 format=3 uid="uid://2j2o1074rlkg"]
+
+[ext_resource type="Texture2D" uid="uid://cj7x0pqjttgii" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 009.png" id="1_qccjk"]
+[ext_resource type="Script" path="res://Classes/EquipItem.gd" id="2_ssqhr"]
+
+[resource]
+script = ExtResource("2_ssqhr")
+id = "gladius"
+item_name = "Gladius"
+item_texture = ExtResource("1_qccjk")
+item_description = "Short but sweet"
+sell_price = 450
+item_type = "equip"
+equip_position = "right"
+item_category = "weapon"
+stat_bonus = Array[int]([35, 0, 0, 0, 0])

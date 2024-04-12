@@ -206,12 +206,12 @@ func load_status_window(character: String = characters_reference[current_status_
 	for item in current.equipment:
 		if current.equipment[item] != null:
 			var old_text = status_equipment[index].text
-			old_text = old_text.erase(7, 10)
+			old_text = old_text.erase(7, 20)
 			status_equipment[index].text = old_text + "{}".format({"" : current.equipment[item].item_name})
 			index += 1
 		elif current.equipment[item] == null:
 			var old_text = status_equipment[index].text
-			status_equipment[index].text = old_text.erase(7, 10)
+			status_equipment[index].text = old_text.erase(7, 20)
 			index += 1
 			
 

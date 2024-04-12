@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EquipItem" load_steps=3 format=3 uid="uid://owutmlhve06j"]
+
+[ext_resource type="Texture2D" uid="uid://1drgfontiuy3" path="res://Assets/UIassets/Pixelart Graphical User Interface/Icons Style 4/Style 4 Icon 167.png" id="1_drqmm"]
+[ext_resource type="Script" path="res://Classes/EquipItem.gd" id="2_2cjh3"]
+
+[resource]
+script = ExtResource("2_2cjh3")
+id = "steel_armor"
+item_name = "Steel Armor"
+item_texture = ExtResource("1_drqmm")
+item_description = "Balls Of STEEEL"
+sell_price = 2000
+item_type = "equip"
+equip_position = "body"
+item_category = "armor"
+stat_bonus = Array[int]([0, 44, 0, 0, 0])

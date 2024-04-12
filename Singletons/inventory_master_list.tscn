@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7u0yd573kp63"]
+[gd_scene load_steps=13 format=3 uid="uid://c7u0yd573kp63"]
 
 [ext_resource type="Script" path="res://Singletons/inventory_master_list.gd" id="1_d1ayj"]
 [ext_resource type="Resource" uid="uid://n7erkkpwxybn" path="res://Resources/testResItems/hp_potion.tres" id="2_8j8to"]
@@ -9,6 +9,9 @@
 [ext_resource type="Resource" uid="uid://du7kkfw764s30" path="res://Resources/testResItems/relic.tres" id="7_t1kl6"]
 [ext_resource type="Resource" uid="uid://byy0q3y1vdyf" path="res://Resources/testResItems/combat_item.tres" id="8_02vp0"]
 [ext_resource type="Resource" uid="uid://h8n2bsjpcban" path="res://Resources/testResItems/light_sword.tres" id="9_newu3"]
+[ext_resource type="Resource" uid="uid://kw1xuai0akjg" path="res://Resources/testResItems/fire_wand.tres" id="10_u48rl"]
+[ext_resource type="Resource" uid="uid://2j2o1074rlkg" path="res://Resources/testResItems/gladius.tres" id="11_lp1ed"]
+[ext_resource type="Resource" uid="uid://owutmlhve06j" path="res://Resources/testResItems/steel_armor.tres" id="12_og6vb"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_d1ayj")
@@ -16,9 +19,12 @@ inventory = {
 "antidote": ExtResource("4_mc3rc"),
 "armor": ExtResource("6_qs28p"),
 "combat_item": ExtResource("8_02vp0"),
+"fire_wand": ExtResource("10_u48rl"),
+"gladius": ExtResource("11_lp1ed"),
 "hp_potion": ExtResource("2_8j8to"),
 "light_sword": ExtResource("9_newu3"),
 "mp_potion": ExtResource("3_yjqvb"),
 "relic": ExtResource("7_t1kl6"),
+"steel_armor": ExtResource("12_og6vb"),
 "sword": ExtResource("5_8tlv4")
 }

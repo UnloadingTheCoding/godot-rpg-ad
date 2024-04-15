@@ -1,6 +1,6 @@
 extends Node
 
-const INVENTORY_CAPACITY: int =  5
+const INVENTORY_CAPACITY: int =  50
 const GOLD_CAPACITY: int = 1000000
 
 var inventory: Array[Array]
@@ -35,7 +35,7 @@ func add_item(item, quantity: int):
 		inventory.append([item, quantity])
 		inventory_size += 1
 	else:
-		print("inventory full")
+		return 1
 
 	
 func remove_item(item: int):

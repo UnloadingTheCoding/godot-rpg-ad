@@ -80,7 +80,7 @@ func build_shop_list():
 		item.price.text = str(item_info_price)
 		item.item_id = ml_item.id
 		item.item_pos = shop_list.find(item_info)
-
+		print(shop_list_container.get_child_count())
 
 func build_sell_list():
 	var items: Array = InventoryManager.inventory
@@ -107,7 +107,7 @@ func open_menu():
 	if shop_menu_active == true and Input.is_action_just_pressed("action_button") and selling == false and GameManager.current_state == GameManager.game_state.GAME_NORMAL and facing_direction == player.last_known_direction:
 		SignalManager.change_game_state.emit(GameManager.game_state.GAME_SHOP)
 		shop_menu_container.visible = true
-		clear_description()
+		open_shop_window()
 		get_tree().paused = true
 		update_merchant_speech(speech[speech_order.GREETING])
 
@@ -142,7 +142,7 @@ func close_sell_window():
 	selling = false
 
 
-func _on_buy_pressed():
+func open_shop_window():
 	clear_description()
 	close_sell_window()
 	spin_box.max_value = 99
@@ -150,6 +150,10 @@ func _on_buy_pressed():
 	sell_inventory.visible = false
 	update_merchant_speech(speech[speech_order.SHOPPING])
 
+
+
+func _on_buy_pressed():
+	open_shop_window()
 
 func _on_sell_pressed():
 	clear_description()
@@ -173,7 +177,6 @@ func clear_description():
 
 func on_description_update(text):
 	description_label.text = text
-	#total.text = str(shop_list[current_shop_item][1] * spin_box.value)
 	
 	
 func update_gold():

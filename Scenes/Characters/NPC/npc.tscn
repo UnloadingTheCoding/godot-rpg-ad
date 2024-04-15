@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckqo01jmemk8a"]
+[gd_scene load_steps=5 format=3 uid="uid://ckqo01jmemk8a"]
 
+[ext_resource type="Script" path="res://Scenes/Characters/NPC/npc.gd" id="1_imr50"]
 [ext_resource type="Texture2D" uid="uid://dkmwkhju0gxv7" path="res://Assets/Characters/Character Sprites 3 - Fantasy Dreamland/Character Sprites 16x16/Character_081.png" id="1_pyhot"]
 [ext_resource type="PackedScene" uid="uid://b8v0m6cgexmt5" path="res://Scenes/DialogLines/dialog_lines.tscn" id="2_ysllq"]
 
@@ -7,8 +8,9 @@
 size = Vector2(10, 13)
 
 [node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_imr50")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="NPCTexture" type="Sprite2D" parent="."]
 texture = ExtResource("1_pyhot")
 hframes = 4
 vframes = 4

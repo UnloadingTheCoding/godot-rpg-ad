@@ -88,8 +88,9 @@ func equip(key: String, item):
 	
 	
 func unequip(key: String):
-	InventoryManager.add_item(equipment[key], 1)
-	equipment[key] = null
+	var is_full = InventoryManager.add_item(equipment[key], 1)
+	if is_full == null:
+		equipment[key] = null
 	update_stats()
 	
 	

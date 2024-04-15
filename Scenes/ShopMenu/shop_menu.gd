@@ -80,7 +80,7 @@ func build_shop_list():
 		item.price.text = str(item_info_price)
 		item.item_id = ml_item.id
 		item.item_pos = shop_list.find(item_info)
-		print(shop_list_container.get_child_count())
+		
 
 func build_sell_list():
 	var items: Array = InventoryManager.inventory

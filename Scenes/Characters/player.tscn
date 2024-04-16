@@ -221,6 +221,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 10
+motion_mode = 1
 script = ExtResource("1_nv6m3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -246,7 +247,7 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_kwlqh")
 anim_player = NodePath("../AnimationPlayer")
-parameters/idle/blend_position = Vector2(0.00256634, 0.0419161)
+parameters/idle/blend_position = Vector2(-0.284644, 0.303965)
 parameters/walk/blend_position = Vector2(0, 0)
 
 [node name="Menu" parent="." instance=ExtResource("4_orfbs")]

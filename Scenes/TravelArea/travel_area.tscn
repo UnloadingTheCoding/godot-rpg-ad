@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba5j5cvbpe51s"]
+
+[ext_resource type="Script" path="res://Scenes/TravelArea/travel_area.gd" id="1_vvn85"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqmev"]
+size = Vector2(120, 136)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_e2r6t"]
+vertices = PackedVector2Array(110, 118, -133, 115, -115, -96, 111, -96)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-124, -106, 121, -106, 120, 129, -144, 125)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="TravelArea" type="Area2D"]
+script = ExtResource("1_vvn85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 3)
+shape = SubResource("RectangleShape2D_iqmev")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_e2r6t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

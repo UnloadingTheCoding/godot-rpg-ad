@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcq2rtial72vf"]
+[gd_scene load_steps=48 format=3 uid="uid://bcq2rtial72vf"]
 
 [ext_resource type="Texture2D" uid="uid://d26qdrb6au0ec" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Ground_Tiles.png" id="1_pii2m"]
 [ext_resource type="Texture2D" uid="uid://86bsliyvott" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Village.png" id="2_6fdb2"]
@@ -6,11 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://c7tc0n3gvvgoo" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Water_Tiles.png" id="3_n5nac"]
 [ext_resource type="PackedScene" uid="uid://d35pknv1m1vhh" path="res://Scenes/Camera/main_cam.tscn" id="3_q4h08"]
 [ext_resource type="Texture2D" uid="uid://bf2kcfouyyca1" path="res://Assets/Environment/Grasslands Tileset - Fantasy Dreamland Reborn/16x16/FDR_Grasslands.png" id="5_60cet"]
-[ext_resource type="PackedScene" uid="uid://ckqo01jmemk8a" path="res://Scenes/Characters/NPC/npc.tscn" id="10_8crht"]
-[ext_resource type="Texture2D" uid="uid://ymxwegfibtbc" path="res://Assets/Characters/Character Sprites 1 - Fantasy Dreamland/Character Sprites 16x16/Character_004.png" id="11_fsioh"]
+[ext_resource type="Script" path="res://Scenes/Characters/NPC/npc.gd" id="11_f2xvx"]
 [ext_resource type="PackedScene" uid="uid://bji30meh012ld" path="res://Scenes/Menu/menu.tscn" id="12_6i82n"]
+[ext_resource type="Script" path="res://Scenes/TravelArea/travel_area.gd" id="12_horsd"]
+[ext_resource type="Texture2D" uid="uid://b7ijwpnpn8koh" path="res://Assets/Characters/Character Sprites 1 - Fantasy Dreamland/Character Sprites 16x16/Character_010.png" id="12_wr4hg"]
 [ext_resource type="Script" path="res://Scenes/Portal/Portal.gd" id="13_3o6oj"]
 [ext_resource type="PackedScene" uid="uid://bpq1dypvddmad" path="res://Scenes/Portal/portal.tscn" id="13_7v28a"]
+[ext_resource type="Texture2D" uid="uid://dkmwkhju0gxv7" path="res://Assets/Characters/Character Sprites 3 - Fantasy Dreamland/Character Sprites 16x16/Character_081.png" id="13_uf0mt"]
+[ext_resource type="PackedScene" uid="uid://b8v0m6cgexmt5" path="res://Scenes/DialogLines/dialog_lines.tscn" id="14_prlpl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_goyge"]
 texture = ExtResource("1_pii2m")
@@ -15156,6 +15159,243 @@ sources/4 = SubResource("TileSetAtlasSource_wsqy0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvo0"]
 size = Vector2(12, 4.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqmev"]
+size = Vector2(120, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j5td"]
+size = Vector2(10, 13)
+
+[sub_resource type="Animation" id="Animation_0ivum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCTexture:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e4qrw"]
+resource_name = "idle_down"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_hyrco"]
+resource_name = "idle_left"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_vo8dh"]
+resource_name = "idle_right"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_blkms"]
+resource_name = "idle_up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_e1u4i"]
+resource_name = "move_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_upo0i"]
+resource_name = "move_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_06cks"]
+resource_name = "move_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_cna87"]
+resource_name = "move_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_34cme"]
+_data = {
+"RESET": SubResource("Animation_0ivum"),
+"idle_down": SubResource("Animation_e4qrw"),
+"idle_left": SubResource("Animation_hyrco"),
+"idle_right": SubResource("Animation_vo8dh"),
+"idle_up": SubResource("Animation_blkms"),
+"move_down": SubResource("Animation_e1u4i"),
+"move_left": SubResource("Animation_upo0i"),
+"move_right": SubResource("Animation_06cks"),
+"move_up": SubResource("Animation_cna87")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6j5my"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cs2g5"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aisn4"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1cbhj"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_a18s8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6j5my")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_cs2g5")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_aisn4")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_1cbhj")
+blend_point_3/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_44qe2"]
+animation = &"move_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_weldh"]
+animation = &"move_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_278im"]
+animation = &"move_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_id4gn"]
+animation = &"move_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_uy7do"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_44qe2")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_weldh")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_278im")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_id4gn")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kclh8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tvjpk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7k76j"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6g1aj"]
+states/idle/node = SubResource("AnimationNodeBlendSpace2D_a18s8")
+states/idle/position = Vector2(383, 100)
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_uy7do")
+states/walk/position = Vector2(583, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kclh8"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_tvjpk"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_7k76j")]
+
 [node name="Test" type="Node"]
 
 [node name="TM16x16" type="TileMap" parent="."]
@@ -15170,7 +15410,7 @@ layer_2/tile_data = PackedInt32Array(2359341, 65537, 14, 2424877, 65537, 15, 235
 layer_3/name = "4"
 layer_3/y_sort_origin = 5
 layer_3/z_index = 100
-layer_3/tile_data = PackedInt32Array(2031661, 1310721, 9, 2031662, 1376257, 9, 2097193, 1048577, 10, 2097194, 1114113, 10, 2097195, 1179649, 10, 2097196, 1245185, 10, 2097197, 1310721, 10, 2097198, 1376257, 10, 2097199, 1441793, 10, 2097200, 1507329, 10, 2097201, 1572865, 10, 2097202, 1638401, 10, 1376297, 1835009, 9, 1441833, 1835009, 10, 1376298, 1900545, 9, 1441834, 1900545, 10, 1441835, 1966081, 10, 1441832, 1769473, 10, 1376281, 1310721, 22, 1376282, 1376257, 22, 1441813, 1048577, 23, 1441814, 1114113, 23, 1441815, 1179649, 23, 1441816, 1245185, 23, 1441817, 1310721, 23, 1441818, 1376257, 23, 1441819, 1441793, 23, 1441820, 1507329, 23, 1441821, 1572865, 23, 1441822, 1638401, 23, 1835033, 65537, 15, 1835034, 131073, 15, 1835035, 196609, 15)
+layer_3/tile_data = PackedInt32Array(2031661, 1310721, 9, 2031662, 1376257, 9, 2097193, 1048577, 10, 2097194, 1114113, 10, 2097195, 1179649, 10, 2097196, 1245185, 10, 2097197, 1310721, 10, 2097198, 1376257, 10, 2097199, 1441793, 10, 2097200, 1507329, 10, 2097201, 1572865, 10, 2097202, 1638401, 10, 1376297, 1835009, 9, 1441833, 1835009, 10, 1376298, 1900545, 9, 1441834, 1900545, 10, 1441835, 1966081, 10, 1441832, 1769473, 10, 1376281, 1310721, 22, 1376282, 1376257, 22, 1441813, 1048577, 23, 1441814, 1114113, 23, 1441815, 1179649, 23, 1441816, 1245185, 23, 1441817, 1310721, 23, 1441818, 1376257, 23, 1441819, 1441793, 23, 1441820, 1507329, 23, 1441821, 1572865, 23, 1441822, 1638401, 23)
 
 [node name="MainCam" parent="." instance=ExtResource("3_q4h08")]
 
@@ -15204,9 +15444,54 @@ shadow_enabled = true
 shadow_color = Color(0.247059, 0.247059, 0.247059, 0)
 texture_scale = 0.25
 
-[node name="NPC" parent="." instance=ExtResource("10_8crht")]
-position = Vector2(549, 510)
-NPCSprite = ExtResource("11_fsioh")
-speed = 50
+[node name="TravelArea" type="Area2D" parent="."]
+position = Vector2(528, 496)
+script = ExtResource("12_horsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TravelArea"]
+position = Vector2(-12, -44)
+shape = SubResource("RectangleShape2D_iqmev")
+
+[node name="NPC" type="CharacterBody2D" parent="." groups=["npc"]]
+position = Vector2(512, 472)
+disable_mode = 1
+motion_mode = 1
+slide_on_ceiling = false
+platform_on_leave = 2
+script = ExtResource("11_f2xvx")
+NPCSprite = ExtResource("12_wr4hg")
+speed = 40
+
+[node name="NPCTexture" type="Sprite2D" parent="NPC"]
+texture = ExtResource("13_uf0mt")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_5j5td")
+
+[node name="DialogLines" parent="NPC" instance=ExtResource("14_prlpl")]
+lines = PackedStringArray("....", "What do you want?")
+
+[node name="Anim" type="AnimationPlayer" parent="NPC"]
+libraries = {
+"": SubResource("AnimationLibrary_34cme")
+}
+
+[node name="move_timer" type="Timer" parent="NPC"]
+
+[node name="AnimationTree" type="AnimationTree" parent="NPC"]
+libraries = {
+"": SubResource("AnimationLibrary_34cme")
+}
+tree_root = SubResource("AnimationNodeStateMachine_6g1aj")
+anim_player = NodePath("../Anim")
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="NPC"]
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
+[connection signal="body_exited" from="TravelArea" to="TravelArea" method="_on_body_exited"]
+[connection signal="timeout" from="NPC/move_timer" to="NPC" method="_on_move_timer_timeout"]

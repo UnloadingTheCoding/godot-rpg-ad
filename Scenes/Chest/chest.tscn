@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm3gingxc0g7h"]
+
+[ext_resource type="Texture2D" uid="uid://b67o4qm3761cc" path="res://Assets/Environment/Caves Tileset - Fantasy Dreamland Reborn/16x16/FDR_Caves.png" id="1_60lbi"]
+[ext_resource type="Script" path="res://Scenes/Chest/chest.gd" id="1_dh0ar"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5fmag"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3w6e"]
+atlas = ExtResource("1_60lbi")
+region = Rect2(321, 34, 14, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vuq5"]
+size = Vector2(18, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbkq5"]
+size = Vector2(14, 13)
+
+[node name="Chest" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_5fmag")
+script = ExtResource("1_dh0ar")
+
+[node name="ChestSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("AtlasTexture_u3w6e")
+
+[node name="CollectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_6vuq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_xbkq5")
+
+[connection signal="body_entered" from="CollectArea" to="." method="_on_collect_area_body_entered"]

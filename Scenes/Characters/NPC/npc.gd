@@ -81,7 +81,7 @@ func _on_move_timer_timeout():
 		direction = move_stop
 		move_timer.wait_time = wait_time
 		move_timer.start()
-	if redirected:
+	elif redirected:
 		wait_time = randi_range(1,2)
 		var reverse = -1
 		was_moving = false
@@ -95,7 +95,8 @@ func _on_move_timer_timeout():
 			direction = get_direction()
 			while direction == last_known_direction:
 				direction = get_direction()
-		else: direction = last_known_direction * -1
+		else: 
+			direction = last_known_direction * -1
 		move_timer.wait_time = wait_time
 		move_timer.start()
 		last_known_direction = direction

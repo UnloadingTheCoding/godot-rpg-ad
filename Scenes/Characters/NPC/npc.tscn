@@ -239,10 +239,8 @@ states/walk/position = Vector2(583, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kclh8"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_tvjpk"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_7k76j")]
 
 [node name="NPC" type="CharacterBody2D" groups=["npc"]]
-disable_mode = 1
+collision_priority = 5.0
 motion_mode = 1
-slide_on_ceiling = false
-platform_on_leave = 2
 script = ExtResource("1_imr50")
 
 [node name="NPCTexture" type="Sprite2D" parent="."]

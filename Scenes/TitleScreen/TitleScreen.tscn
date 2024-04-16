@@ -116,7 +116,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "  Advent
+text = "Advent
 "
 label_settings = SubResource("LabelSettings_wq6dr")
 vertical_alignment = 1

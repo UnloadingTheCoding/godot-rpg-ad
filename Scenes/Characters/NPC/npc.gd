@@ -75,28 +75,28 @@ func get_movement():
 
 
 func _on_move_timer_timeout():
-	var wait_time = randi_range(2,4)
+	var wait_time = randi_range(2, 4)
 	if was_moving:
 		was_moving = false
 		direction = move_stop
 		move_timer.wait_time = wait_time
 		move_timer.start()
 	elif redirected:
-		wait_time = randi_range(1,2)
+		wait_time = randi_range(1, 2)
 		var reverse = -1
-		was_moving = false
+		was_moving = true
 		redirected = false
 		direction = last_known_direction * reverse
 		move_timer.wait_time = wait_time
 		move_timer.start()
 	else:
 		was_moving = true
-		if not is_outside_travel_area:
+		direction = get_direction()
+		while direction == last_known_direction:
 			direction = get_direction()
-			while direction == last_known_direction:
-				direction = get_direction()
-		else: 
-			direction = last_known_direction * -1
+			print(direction)
+		#else: 
+			#direction = last_known_direction * -1
 		move_timer.wait_time = wait_time
 		move_timer.start()
 		last_known_direction = direction
@@ -112,6 +112,7 @@ func redirect():
 	
 func is_RC_colliding():
 	if ray_cast_2d.is_colliding():
+		print("is colliding")
 		redirect()
 
 

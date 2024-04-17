@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bcq2rtial72vf"]
+[gd_scene load_steps=24 format=3 uid="uid://bcq2rtial72vf"]
 
 [ext_resource type="Texture2D" uid="uid://d26qdrb6au0ec" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Ground_Tiles.png" id="1_pii2m"]
 [ext_resource type="Texture2D" uid="uid://86bsliyvott" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Village.png" id="2_6fdb2"]
@@ -6,17 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://c7tc0n3gvvgoo" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Water_Tiles.png" id="3_n5nac"]
 [ext_resource type="PackedScene" uid="uid://d35pknv1m1vhh" path="res://Scenes/Camera/main_cam.tscn" id="3_q4h08"]
 [ext_resource type="Texture2D" uid="uid://bf2kcfouyyca1" path="res://Assets/Environment/Grasslands Tileset - Fantasy Dreamland Reborn/16x16/FDR_Grasslands.png" id="5_60cet"]
-[ext_resource type="Script" path="res://Scenes/Characters/NPC/npc.gd" id="11_2u3f0"]
 [ext_resource type="PackedScene" uid="uid://ckqo01jmemk8a" path="res://Scenes/Characters/NPC/npc.tscn" id="11_i1xtw"]
 [ext_resource type="PackedScene" uid="uid://bji30meh012ld" path="res://Scenes/Menu/menu.tscn" id="12_6i82n"]
 [ext_resource type="Script" path="res://Scenes/TravelArea/travel_area.gd" id="12_horsd"]
-[ext_resource type="Texture2D" uid="uid://techshtvmccc" path="res://Assets/Characters/Character Sprites 1 - Fantasy Dreamland/Character Sprites 16x16/Character_012.png" id="12_kbgoy"]
 [ext_resource type="Script" path="res://Scenes/Portal/Portal.gd" id="13_3o6oj"]
 [ext_resource type="PackedScene" uid="uid://bpq1dypvddmad" path="res://Scenes/Portal/portal.tscn" id="13_7v28a"]
-[ext_resource type="Texture2D" uid="uid://dkmwkhju0gxv7" path="res://Assets/Characters/Character Sprites 3 - Fantasy Dreamland/Character Sprites 16x16/Character_081.png" id="13_egic3"]
 [ext_resource type="PackedScene" uid="uid://bm3gingxc0g7h" path="res://Scenes/Chest/chest.tscn" id="13_xj0vs"]
-[ext_resource type="PackedScene" uid="uid://b8v0m6cgexmt5" path="res://Scenes/DialogLines/dialog_lines.tscn" id="14_rgpn8"]
-[ext_resource type="Texture2D" uid="uid://b41o53udxsv52" path="res://Assets/Characters/Character Sprites 2 - Fantasy Dreamland/Character Sprites 16x16/Character_070.png" id="17_1cghb"]
 [ext_resource type="Texture2D" uid="uid://t7f4inopxm6e" path="res://Assets/Characters/Character Sprites 2 - Fantasy Dreamland/Character Sprites 16x16/Character_048.png" id="18_kknu5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_goyge"]
@@ -15187,248 +15182,15 @@ size = Vector2(12, 4.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqmev"]
 size = Vector2(165, 135)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j5td"]
-size = Vector2(10, 13)
-
-[sub_resource type="Animation" id="Animation_0ivum"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("NPCTexture:frame_coords")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_e4qrw"]
-resource_name = "idle_down"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-
-[sub_resource type="Animation" id="Animation_hyrco"]
-resource_name = "idle_left"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-
-[sub_resource type="Animation" id="Animation_vo8dh"]
-resource_name = "idle_right"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [9]
-}
-
-[sub_resource type="Animation" id="Animation_blkms"]
-resource_name = "idle_up"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [13]
-}
-
-[sub_resource type="Animation" id="Animation_e1u4i"]
-resource_name = "move_down"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_upo0i"]
-resource_name = "move_left"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_06cks"]
-resource_name = "move_right"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11]
-}
-
-[sub_resource type="Animation" id="Animation_cna87"]
-resource_name = "move_up"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NPCTexture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 14, 15]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_34cme"]
-_data = {
-"RESET": SubResource("Animation_0ivum"),
-"idle_down": SubResource("Animation_e4qrw"),
-"idle_left": SubResource("Animation_hyrco"),
-"idle_right": SubResource("Animation_vo8dh"),
-"idle_up": SubResource("Animation_blkms"),
-"move_down": SubResource("Animation_e1u4i"),
-"move_left": SubResource("Animation_upo0i"),
-"move_right": SubResource("Animation_06cks"),
-"move_up": SubResource("Animation_cna87")
-}
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6j5my"]
-animation = &"idle_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cs2g5"]
-animation = &"idle_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aisn4"]
-animation = &"idle_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1cbhj"]
-animation = &"idle_right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_a18s8"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_6j5my")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_cs2g5")
-blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_aisn4")
-blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_1cbhj")
-blend_point_3/pos = Vector2(1, 0)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_44qe2"]
-animation = &"move_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_weldh"]
-animation = &"move_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_278im"]
-animation = &"move_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_id4gn"]
-animation = &"move_left"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_uy7do"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_44qe2")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_weldh")
-blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_278im")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_id4gn")
-blend_point_3/pos = Vector2(-1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kclh8"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tvjpk"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7k76j"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6g1aj"]
-states/idle/node = SubResource("AnimationNodeBlendSpace2D_a18s8")
-states/idle/position = Vector2(383, 100)
-states/walk/node = SubResource("AnimationNodeBlendSpace2D_uy7do")
-states/walk/position = Vector2(583, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kclh8"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_tvjpk"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_7k76j")]
-
 [sub_resource type="Gradient" id="Gradient_m1gpc"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.320158, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kejbq"]
 gradient = SubResource("Gradient_m1gpc")
 fill = 1
-fill_from = Vector2(0.482906, 0.495726)
-fill_to = Vector2(0.188034, 0.0982906)
+fill_from = Vector2(0.508547, 0.470085)
+fill_to = Vector2(0.145299, 0.0982906)
 
 [node name="Test" type="Node"]
 
@@ -15486,62 +15248,18 @@ script = ExtResource("12_horsd")
 position = Vector2(10.5, -43.5)
 shape = SubResource("RectangleShape2D_iqmev")
 
-[node name="NPC" type="CharacterBody2D" parent="." groups=["npc"]]
-position = Vector2(521, 438)
-collision_priority = 5.0
-motion_mode = 1
-wall_min_slide_angle = 0.0
-platform_on_leave = 2
-script = ExtResource("11_2u3f0")
-NPCSprite = ExtResource("12_kbgoy")
-speed = 25
-npc_dialog = PackedStringArray("You\'re an ass")
-
-[node name="NPCTexture" type="Sprite2D" parent="NPC"]
-texture = ExtResource("13_egic3")
-hframes = 4
-vframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_5j5td")
-
-[node name="DialogLines" parent="NPC" instance=ExtResource("14_rgpn8")]
-
-[node name="Anim" type="AnimationPlayer" parent="NPC"]
-libraries = {
-"": SubResource("AnimationLibrary_34cme")
-}
-
-[node name="move_timer" type="Timer" parent="NPC"]
-autostart = true
-
-[node name="AnimationTree" type="AnimationTree" parent="NPC"]
-libraries = {
-"": SubResource("AnimationLibrary_34cme")
-}
-tree_root = SubResource("AnimationNodeStateMachine_6g1aj")
-anim_player = NodePath("../Anim")
-parameters/idle/blend_position = Vector2(0, 0)
-parameters/walk/blend_position = Vector2(0, 0)
-
-[node name="RayCast2D" type="RayCast2D" parent="NPC"]
-
 [node name="Chest" parent="." instance=ExtResource("13_xj0vs")]
 position = Vector2(688, 600)
 item_to_collect = "light_sword"
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(652, 593)
+position = Vector2(651, 593)
+scale = Vector2(1.03125, 1)
 color = Color(0.685068, 0.653271, 0, 1)
 energy = 1.52
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.152941)
 texture = SubResource("GradientTexture2D_kejbq")
-
-[node name="NPC2" parent="." instance=ExtResource("11_i1xtw")]
-position = Vector2(584, 416)
-NPCSprite = ExtResource("17_1cghb")
-speed = 50
-npc_dialog = PackedStringArray("name_Shitzer", "Hullo")
 
 [node name="NPC3" parent="." instance=ExtResource("11_i1xtw")]
 position = Vector2(584, 472)
@@ -15556,4 +15274,3 @@ blend_mode = 1
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
 [connection signal="body_exited" from="TravelArea" to="TravelArea" method="_on_body_exited"]
-[connection signal="timeout" from="NPC/move_timer" to="NPC" method="_on_move_timer_timeout"]

@@ -10,6 +10,8 @@ var new_lines: PackedStringArray
 
 func _ready():
 	new_lines = lines.duplicate()
+	if get_parent().is_in_group("npc"):
+		new_lines = get_parent().npc_dialog
 	SignalManager.is_dialog_complete.connect(is_complete)
 	timer.connect("timeout", on_timer_timeout)
 

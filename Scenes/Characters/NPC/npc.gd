@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 @export var NPCSprite: Texture
-@export var speed: int 
+@export var speed: int
+@export var npc_dialog: PackedStringArray
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = $AnimationTree.get("parameters/playback")
@@ -28,8 +29,7 @@ var directions : Array
 func _ready():
 	npc_texture.texture = NPCSprite
 	directions = [move_left, move_right, move_down, move_up]
-	move_timer.start()
-
+	
 
 func _physics_process(_delta):
 	is_RC_colliding()
@@ -104,10 +104,10 @@ func _on_move_timer_timeout():
 
 func redirect():
 	last_known_direction = direction
-	move_timer.stop()
+	#move_timer.stop()
 	direction = move_stop
 	redirected = true
-	move_timer.start()
+	#move_timer.start()
 	
 	
 func is_RC_colliding():

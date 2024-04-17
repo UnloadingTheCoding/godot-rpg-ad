@@ -260,6 +260,7 @@ libraries = {
 }
 
 [node name="move_timer" type="Timer" parent="."]
+autostart = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {

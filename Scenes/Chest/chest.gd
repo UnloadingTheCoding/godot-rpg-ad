@@ -10,8 +10,8 @@ var item
 
 func _ready():
 	item = InventoryMasterList.inventory[item_to_collect]
-
-
+	SignalManager.warning_closed.connect(on_warning_closed)
+	
 func _process(_delta):
 	collect_loot()
 
@@ -29,7 +29,12 @@ func _on_collect_area_body_entered(body):
 func collect_loot():
 	if Input.is_action_just_pressed("action_button") and is_collectable and not is_collected:
 		is_collectable = false
+		is_collected = true
+		get_tree().paused = true
 		InventoryManager.add_item(item, 1)
 		SignalManager.warning.emit("{} received".format({"" : item.item_name}))
 		chest_opened()
 		
+
+func on_warning_closed():
+	get_tree().paused = false

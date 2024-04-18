@@ -1,12 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://bm3gingxc0g7h"]
 
-[ext_resource type="Texture2D" uid="uid://b67o4qm3761cc" path="res://Assets/Environment/Caves Tileset - Fantasy Dreamland Reborn/16x16/FDR_Caves.png" id="1_60lbi"]
 [ext_resource type="Script" path="res://Scenes/Chest/chest.gd" id="1_dh0ar"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5fmag"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u3w6e"]
-atlas = ExtResource("1_60lbi")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n0cfs"]
+load_path = "res://.godot/imported/FDR_Caves.png-427c68c80b6eb5de4a3d6ffb3051efa8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti11r"]
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_n0cfs")
 region = Rect2(321, 34, 14, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vuq5"]
@@ -15,13 +18,13 @@ size = Vector2(18, 21)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbkq5"]
 size = Vector2(14, 13)
 
-[node name="Chest" type="StaticBody2D"]
+[node name="Chest" type="StaticBody2D" groups=["chest"]]
 physics_material_override = SubResource("PhysicsMaterial_5fmag")
 script = ExtResource("1_dh0ar")
 
 [node name="ChestSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = SubResource("AtlasTexture_u3w6e")
+texture = SubResource("AtlasTexture_ti11r")
 
 [node name="CollectArea" type="Area2D" parent="."]
 

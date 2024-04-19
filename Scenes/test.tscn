@@ -15259,15 +15259,6 @@ position = Vector2(-6, 14)
 position = Vector2(640, 720)
 portal_name = "player_start"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(656, 592)
-rotation = 3.49066
-color = Color(1, 1, 0.47451, 0.823529)
-energy = 0.51
-shadow_enabled = true
-shadow_color = Color(0.247059, 0.247059, 0.247059, 0)
-texture_scale = 0.25
-
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(653, 594.25)
 scale = Vector2(1.90625, 1.67969)

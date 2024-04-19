@@ -32,9 +32,9 @@ func _on_collect_area_body_entered(body):
 
 func collect_loot():
 	if Input.is_action_just_pressed("action_button") and is_collectable and not is_collected:
+		get_tree().paused = true
 		is_collectable = false
 		is_collected = true
-		get_tree().paused = true
 		if is_gold:
 			InventoryManager.increase_gold(gold)
 			SignalManager.warning.emit("{} gold received".format({"" : gold}))

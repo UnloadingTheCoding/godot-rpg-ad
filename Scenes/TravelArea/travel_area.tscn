@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/TravelArea/travel_area.gd" id="1_vvn85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nxl0"]
+resource_local_to_scene = true
 size = Vector2(186, 64)
 
 [node name="TravelArea" type="Area2D"]

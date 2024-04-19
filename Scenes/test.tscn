@@ -15183,14 +15183,14 @@ size = Vector2(12, 4.5)
 size = Vector2(165, 135)
 
 [sub_resource type="Gradient" id="Gradient_m1gpc"]
-offsets = PackedFloat32Array(0, 0.320158, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.320158, 0.563725, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.410995, 0.410995, 0.410995, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kejbq"]
 gradient = SubResource("Gradient_m1gpc")
 fill = 1
 fill_from = Vector2(0.508547, 0.470085)
-fill_to = Vector2(0.145299, 0.0982906)
+fill_to = Vector2(0.132479, 0.141026)
 
 [node name="Test" type="Node"]
 
@@ -15253,8 +15253,8 @@ position = Vector2(688, 600)
 item_to_collect = "light_sword"
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(651, 593)
-scale = Vector2(1.03125, 1)
+position = Vector2(653, 594.25)
+scale = Vector2(1.90625, 1.67969)
 color = Color(0.685068, 0.653271, 0, 1)
 energy = 1.52
 shadow_enabled = true

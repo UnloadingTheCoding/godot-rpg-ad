@@ -94,7 +94,6 @@ func _on_move_timer_timeout():
 		direction = get_direction()
 		while direction == last_known_direction:
 			direction = get_direction()
-			print(direction)
 		#else: 
 			#direction = last_known_direction * -1
 		move_timer.wait_time = wait_time
@@ -112,7 +111,6 @@ func redirect():
 	
 func is_RC_colliding():
 	if ray_cast_2d.is_colliding():
-		print("is colliding")
 		redirect()
 
 

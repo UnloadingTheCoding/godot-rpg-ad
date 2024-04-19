@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcq2rtial72vf"]
+[gd_scene load_steps=25 format=3 uid="uid://bcq2rtial72vf"]
 
 [ext_resource type="Texture2D" uid="uid://d26qdrb6au0ec" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Ground_Tiles.png" id="1_pii2m"]
 [ext_resource type="Texture2D" uid="uid://86bsliyvott" path="res://Assets/Environment/Village Tileset - Fantasy Dreamland Reborn/16x16/FDR_Village.png" id="2_6fdb2"]
@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bf2kcfouyyca1" path="res://Assets/Environment/Grasslands Tileset - Fantasy Dreamland Reborn/16x16/FDR_Grasslands.png" id="5_60cet"]
 [ext_resource type="PackedScene" uid="uid://ckqo01jmemk8a" path="res://Scenes/Characters/NPC/npc.tscn" id="11_i1xtw"]
 [ext_resource type="PackedScene" uid="uid://bji30meh012ld" path="res://Scenes/Menu/menu.tscn" id="12_6i82n"]
-[ext_resource type="Script" path="res://Scenes/TravelArea/travel_area.gd" id="12_horsd"]
 [ext_resource type="Script" path="res://Scenes/Portal/Portal.gd" id="13_3o6oj"]
 [ext_resource type="PackedScene" uid="uid://bpq1dypvddmad" path="res://Scenes/Portal/portal.tscn" id="13_7v28a"]
-[ext_resource type="PackedScene" uid="uid://bm3gingxc0g7h" path="res://Scenes/Chest/chest.tscn" id="13_xj0vs"]
+[ext_resource type="PackedScene" uid="uid://ba5j5cvbpe51s" path="res://Scenes/TravelArea/travel_area.tscn" id="13_yd1tj"]
+[ext_resource type="Texture2D" uid="uid://blwbs7j4fchc8" path="res://Assets/Characters/Character Sprites 1 - Fantasy Dreamland/Character Sprites 16x16/Character_032.png" id="14_e07nk"]
 [ext_resource type="Texture2D" uid="uid://t7f4inopxm6e" path="res://Assets/Characters/Character Sprites 2 - Fantasy Dreamland/Character Sprites 16x16/Character_048.png" id="18_kknu5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_goyge"]
@@ -15179,9 +15179,6 @@ sources/4 = SubResource("TileSetAtlasSource_wsqy0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvo0"]
 size = Vector2(12, 4.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqmev"]
-size = Vector2(165, 135)
-
 [sub_resource type="Gradient" id="Gradient_m1gpc"]
 offsets = PackedFloat32Array(0, 0.320158, 0.563725, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.410995, 0.410995, 0.410995, 1, 0, 0, 0, 1)
@@ -15191,6 +15188,12 @@ gradient = SubResource("Gradient_m1gpc")
 fill = 1
 fill_from = Vector2(0.508547, 0.470085)
 fill_to = Vector2(0.132479, 0.141026)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apjqk"]
+size = Vector2(109, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l7yl"]
+size = Vector2(13, 10)
 
 [node name="Test" type="Node"]
 
@@ -15212,19 +15215,19 @@ layer_3/tile_data = PackedInt32Array(2031661, 1310721, 9, 2031662, 1376257, 9, 2
 
 [node name="Menu" parent="." instance=ExtResource("12_6i82n")]
 
-[node name="Portal" type="Area2D" parent="."]
-position = Vector2(742, 618)
+[node name="ArmoryEnt" type="Area2D" parent="."]
+position = Vector2(742, 615)
 script = ExtResource("13_3o6oj")
 scene = "res://Scenes/shop_test.tscn"
 portal_name = "ShopEnt"
 destination = "ItemShop"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmoryEnt"]
 position = Vector2(-6, -12.25)
 shape = SubResource("RectangleShape2D_fkvo0")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Start" type="Area2D" parent="Portal"]
+[node name="Start" type="Area2D" parent="ArmoryEnt"]
 position = Vector2(-6, 14)
 
 [node name="Start" parent="." instance=ExtResource("13_7v28a")]
@@ -15240,18 +15243,6 @@ shadow_enabled = true
 shadow_color = Color(0.247059, 0.247059, 0.247059, 0)
 texture_scale = 0.25
 
-[node name="TravelArea" type="Area2D" parent="."]
-position = Vector2(528, 496)
-script = ExtResource("12_horsd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TravelArea"]
-position = Vector2(10.5, -43.5)
-shape = SubResource("RectangleShape2D_iqmev")
-
-[node name="Chest" parent="." instance=ExtResource("13_xj0vs")]
-position = Vector2(688, 600)
-item_to_collect = "light_sword"
-
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(653, 594.25)
 scale = Vector2(1.90625, 1.67969)
@@ -15265,12 +15256,59 @@ texture = SubResource("GradientTexture2D_kejbq")
 position = Vector2(584, 472)
 NPCSprite = ExtResource("18_kknu5")
 speed = 20
-npc_dialog = PackedStringArray("Don\'t bother me, I\'m pacing.")
+npc_dialog = PackedStringArray("I like turtles")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(1, 0.623529, 0.219608, 1)
 energy = 0.5
 blend_mode = 1
 
-[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
-[connection signal="body_exited" from="TravelArea" to="TravelArea" method="_on_body_exited"]
+[node name="TravelArea" parent="." instance=ExtResource("13_yd1tj")]
+position = Vector2(553, 461)
+size = Vector2(80, 80)
+
+[node name="CollisionShape2D" parent="TravelArea" index="0"]
+position = Vector2(1.5, -18)
+shape = SubResource("RectangleShape2D_apjqk")
+
+[node name="TravelArea2" parent="." instance=ExtResource("13_yd1tj")]
+position = Vector2(448, 241)
+size = Vector2(140, 140)
+
+[node name="CollisionShape2D" parent="TravelArea2" index="0"]
+position = Vector2(213, 48)
+
+[node name="NPC" parent="." instance=ExtResource("11_i1xtw")]
+position = Vector2(632, 292)
+NPCSprite = ExtResource("14_e07nk")
+speed = 15
+npc_dialog = PackedStringArray("You look like you could use something to do.", "Why not check out the ladder over there...")
+
+[node name="ItemShopEnt" parent="." instance=ExtResource("13_7v28a")]
+position = Vector2(672, 445)
+scene = "res://Scenes/test_item_shop.tscn"
+portal_name = "potion_shop_ent"
+destination = "potion_shop"
+
+[node name="CollisionShape2D" parent="ItemShopEnt" index="0"]
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_0l7yl")
+
+[node name="Start" parent="ItemShopEnt" index="1"]
+position = Vector2(0, 18)
+
+[node name="Portal" parent="." instance=ExtResource("13_7v28a")]
+position = Vector2(416, 456)
+scene = "res://Scenes/test_inn.tscn"
+portal_name = "inn_ent"
+destination = "test_inn"
+
+[node name="Start" parent="Portal" index="1"]
+position = Vector2(0, 24)
+
+[connection signal="body_entered" from="ArmoryEnt" to="ArmoryEnt" method="_on_body_entered"]
+
+[editable path="TravelArea"]
+[editable path="TravelArea2"]
+[editable path="ItemShopEnt"]
+[editable path="Portal"]

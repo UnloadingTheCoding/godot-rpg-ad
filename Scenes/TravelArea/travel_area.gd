@@ -1,5 +1,12 @@
 extends Area2D
 
+@onready var collision_shape_2d = %CollisionShape2D
+
+
+@export var size : Vector2
+
+func _ready():
+	collision_shape_2d.shape.size = size
 
 
 func _on_body_exited(body):

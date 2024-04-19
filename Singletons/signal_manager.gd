@@ -11,6 +11,7 @@ signal is_dialog_complete()
 
 #EntranceExit Signal
 signal current_portal(String)
+signal scene_changed
 
 signal pause_controls
 

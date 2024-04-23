@@ -19277,9 +19277,11 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_624hb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsqmj"]
 resource_local_to_scene = true
+size = Vector2(92, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssx1e"]
 resource_local_to_scene = true
+size = Vector2(26, 16)
 
 [node name="TestCave" type="Node2D"]
 
@@ -19353,10 +19355,16 @@ mouse_filter = 2
 position = Vector2(119, 67)
 
 [node name="CollisionShape2D" parent="BattleStarter" index="0"]
+position = Vector2(7, -5.5)
+shape = SubResource("RectangleShape2D_dsqmj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleStarter"]
+position = Vector2(545, 359)
+rotation = 0.387463
 shape = SubResource("RectangleShape2D_dsqmj")
 
 [node name="CollisionShape2D" parent="BattleStarter/PeaceStarter" index="0"]
-position = Vector2(-16, 107)
+position = Vector2(561, 327)
 shape = SubResource("RectangleShape2D_ssx1e")
 
 [editable path="Entrance"]

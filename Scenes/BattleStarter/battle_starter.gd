@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var timer = $Timer
 
+var battle_on : bool = false
 var player : Player
 
 
@@ -12,15 +13,20 @@ func _process(_delta):
 func _on_body_entered(body):
 	if body == get_tree().get_first_node_in_group("Player"):
 		player = body
-		battle_countdown_starter()
+		if not battle_on:
+			print("battle on")
+			battle_countdown_starter()
 
 
 func _on_peace_starter_body_exited(body):
 	if body == get_tree().get_first_node_in_group("Player"):
+		print("battle off")
+		battle_on = false
 		timer.stop()
 		
 		
 func battle_countdown_starter():
+	battle_on = true
 	var time = randi_range(4, 10)
 	timer.wait_time = time
 	timer.start()

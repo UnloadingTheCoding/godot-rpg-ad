@@ -9,7 +9,8 @@ class_name Player
 @onready var menu = $Menu
 
 # Movement
-const SPEED = 70
+#speed - 120 for testing 70 for normal gameplay
+const SPEED = 120
 var direction = Vector2.ZERO
 var last_known_direction = Vector2.ZERO
 

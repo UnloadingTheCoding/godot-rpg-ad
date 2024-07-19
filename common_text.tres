@@ -1,10 +1,10 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://3p7ohfxt2awi"]
 
-[ext_resource type="FontFile" uid="uid://brcbsc72sd8oq" path="res://Assets/NbPixelFontBundle_v1_0(1)/Habbo.ttf" id="1_1pija"]
+[ext_resource type="FontFile" uid="uid://cg5v84a1l063y" path="res://MenuText.tres" id="1_dvg7u"]
 
 [resource]
 line_spacing = 5.0
-font = ExtResource("1_1pija")
+font = ExtResource("1_dvg7u")
 font_size = 48
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)

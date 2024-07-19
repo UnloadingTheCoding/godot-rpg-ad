@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8rcbu1v53lng"]
+[gd_scene load_steps=2 format=3 uid="uid://b8rcbu1v53lng"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_a35n6"]
-[ext_resource type="Texture2D" uid="uid://cdj1qu4rpthp1" path="res://Assets/Mobs/Monster Factory Wave 3/64x64/Mon_019_c_front.png" id="2_e1xki"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_a35n6")
+health = 50
+mana = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_e1xki")
 flip_h = true

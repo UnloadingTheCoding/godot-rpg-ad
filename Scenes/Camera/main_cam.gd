@@ -9,7 +9,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	find_player()
+<<<<<<< HEAD
 	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * 10))
+=======
+	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * 30))
+>>>>>>> cb59aa9f8070a9349e60882d2122e69282e7380f
 
 
 func find_player() -> void:

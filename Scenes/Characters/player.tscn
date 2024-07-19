@@ -246,6 +246,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vutdt")
+}
 tree_root = SubResource("AnimationNodeStateMachine_kwlqh")
 anim_player = NodePath("../AnimationPlayer")
 parameters/idle/blend_position = Vector2(-0.284644, 0.303965)

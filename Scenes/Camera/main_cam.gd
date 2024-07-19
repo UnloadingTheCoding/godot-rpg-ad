@@ -7,9 +7,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	find_player()
-	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * 20))
+	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * 10))
 
 
 func find_player() -> void:
@@ -17,4 +17,4 @@ func find_player() -> void:
 	if player_group.size() > 0:
 		var player = player_group[0] as Node2D
 		target_position = player.global_position
-
+		

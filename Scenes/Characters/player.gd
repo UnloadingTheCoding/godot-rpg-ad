@@ -10,7 +10,7 @@ class_name Player
 
 # Movement
 #speed - 120 for testing 70 for normal gameplay
-const SPEED = 120
+const SPEED = 70
 var direction = Vector2.ZERO
 var last_known_direction = Vector2.ZERO
 
